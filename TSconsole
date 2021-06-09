@@ -1,0 +1,140 @@
+#!/usr/bin/env bash
+__return__ () {
+source __return__ &> /dev/null
+if [[ ! $? == 105 ]]
+then
+printf 105
+fi
+}
+
+set +x
+
+if [[ $_ == "+x" ]]
+then
+debug="false"
+else
+debug="true"
+fi
+
+__return__=$(printf "$(__return__)")
+
+WAIT() {
+sleep 0.01
+}
+clear
+
+#<<<------Into~section------>>>
+
+sleep 0.2
+figlet -f slant -w 100 "please"
+sleep 1
+figlet -f slant -w 100 "wait"
+sleep 1
+echo '$$$$$$$$$$$$$$$$$$$$$$$$$$$$'
+echo '$__________________________$'
+echo '$_____GLASS________________$'
+echo '$_______OF_________________$'
+echo '$________GLUCOSE___________$'
+echo '$__________DESIGNED________$'
+echo '$________BY__________$$$$$_$'
+echo '$____TANYA________$$$____$_$'
+echo '$_____________$$$$_______$_$'
+echo '$_$$$$$$$$$$$$___________$_$'
+echo '$_$______________________$_$'
+echo '_$_$____________________$_$'
+echo '_$_$____________________$_$'
+echo '_$_$____________________$_$'
+echo '__$_$__________________$_$'
+echo '__$_$__________________$_$'
+echo '___$_$________________$_$'
+echo '___$_$$_____________$$_$'
+echo '_____$__$$$______$$$__$'
+echo '______$$___$$$$$$___$$'
+echo '________$$$______$$$'
+echo '___________$$$$$$_'
+echo '____________$__$'
+echo '____________$__$'
+echo '____________$__$'
+echo '____________$__$'
+echo '____________$__$'
+echo '____________$__$'
+echo '____________$__$'
+echo '____________$__$'
+echo '____________$__$'
+echo '____________$$$$'
+echo '___________$___$______'
+echo '____$$$$$$$_____$___$$'
+echo '___$______$_____$___$$'
+echo '____$$$$$$$_____$$$$$$'
+sleep 2
+echo "WELCOME!"
+sleep 1
+echo "to"
+sleep 1
+clear
+figlet TSconsole
+echo "Made with love"
+echo "By Suman Kumar ~BHUTUU👻"
+echo "<<<--------------------{t❣️s}-------------------->>>"
+echo
+echo
+echo
+echo "what's your name?"
+printf ">>>"
+read name
+
+hash=759f457e8e007f79bda2dd8cea0ca476
+
+printf "Enter your login password : "
+
+read passd
+
+passd=$(printf "$passd" | md5sum | awk '{printf $1}')
+
+if [[ $hash == $passd ]]
+then
+  printf "Access Granted\n"
+
+echo "welcom to TSconsole $name"
+
+sleep 0.5
+
+echo "<---program list--->"
+echo
+echo "(01). Gmail bruteforce attack"
+echo "(02). Instagram bruteforce attack"
+
+echo
+echo ">>>Run 'quit' to exit"
+echo
+echo
+printf "choose your program > "
+read program
+if [[ $program == 1 ]]
+then
+echo
+cd $PWD/Assets && python3 hack.py
+elif [[ $program == 2 ]]
+then
+echo
+echo "please run 'tor' in another session"
+printf "Press 'enter key' if you are conmected to tor >"
+read enter
+cd $PWD/Assets &&  bash insta.sh
+elif [[ $program == quit ]]
+then
+exit
+fi
+else
+  printf "Access Denied\n"
+
+
+sleep 1
+printf "press enter to exit\n"
+read enter
+echo "bye bye $name 😝 "
+sleep 1
+exit
+fi
+
+
