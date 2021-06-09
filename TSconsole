@@ -62,15 +62,7 @@ echo "welcom to TSconsole $name"
 sleep 0.5
 
 
-
-
-
-
-
-
-
-
-cd $pwd TSconsole-framework && python3 hack.py
+cd $PWD/Assets && python3 hack.py
 
 else
   printf "Access Denied\n"
