@@ -23,7 +23,7 @@ sleep 0.01
 }
 clear
 
-#<<<------Into~section------>>>
+#<<<------Intro~section------>>>
 
 sleep 0.2
 figlet -f slant -w 100 "please"
