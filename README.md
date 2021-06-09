@@ -1,6 +1,7 @@
 TSconsole-framework
-After cloning it into your system, you have to run
-"./requirements" to install all the requirements so that 
+After cloning it into your system, you have to give permission 
+To run the script by "chmod +x *" then
+Run "./requirements" to install all the requirements so that 
 This tool work nicely!
 
 #execute "./TSconsole" to run this tool.
