@@ -1,10 +1,3 @@
-
-print ("   ___       BHUTUU         _  _")
-print ("  / _ \     _ __ ___   __ _(_) |")
-print (" / /_\/____| '_ ` _ \ / _` | | |")
-print ("/ /_\\\_____| | | | | | (_| | | |")
-print ("\____/     |_| |_| |_|\__,_|_|_|")
-print ("G-mail Brute Forcer v1.5 Author: Suman Kumar ~BHUTUU")
 import smtplib
 
 smtpserver = smtplib.SMTP("smtp.gmail.com", 587)
