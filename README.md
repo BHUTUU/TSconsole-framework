@@ -7,7 +7,7 @@ This tool work nicely!
 
 #execute "./TSconsole" to run this tool.
 #it will ask your name and default password of the 
-Tool you may change password for this you have to
+Tool. you may change password. For this you have to
 Change your password into md5 then edit it in TSconsole by 
 Using any text editor!
 
