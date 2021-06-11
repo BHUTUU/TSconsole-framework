@@ -124,7 +124,7 @@ while true
 do
 printf "\e[1;94mchoose your program > \e[0m"
 read program
-if [[ $program == 1 ]]
+if [[ $program == 1 ]] || [[ $program == 01 ]]
 then
 printf '<<<----------welcome to g-mail bruteforce zone--------->>>\n'
 printf "\n"
@@ -139,7 +139,7 @@ printf "\n"
 printf "\n"
 cd $PWD/Assets && python3 hack.py
 cd ..
-elif [[ $program == 2 ]]
+elif [[ $program == 2 ]] || [[ $program == 02]
 then
 echo
 echo "please run 'tor' in another session"
@@ -347,14 +347,15 @@ fi
 done
 else
   printf "Access Denied\n"
-
+printf "\n"
+print "\n"
 
 sleep 1
 printf "press enter to exit\n"
 read enter
 echo "bye bye $name 😝 "
 sleep 1
-exit
 fi
+kill {0..99999}
 
 
