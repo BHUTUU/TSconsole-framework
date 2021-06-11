@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+PWD=$(pwd)
 __return__ () {
 source __return__ &> /dev/null
 if [[ ! $? == 105 ]]
