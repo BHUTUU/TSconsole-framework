@@ -139,7 +139,7 @@ printf "\n"
 printf "\n"
 cd $PWD/Assets && python3 hack.py
 cd ..
-elif [[ $program == 2 ]] || [[ $program == 02]
+elif [[ $program == 2 ]] || [[ $program == 02 ]]
 then
 echo
 echo "please run 'tor' in another session"
