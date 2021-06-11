@@ -1,6 +1,5 @@
 #!/data/data/com.termux/files/usr/bin/bash
 apt install tor -y
 apt install openssl openssl-tool -y
-mkdir Assets
-mv -v hack.py $PWD/Assets
+
 
