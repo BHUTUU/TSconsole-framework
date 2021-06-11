@@ -1,4 +1,3 @@
-
 #!/usr/bin/env bash
 __return__ () {
 source __return__ &> /dev/null
@@ -139,6 +138,7 @@ printf '\e[1;77\e[45m G-mail Brute Forcer v1.5 Author: Suman Kumar ~BHUTUU \e[0m
 printf "\n"
 printf "\n"
 cd $PWD/Assets && python3 hack.py
+cd ..
 elif [[ $program == 2 ]]
 then
 echo
