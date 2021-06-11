@@ -1,4 +1,3 @@
-
 import smtplib
 
 smtpserver = smtplib.SMTP("smtp.gmail.com", 587)
