@@ -348,7 +348,7 @@ done
 else
   printf "Access Denied\n"
 printf "\n"
-print "\n"
+printf "\n"
 
 sleep 1
 printf "press enter to exit\n"
