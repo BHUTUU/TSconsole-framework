@@ -115,7 +115,7 @@ printf '\e[1;82m \____/     |_| |_| |_|\__,_|_|_| \e[0m\n'
 printf '\e[1;77\e[45m G-mail Brute Forcer v1.5 Author: Suman Kumar ~BHUTUU \e[0m\n'
 printf "\n"
 printf "\n"
-cd $PWD/Assets && python3 hack.py
+cd $PWD/Assets && python3 gmail.py
 cd ..
 elif [[ $program == 2 ]] || [[ $program == 02 ]]
 then
