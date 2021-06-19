@@ -1,4 +1,4 @@
-#!/data/data/com.termux/files/usr/bin/bash
+#!/bin/bash
 apt install tor -y
 apt install openssl openssl-tool -y
 cd Assets && chmod +x * && cd ..
