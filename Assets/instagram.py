@@ -12,8 +12,8 @@ class brute (object):
     def __init__(self):
 
         try:
-            user=input("\033[35m Username account:\033[0m ")
-            passlist = input ("\033[35m Password List (Enter to default list):\033[0m ")
+            user=input("\033[35m Enter target username-->\033[0m ")
+            passlist = input ("\033[35m Enter password list (path/file)-->\033[0m ")
             print("\nTarget Username/Email Id: ",user)
             print("\nTrying Password list from:", passlist)
 
