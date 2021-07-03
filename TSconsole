@@ -19,7 +19,7 @@ printf '\e[1;90m$_______OF_________________$ \e[0m\n'
 printf '\e[1;90m$________GLUCOSE___________$ \e[0m\n'
 printf '\e[1;90m$__________DESIGNED________$ \e[0m\n'
 printf '\e[1;36m$________BY__________$$$$$_$ \e[0m\n'
-printf '\e[1;36m$________~BHUTUU👻$$$____$_$ \e[0m\n'
+printf '\e[1;36m$___TANYA~BHUTUU👻$$$____$_$ \e[0m\n'
 printf '\e[1;36m$_____________$$$$_______$_$ \e[0m\n'
 printf '\e[1;36m$_$$$$$$$$$$$$___________$_$ \e[0m\n'
 printf '\e[1;36m$_$______________________$_$ \e[0m\n'
@@ -94,7 +94,10 @@ echo
 printf "\e[1;36m(01). Gmail bruteforce attack\e[0m\n"
 printf "\e[1;36m(02). Instagram bruteforce attack (bash based)\e[0m\n"
 printf "\e[1;36m(03). Instagram bruteforce attack (python based)\e[0m\n"
+<<<<<<< HEAD
 printf "\e[1;36m(04). Text to hash converter\e[0m\n"
+=======
+>>>>>>> refs/remotes/origin/main
 echo
 printf "\e[1;96m>>>Run 'quit' to exit\e[0m\n"
 echo
@@ -139,6 +142,7 @@ printf "\e[1;77m\e[45m   Instagram Brute Forcer.py v2 Author: Suman Kumar ~BHUTU
 printf "\n"
 cd $PWD/Assets && python instagram.py
 cd ..
+<<<<<<< HEAD
 
 #<<<----------TEXT TO HASH CONVERTER ---------->>>
 
@@ -149,6 +153,8 @@ cd ..
 
 #<<<-----exit program----->>>
 
+=======
+>>>>>>> refs/remotes/origin/main
 elif [[ $program == quit ]]
 then
 exit
