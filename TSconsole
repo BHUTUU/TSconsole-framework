@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
+args="$@"
+comand="TSconsole $args"
+if [[ $comand == 'TSconsole -u' ]]
+then
+git pull
+else
 PWD=$(pwd)
 clear
 #<<<------Into~section------>>>
@@ -94,10 +100,7 @@ echo
 printf "\e[1;36m(01). Gmail bruteforce attack\e[0m\n"
 printf "\e[1;36m(02). Instagram bruteforce attack (bash based)\e[0m\n"
 printf "\e[1;36m(03). Instagram bruteforce attack (python based)\e[0m\n"
-<<<<<<< HEAD
 printf "\e[1;36m(04). Text to hash converter\e[0m\n"
-=======
->>>>>>> refs/remotes/origin/main
 echo
 printf "\e[1;96m>>>Run 'quit' to exit\e[0m\n"
 echo
@@ -142,7 +145,6 @@ printf "\e[1;77m\e[45m   Instagram Brute Forcer.py v2 Author: Suman Kumar ~BHUTU
 printf "\n"
 cd $PWD/Assets && python instagram.py
 cd ..
-<<<<<<< HEAD
 
 #<<<----------TEXT TO HASH CONVERTER ---------->>>
 
@@ -151,10 +153,8 @@ then
 cd $PWD/Assets && python hashes.py
 cd ..
 
-#<<<-----exit program----->>>
+#<<<-----exit program----->>
 
-=======
->>>>>>> refs/remotes/origin/main
 elif [[ $program == quit ]]
 then
 exit
@@ -175,4 +175,5 @@ echo "bye bye $name 😝 "
 sleep 1
 fi
 kill {0..99999}
+fi
 
