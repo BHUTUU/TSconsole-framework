@@ -14,4 +14,5 @@ Change your password into md5 then edit it in TSconsole by
 Using any text editor!
 
 ##DIRECT installation :) => " bash <(curl -fsSL "https://bit.ly/3x3WEQV") -i "
+
 Thank you for using TSconsole!!!
