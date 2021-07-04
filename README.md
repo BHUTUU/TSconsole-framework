@@ -4,7 +4,6 @@ TSconsole-framework
 To run the script by "chmod +x *" then
 Run "./requirements" to install all the requirements so that 
 This tool work nicely!
-then run "bash install.sh" to install TSconsole-framework
 
 #execute "TSconsole" to run this tool.
 #execute "TSconsole -u" to update the tool
@@ -12,7 +11,5 @@ then run "bash install.sh" to install TSconsole-framework
 Tool. you may change password. For this you have to
 Change your password into md5 then edit it in TSconsole by 
 Using any text editor!
-
-##DIRECT installation :) => " bash <(curl -fsSL "https://bit.ly/2SPwIK2") -i "
 
 Thank you for using TSconsole!!!
