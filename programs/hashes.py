@@ -12,6 +12,7 @@ while True:
 	print ("\033[1;37m4:Text to SHA256.")
 	print ("\033[1;37m5:Text to SHA384.")
 	print ("\033[1;37m6:Text to SHA512.")
+	print ("\033[1;37m>>Run 'back' to go to main programs list.")
 	print ("\n")
 	optn = input("\033[1;32mEnter ur option-->")
 	print ("\n")
@@ -117,6 +118,8 @@ while True:
 			time.sleep (1)
 		else:
 			exit()
+	elif (optn = 'back'):
+		exit()
 	else:
 		print ("\n")
 		print ("Try again with valid option")
