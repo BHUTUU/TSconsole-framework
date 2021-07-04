@@ -1,12 +1,24 @@
 #!/usr/bin/env bash
+PWD=$(pwd)
 args="$@"
 comand="TSconsole $args"
 if [[ $comand == 'TSconsole -u' ]]
 then
-cd /data/data/com.termux/files/usr/share/TSconsole-framework
-git pull
+	cd $HOME
+	distro=$(pwd)
+	if [[ $distro == /data/data/com.termux/files/home ]]
+	then
+		cd /data/data/com.termux/files/usr/share/TSconsole-framework
+		git pull
+	elif [[ $distro == /data/data/hilled.pwnterm/files/usr/home ]]
+	then
+		cd /data/data/hilled.pwnterm/files/usr/share/TSconsole-framework
+		git pull
 else
-PWD=$(pwd)
+printf "\e[1;34m SORRY BUT TSconsole-framework IS NOT FOR YOUR DISTRO \e[0m\n"
+fi
+cd $PWD
+else
 clear
 #<<<------Into~section------>>>
 printf "\e[1;34m>>> PLEASE wait.\e[0m"
