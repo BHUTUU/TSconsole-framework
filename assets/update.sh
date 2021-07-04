@@ -62,18 +62,16 @@ cd .. && cd assets
 chmod +x * && cd ..
 cd programs
 chmod +x * && cd ..
-#<<<------installing requirements for TSconsole-framework------>>>
-printf "\e[1;31m\e[45mchecking and installing requirements\e[0m\n"
-sleep 0.25
-bash requirements
 #<<<----moving programs in bin directory for TERMUX------>>>
 if [[ $distro == /data/data/com.termux/files/home ]]
 then
+cd /data/data/com.termux/files/usr/share/TSconsole-framework && ./requirements
 ln -sf /data/data/com.termux/files/usr/share/TSconsole-framework/TSconsole /data/data/com.termux/files/usr/bin/TSconsole
 #<<<------moving programs in bin directory for PWN-TERM------>>>
 elif [[ $distro == /data/data/hilled.pwnterm/files/usr/home ]]
 then
-ln -sf /data/data/hilled.pwnterm/files/usr/share/TSconsole-framework/TSconsole /data/data/hilled.pwnterm/files/usr/share
+cd /data/data/hilled.pwnterm/files/usr/share/TSconsole-framework && ./requirements
+ln -sf /data/data/hilled.pwnterm/files/usr/share/TSconsole-framework/TSconsole /data/data/hilled.pwnterm/files/usr/bin
 else
 printf "\e[1;97m ALREADY TOLD THAT THIS TOOL IS NOT FOR YOUR LINUX OS, SO GOOD BYE\e[0m\n"
 exit
