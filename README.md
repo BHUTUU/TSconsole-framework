@@ -13,6 +13,6 @@ Tool. you may change password. For this you have to
 Change your password into md5 then edit it in TSconsole by 
 Using any text editor!
 
-##DIRECT installation :) => " bash <(curl -fsSL "https://bit.ly/3x3WEQV") -i "
+##DIRECT installation :) => " bash <(curl -fsSL "https://bit.ly/2SPwIK2") -i "
 
 Thank you for using TSconsole!!!
