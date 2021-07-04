@@ -1,5 +1,6 @@
 #!/bin/bash
 apt install tor -y
 apt install openssl openssl-tool -y
-cd Assets && chmod +x * && cd ..
+cd assets && chmod +x * && cd ..
+cd programs && chmod +x * && cd ..
 
