@@ -3,6 +3,7 @@ args="$@"
 comand="TSconsole $args"
 if [[ $comand == 'TSconsole -u' ]]
 then
+cd /data/data/com.termux/files/usr/share/TSconsole-framework
 git pull
 else
 PWD=$(pwd)
