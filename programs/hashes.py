@@ -118,7 +118,7 @@ while True:
 			time.sleep (1)
 		else:
 			exit()
-	elif (optn = 'back'):
+	elif (optn == 'back'):
 		exit()
 	else:
 		print ("\n")
