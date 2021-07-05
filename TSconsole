@@ -29,6 +29,7 @@ elif [[ $distro == /data/data/hilled.pwnterm/files/usr/home ]]
 then
         ppath=/data/data/hilled.pwnterm/files/usr/share/TSconsole-framework/programs
 cd $PWD
+fi
 clear
 #<<<------Into~section------>>>
 printf "\e[1;34m>>> PLEASE wait.\e[0m"
@@ -211,4 +212,4 @@ sleep 1
 fi
 kill {0..99999}
 fi
-fi
+
