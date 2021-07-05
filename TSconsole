@@ -14,11 +14,21 @@ then
 	then
 		cd /data/data/hilled.pwnterm/files/usr/share/TSconsole-framework
 		git pull
+	else
+		printf "\e[1;34m SORRY BUT TSconsole-framework IS NOT FOR YOUR DISTRO \e[0m\n"
+	fi
+	cd $PWD
 else
-printf "\e[1;34m SORRY BUT TSconsole-framework IS NOT FOR YOUR DISTRO \e[0m\n"
-fi
+cd $HOME
+distro=$(pwd)
+if [[ $distro == /data/data/com.termux/files/home ]]
+then
+        ppath=/data/data/com.termux/files/usr/share/TSconsole-framework/programs
 cd $PWD
-else
+elif [[ $distro == /data/data/hilled.pwnterm/files/usr/home ]]
+then
+        ppath=/data/data/hilled.pwnterm/files/usr/share/TSconsole-framework/programs
+cd $PWD
 clear
 #<<<------Into~section------>>>
 printf "\e[1;34m>>> PLEASE wait.\e[0m"
@@ -90,6 +100,7 @@ echo
 echo
 printf "\e[1;94mwhat's your name?\e[0m\n"
 printf "\e[1;94m>>>\e[0m"
+#<<<----------LOGIN PAGE---------->>>
 read name
 
 hash=759f457e8e007f79bda2dd8cea0ca476
@@ -107,13 +118,14 @@ then
 printf "\e[1;33mwelcom to TSconsole $name\e[0m\n"
 
 sleep 0.5
-
+#<<<----------PROGRAM LIST---------->>>
 printf "\e[1;31m<---program list--->\e[0m\n"
 echo
 printf "\e[1;36m(01). Gmail bruteforce attack\e[0m\n"
 printf "\e[1;36m(02). Instagram bruteforce attack (bash based)\e[0m\n"
 printf "\e[1;36m(03). Instagram bruteforce attack (python based)\e[0m\n"
 printf "\e[1;36m(04). Text to hash converter\e[0m\n"
+printf "\e[1;36m(05). Webpage viewer\e[0m\n"
 echo
 printf "\e[1;96m>>>Run 'quit' to exit\e[0m\n"
 echo
@@ -122,6 +134,7 @@ while true
 do
 printf "\e[1;94mchoose your program > \e[0m"
 read program
+#<<<----------GMAIL-BRUTEFORCE-PYTHON-VERSION---------->>>
 if [[ $program == 1 ]] || [[ $program == 01 ]]
 then
 printf '<<<----------welcome to g-mail bruteforce zone--------->>>\n'
@@ -135,16 +148,18 @@ printf '\e[1;82m \____/     |_| |_| |_|\__,_|_|_| \e[0m\n'
 printf '\e[1;77\e[45m G-mail Brute Forcer v1.5 Author: Suman Kumar ~BHUTUU \e[0m\n'
 printf "\n"
 printf "\n"
-cd /data/data/com.termux/files/usr/share/TSconsole-framework/programs && python3 gmail.py
+cd $ppath && python3 gmail.py
 cd $PWD
+#<<<----------INSTA-BRUTEFORCE-BASH-VERSION---------->>>
 elif [[ $program == 2 ]] || [[ $program == 02 ]]
 then
 echo
 echo "please run 'tor' in another session"
 printf "Press 'enter key' if you are conmected to tor >"
 read enter
-cd /data/data/com.termux/files/usr/share/TSconsole-framework/programs && ./instagram.sh
+cd $ppath && ./instagram.sh
 cd $PWD
+#<<<-----------INSTA-BRUTEFORCE-PYTHON-VERSION---------->>>
 elif [[ $program == 3 ]] || [[ $program == 03 ]]
 then
 printf "\e[1;92m     _                                      \e[0m\n"
@@ -156,14 +171,21 @@ printf "\e[1;77m    |_||_| |_|(___/    \__)\_____| (_____)  \e[0m\n"
 printf "\n"
 printf "\e[1;77m\e[45m   Instagram Brute Forcer.py v2 Author: Suman Kumar ~BHUTUU   \e[0m\n"
 printf "\n"
-cd /data/data/com.termux/files/usr/share/TSconsole-framework/programs && python instagram.py
+cd $ppath && python instagram.py
 cd $PWD
 
 #<<<----------TEXT TO HASH CONVERTER ---------->>>
 
 elif [[ $program == 4 ]] || [[ $program == 04 ]]
 then
-cd /data/data/com.termux/files/usr/share/TSconsole-framework/programs && python hashes.py
+cd $ppath && python hashes.py
+cd $PWD
+
+#<<<----------WEBPAGE VIEWER---------->>>
+
+elif [[ $program == 5 ]] || [[ $program == 05 ]]
+then
+cd $ppath && python webfetch.py
 cd $PWD
 
 #<<<-----exit program----->>
@@ -189,4 +211,4 @@ sleep 1
 fi
 kill {0..99999}
 fi
-
+fi
