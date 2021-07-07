@@ -85,6 +85,7 @@ echo "                to"
 sleep 1
 clear
 
+function banner() {
 printf '\e[1;33m\e   _____ ____                            _          \e[0m\n'
 printf '\e[1;33m\e  |_   _/ ___|  ___ ___  _ __  ___  ___ | | ___     \e[0m\n'
 printf '\e[1;33m\e    | | \___ \ / __/ _ \| "_ \/ __|/ _ \| |/ _ \    \e[0m\n'
@@ -99,8 +100,10 @@ printf "\e[1;34m<<<--------------------{t❣️s}-------------------->>>\e[0m\n"
 echo
 echo
 echo
+}
+banner
 printf "\e[1;94mwhat's your name?\e[0m\n"
-printf "\e[1;94m>>>\e[0m"
+printf "\e[1;94m>>> \e[0m"
 #<<<----------LOGIN PAGE---------->>>
 read name
 
@@ -119,24 +122,59 @@ then
 printf "\e[1;33mwelcom to TSconsole $name\e[0m\n"
 
 sleep 0.5
+
 #<<<----------PROGRAM LIST---------->>>
+function list() {
 printf "\e[1;31m<---program list--->\e[0m\n"
 echo
-printf "\e[1;36m(01). Gmail bruteforce attack\e[0m\n"
-printf "\e[1;36m(02). Instagram bruteforce attack (bash based)\e[0m\n"
-printf "\e[1;36m(03). Instagram bruteforce attack (python based)\e[0m\n"
-printf "\e[1;36m(04). Text to hash converter\e[0m\n"
-printf "\e[1;36m(05). Webpage viewer\e[0m\n"
+printf "\e[4;36m(01). Gmail bruteforce attack\e[0m\n"
+printf "\e[4;36m(02). Instagram bruteforce attack (bash based)\e[0m\n"
+printf "\e[4;36m(03). Instagram bruteforce attack (python based)\e[0m\n"
+printf "\e[4;36m(04). Text to hash converter\e[0m\n"
+printf "\e[4;36m(05). Webpage viewer\e[0m\n"
 echo
-printf "\e[1;96m>>>Run 'quit' to exit\e[0m\n"
+printf "\e[1;96m>>>Run 'quit' or 'exit' to exit\e[0m\n"
 echo
 echo
+}
+#<<<----------HELP---------->>>
+B0="$(printf '\033[100m')"
+C6="$(printf '\033[96m')"
+R0="$(printf '\033[00m')"
+function help() {
+echo -e "
+${B0}HELP MENUE${R0}
+==========================
+
+    Command                      Description
+    -------                      -----------
+   ${C6} quit or exit${R0} |->   Command to exit TSconsole!!.
+   ${C6} clear${R0}        |->   Command to clear screen.
+   ${C6} help${R0}         |->   Command to show help meunu.
+   ${C6} banner${R0}       |->   Command to show banner of TSconsole.
+   ${C6} list${R0}         |->   Command to show list of programs
+   ${C6} show modules${R0} |->   Command to show list of programs
+   ${C6} show options${R0} |->   Command to show list of programs
+"
+}
+list
 while true
 do
-printf "\e[1;94mchoose your program > \e[0m"
+sleep 0.125
+printf "\e[3;4;97mTSc \e[0;0;0m> \e[0m"
 read program
+#<<<----------FUNCTUONS---------->>>
+if [[ $program == list ]] || [[ $program == 'show modules' ]] || [[ $program == 'show options' ]]; then
+list
+elif [[ $program == help ]] || [[ $program == '?' ]]; then
+help
+elif [[ $program == clear ]]; then
+clear
+elif [[ $program == banner ]]; then
+banner
+
 #<<<----------GMAIL-BRUTEFORCE-PYTHON-VERSION---------->>>
-if [[ $program == 1 ]] || [[ $program == 01 ]]
+elif [[ $program == 1 ]] || [[ $program == 01 ]]
 then
 printf '<<<----------welcome to g-mail bruteforce zone--------->>>\n'
 printf "\n"
@@ -191,12 +229,11 @@ cd $PWD
 
 #<<<-----exit program----->>
 
-elif [[ $program == quit ]]
+elif [[ $program == quit ]] || [[ $program == exit ]]
 then
 exit
-else
-printf "\e[1;32m >>Please enter a valid option :) \e[0m\n"
-printf "\n"
+elif [[ $program == $program ]]; then
+$program
 fi
 done
 else
@@ -212,4 +249,6 @@ sleep 1
 fi
 kill {0..99999}
 fi
+
+
 
