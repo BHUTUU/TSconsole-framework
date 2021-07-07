@@ -1,3 +1,5 @@
 #!/bin/bash
+apt install python python2 -y
+pip install requests
 apt install tor -y
 apt install openssl openssl-tool -y
