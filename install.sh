@@ -2,15 +2,16 @@
 cdir=$(pwd)
 #<<<-----Distro verification------>>>
 cd $HOME
+sleep 1
 distro=$(pwd)
-if [[ $distro == /data/data/com.termux/files/home ]]; then
-	user = '/data/data/com.termux/files/home'
-	rootdir = '/data/data/com.termux/files/usr'
-elif [[ $distro == /data/data/hilled.pwnterm/files/usr/home ]]; then
-	user = '/data/data/hilled.pwnterm/files/usr/home'
-	rootdir = '/data/data/hilled.pwnterm/files/usr'
+if [[ $distro == '/data/data/com.termux/files/home' ]]; then
+	user="/data/data/com.termux/files/home"
+	rootdir="/data/data/com.termux/files/usr"
+elif [[ $distro == '/data/data/hilled.pwnterm/files/usr/home' ]]; then
+	user="/data/data/hilled.pwnterm/files/usr/home"
+	rootdir="/data/data/hilled.pwnterm/files/usr"
 else
-	rootdir= '/usr'
+	rootdir="/usr"
 fi
 cd $cdir
 cd ..
@@ -33,7 +34,7 @@ sleep 1
     bash requirements
 fi
 sleep 1
-cd $rootdir/share
+cd ${rootdir}/share
 che=$(find TSconsole-framework)
 sleep 1
 if [[ $che == 'TSconsole-framework' ]]
@@ -42,7 +43,7 @@ then
 else
     printf "\e[1;34m old version not found to delete\e[0m\n"
 fi
-cd $rootdir/bin
+cd ${rootdir}/bin
 chk=$(find TSconsole)
 sleep 1
 if [[ $chk == 'TSconsole' ]]
@@ -53,10 +54,10 @@ else
 fi
 cd $PWD
 sleep 1
-mv -v TSconsole-framework $rootdir/share
+mv -v TSconsole-framework ${rootdir}/share
 cd $rootdir/share/TSconsole-framework
 sleep 1
-cd $rootdir/bin
+cd ${rootdir}/bin
 echo "#!/bin/bash" > TSconsole
 echo 'TDIR="$rootdir/share/TSconsole-framework"' >> TSconsole
 echo 'LAUNCHTS="TSconsole"' >> TSconsole
