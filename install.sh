@@ -1,4 +1,4 @@
-#! bin/bash
+#!/bin/bash
 cdir=$(pwd)
 #<<<-----Distro verification------>>>
 cd $HOME
