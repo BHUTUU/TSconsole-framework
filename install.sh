@@ -15,19 +15,21 @@ else
 fi
 cd $cdir
 cd ..
+sleep 1
 PWD=$(pwd)
 schek=$(find TSconsole-framework)
 sleep 1
 if [[ $schek == 'TSconsole-framework' ]]
 then
     printf "\e[1;33m Thank you for cloning TSconsole-framework in your termux\e[0m\n"
-    cd TSconsole-framework && git pull
+    cd TSconsole-framework
 else
     git clone https://github.com/BHUTUU/TSconsole-framework
+    sleep 1
     cd TSconsole-framework
 sleep 1
     chmod +x *
-    cd Assets
+    cd assets
     chmod +x * && cd ..
     cd programs
     chmod +x * && cd ..
@@ -55,13 +57,14 @@ fi
 cd $PWD
 sleep 1
 mv -v TSconsole-framework ${rootdir}/share
-cd $rootdir/share/TSconsole-framework
 sleep 1
 cd ${rootdir}/bin
 echo "#!/bin/bash" > TSconsole
 echo 'TDIR="$rootdir/share/TSconsole-framework"' >> TSconsole
 echo 'LAUNCHTS="TSconsole"' >> TSconsole
 echo >> TSconsole
-echo "cd ${TDIR}" >> TSconsole
-echo "bash ${LAUNCHTS} ${@}
+echo 'cd ${TDIR}' >> TSconsole
+echo 'bash ${LAUNCHTS} ${@}' >> TSconsole
+chmod +x TSconsole
+sleep 1
 Tsconsole
