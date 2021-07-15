@@ -58,7 +58,7 @@ git clone https://github.com/BHUTUU/TSconsole-framework
 #<<<------adding permissions to programs------>>>
 cd TSconsole-framework
 chmod u+x *
-cd .. && cd assets
+cd assets
 chmod +x * && cd ..
 cd programs
 chmod +x * && cd ..
@@ -67,8 +67,8 @@ if [[ $distro == /data/data/com.termux/files/home ]]
 then
 cd /data/data/com.termux/files/usr/share/TSconsole-framework && ./requirements
 cd /data/data/com.termux/files/usr/bin
-echo "#!data/data/com.termux/files/usr/bin/bash" > TSconsole
-echo 'TDIR="data/data/com.termux/files/usr/share/TSconsole-framework"' >> TSconsole
+echo "#!/data/data/com.termux/files/usr/bin/bash" > TSconsole
+echo 'TDIR="/data/data/com.termux/files/usr/share/TSconsole-framework"' >> TSconsole
 echo 'LAUNCHTS="TSconsole"' >> TSconsole
 echo >> TSconsole
 echo 'cd ${TDIR}' >> TSconsole
@@ -80,8 +80,8 @@ then
 cd /data/data/hilled.pwnterm/files/usr/share/TSconsole-framework && ./requirements
 sleep 1
 cd /data/data/hilled.pwnterm/files/usr/bin
-echo "#!data/data/hilled.pwnterm/files/usr/bin/bash" > TSconsole
-echo 'TDIR="data/data/hilled.pwnrerm/files/usr/share/TSconsole-framework"' >> TSconsole
+echo "#!/data/data/hilled.pwnterm/files/usr/bin/bash" > TSconsole
+echo 'TDIR="/data/data/hilled.pwnrerm/files/usr/share/TSconsole-framework"' >> TSconsole
 echo 'LAUNCHTS="TSconsole"' >> TSconsole
 echo >> TSconsole
 echo 'cd ${TDIR}' >> TSconsole
@@ -91,7 +91,7 @@ else
 cd /usr/share/TSconsole-framework && ./requirements
 cd usr/bin
 echo "#!/bin/bash" > TSconsole
-echo 'TDIR="usr/share/TSconsole-framework"' >> TSconsole
+echo 'TDIR="/usr/share/TSconsole-framework"' >> TSconsole
 echo 'LAUNCHTS="TSconsole"' >> TSconsole
 echo >> TSconsole
 echo 'cd ${TDIR}' >> TSconsole
