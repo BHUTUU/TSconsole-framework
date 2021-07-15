@@ -23,7 +23,7 @@ elif [[ $distro == /data/data/hilled.pwnterm/files/usr/home ]]
 then
 cd .. && cd bin
 else
-printf "\e[1;90m YOU ARE NOT USING TERMUX OR PWM-TERM SO GOOD BYE!!\e[0m\n"
+cd /usr/bin
 exit
 fi
 #<<<-----remove TSconsole----->>>
@@ -66,14 +66,37 @@ chmod +x * && cd ..
 if [[ $distro == /data/data/com.termux/files/home ]]
 then
 cd /data/data/com.termux/files/usr/share/TSconsole-framework && ./requirements
-ln -sf /data/data/com.termux/files/usr/share/TSconsole-framework/TSconsole /data/data/com.termux/files/usr/bin/TSconsole
+cd /data/data/com.termux/files/usr/bin
+echo "#!data/data/com.termux/files/usr/bin/bash" > TSconsole
+echo 'TDIR="data/data/com.termux/files/usr/share/TSconsole-framework"' >> TSconsole
+echo 'LAUNCHTS="TSconsole"' >> TSconsole
+echo >> TSconsole
+echo 'cd ${TDIR}' >> TSconsole
+echo 'bash ${LAUNCHTS} ${@}' >> TSconsole
+chmod +x TSconsole
 #<<<------moving programs in bin directory for PWN-TERM------>>>
 elif [[ $distro == /data/data/hilled.pwnterm/files/usr/home ]]
 then
 cd /data/data/hilled.pwnterm/files/usr/share/TSconsole-framework && ./requirements
-ln -sf /data/data/hilled.pwnterm/files/usr/share/TSconsole-framework/TSconsole /data/data/hilled.pwnterm/files/usr/bin
+sleep 1
+cd /data/data/hilled.pwnterm/files/usr/bin
+echo "#!data/data/hilled.pwnterm/files/usr/bin/bash" > TSconsole
+echo 'TDIR="data/data/hilled.pwnrerm/files/usr/share/TSconsole-framework"' >> TSconsole
+echo 'LAUNCHTS="TSconsole"' >> TSconsole
+echo >> TSconsole
+echo 'cd ${TDIR}' >> TSconsole
+echo 'bash ${LAUNCHTS} ${@}' >> TSconsole
+chmod +x TSconsole
 else
-printf "\e[1;97m ALREADY TOLD THAT THIS TOOL IS NOT FOR YOUR LINUX OS, SO GOOD BYE\e[0m\n"
+cd /usr/share/TSconsole-framework && ./requirements
+cd usr/bin
+echo "#!/bin/bash" > TSconsole
+echo 'TDIR="usr/share/TSconsole-framework"' >> TSconsole
+echo 'LAUNCHTS="TSconsole"' >> TSconsole
+echo >> TSconsole
+echo 'cd ${TDIR}' >> TSconsole
+echo 'bash ${LAUNCHTS} ${@}' >> TSconsole
+chmod +x TSconsole
 exit
 fi
 #<<<------user guide after installation------>>>
