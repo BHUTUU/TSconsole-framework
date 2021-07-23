@@ -88,7 +88,7 @@ cd /data/data/hilled.pwnterm/files/usr/share/TSconsole-framework && ./requiremen
 sleep 1
 cd /data/data/hilled.pwnterm/files/usr/bin
 echo "#!/data/data/hilled.pwnterm/files/usr/bin/bash" > TSconsole
-echo 'TDIR="/data/data/hilled.pwnrerm/files/usr/share/TSconsole-framework"' >> TSconsole
+echo 'TDIR="/data/data/hilled.pwnterm/files/usr/share/TSconsole-framework"' >> TSconsole
 echo 'LAUNCHTS="TSconsole"' >> TSconsole
 echo >> TSconsole
 echo 'cd ${TDIR}' >> TSconsole
