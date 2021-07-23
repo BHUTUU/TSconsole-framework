@@ -64,7 +64,7 @@ cd programs
 cd BRUTE
 chmod +x * && cd ..
 cd PHISH
-chmod +x * && cd sites && chmod +x * && cd .. && cd ..
+chmod +x * && cd sites && chmod 7777 * && cd .. && cd ..
 cd WEBFETCH && chmod +x * && cd ..
 cd HASHES && chmod +x * && cd ..
 cd ..
