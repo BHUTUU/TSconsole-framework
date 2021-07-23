@@ -127,7 +127,7 @@ echo
 if [[ $distro == *'Android'* ]]; then
 termux-chroot ./ngrok http 4444 > /dev/null 2>&1 &
 else
-./ngrok http 4444 > /dev/null 2>&1 &
+sudo ./ngrok http 4444 > /dev/null 2>&1 &
 fi
 sleep 7
 echo
