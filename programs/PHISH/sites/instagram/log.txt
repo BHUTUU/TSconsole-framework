@@ -1,4 +1,2 @@
 IP: 223.230.152.200
-Account: admin Pass: nzusu
-IP: 223.230.152.200
-Account: suman5179 Pass: nsjw
+Account: suman5179 Pass: jsuwhs
