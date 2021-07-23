@@ -18,3 +18,15 @@ Using any text editor!
 DIRECT INSTALL :- bash <(curl -fsSL "https://bit.ly/3jKxqmK") -i
 
 Thank you for using TSconsole!!!
+
+
+#TSconsole-framewok interface:-
+
+![Screenshot_2021-07-20-14-58-58-77](https://user-images.githubusercontent.com/85620471/126298061-a7c736cd-d61a-43a9-94be-aa6c688ba9c2.jpg)
+
+
+
+#Argumentation in TSconsole-framework
+
+![Screenshot_2021-07-20-15-00-56-81](https://user-images.githubusercontent.com/85620471/126298379-66d4fd91-75d3-4957-aecb-5faa75b08b66.jpg)
+
