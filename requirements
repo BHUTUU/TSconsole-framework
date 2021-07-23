@@ -8,3 +8,4 @@ apt install jq -y
 gem install tail 
 gem install lolcat
 apt install pv -y
+apt install proot -y
