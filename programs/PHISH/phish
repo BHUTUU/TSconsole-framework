@@ -59,64 +59,64 @@ printf "${C3}Enter your Option==> ${C2}"
 read phis
 echo
 if [[ $phis == '1' || $phis == '01' ]]; then
-break;
 pfolder='facebook'
 hoster='www.facebook.com-@'
+break
 
 elif [[ $phis == '2' || $phis == '02' ]]; then
-break;
 pfolder='instagram'
 hoster='www.instagram.com-@'
+break
 
 elif [[ $phis == '3' || $phis == '03' ]]; then
-break;
 pfolder='google'
 hoster='www.google.com-@'
+break
 
 elif [[ $phis == '4' || $phis == '04' ]]; then
-break;
 pfolder='whatsapp'
 hoster='www.whatsapp.com-@'
+break
 
 elif [[ $phis == '5' || $phis == '05' ]]; then
-break;
 pfolder='snapchat'
 hoster='www.snapchat.com-@'
+break
 
 elif [[ $phis == '6' || $phis == '06' ]]; then
-break;
 pfolder='telegram'
 hoster='www.telegram.com-@'
+break
 
 elif [[ $phis == '7' || $phis == '07' ]]; then
-break;
 pfolder='HOTSTAR'
 hoster='www.hotstar.com-@'
+break
 
 elif [[ $phis == '8' || $phis == '08' ]]; then
-break;
 pfolder='Netflix'
 hoster='www.netflix.com-@'
+break
 
 elif [[ $phis == '9' || $phis == '09' ]]; then
-break;
 pfolder='Amazon'
 hoster='www.amazon.com-@'
+break
 
 elif [[ $phis == '10' ]]; then
 pfolder='flipkart'
-break;
 hoster='www.flipkart.com-@'
+break
 
 elif [[ $phis == '11' ]]; then
-break;
 pfolder='github'
 hoster='www.github.com-@'
+break
 
 elif [[ $phis == '12' ]]; then
-break;
 pfolder='twitter'
 hoster='www.twitter.com-@'
+break
 
 elif [[ $phis == 'back' ]]; then
 exit
