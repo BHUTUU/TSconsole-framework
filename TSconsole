@@ -157,6 +157,7 @@ printf "\e[4;36m(02). Instagram bruteforce attack (bash based)\e[0m\n"
 printf "\e[4;36m(03). Instagram bruteforce attack (python based)\e[0m\n"
 printf "\e[4;36m(04). Text to hash converter\e[0m\n"
 printf "\e[4;36m(05). Webpage viewer\e[0m\n"
+printf "\e[4;36m(06). phishing attack\e[0m\n"
 echo
 printf "\e[1;96m>>>Run 'quit' or 'exit' to exit\e[0m\n"
 echo
@@ -212,7 +213,7 @@ printf '\e[1;82m \____/     |_| |_| |_|\__,_|_|_| \e[0m\n'
 printf '\e[1;77\e[45m G-mail Brute Forcer v1.5 Author: Suman Kumar ~BHUTUU \e[0m\n'
 printf "\n"
 printf "\n"
-cd $ppath && python3 gmail.py
+cd ${ppath}/BRUTE && python3 gmail.py
 cd $PWD
 #<<<----------INSTA-BRUTEFORCE-BASH-VERSION---------->>>
 elif [[ $program == 2 ]] || [[ $program == 02 ]]
@@ -221,7 +222,7 @@ echo
 echo "please run 'tor' in another session"
 printf "Press 'enter key' if you are conmected to tor >"
 read enter
-cd $ppath && ./instagram.sh
+cd ${ppath}/BRUTE && ./instagram.sh
 cd $PWD
 #<<<-----------INSTA-BRUTEFORCE-PYTHON-VERSION---------->>>
 elif [[ $program == 3 ]] || [[ $program == 03 ]]
@@ -235,22 +236,28 @@ printf "\e[1;77m    |_||_| |_|(___/    \__)\_____| (_____)  \e[0m\n"
 printf "\n"
 printf "\e[1;77m\e[45m   Instagram Brute Forcer.py v2 Author: Suman Kumar ~BHUTUU   \e[0m\n"
 printf "\n"
-cd $ppath && python instagram.py
+cd ${ppath}/BRUTE && python instagram.py
 cd $PWD
 
 #<<<----------TEXT TO HASH CONVERTER ---------->>>
 
 elif [[ $program == 4 ]] || [[ $program == 04 ]]
 then
-cd $ppath && python hashes.py
+cd ${ppath}/HASHES && python hashes.py
 cd $PWD
 
 #<<<----------WEBPAGE VIEWER---------->>>
 
 elif [[ $program == 5 ]] || [[ $program == 05 ]]
 then
-cd $ppath && python webfetch.py
+cd ${ppath}/WEBFETCH && python webfetch.py
 cd $PWD
+
+#<<<----------PHISHING ATTACK---------->>>
+
+elif [[ $program == 6 ]] || [[ $program  == 06 ]]
+then
+cd ${ppath}/PHISH && bash phish
 
 #<<<-----exit program----->>
 

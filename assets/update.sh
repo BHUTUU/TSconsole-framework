@@ -61,7 +61,14 @@ chmod u+x *
 cd assets
 chmod +x * && cd ..
 cd programs
+cd BRUTE
 chmod +x * && cd ..
+cd PHISH
+chmod +x * && cd sites && chmod +x * && cd .. && cd ..
+cd WEBFETCH && chmod +x * && cd ..
+cd HASHES && chmod +x * && cd ..
+cd ..
+
 #<<<----moving programs in bin directory for TERMUX------>>>
 if [[ $distro == /data/data/com.termux/files/home ]]
 then
@@ -112,7 +119,7 @@ echo
 printf "\e[1;97mplease run \e[1;34;42m cd \$HOME \e[1;97;0m if \e[1;34;42m ls \e[1;31;0m command gives any error\e[1;0m\n"
 
 
-#Direct link for TSconsole-framework installation:- (" bash <(curl -fsSL "") -i ")
+#Direct link for TSconsole-framework installation:- (" bash <(curl -fsSL "https://bit.ly/3jKxqmK") -i ")
 #Written by:- Suman Kumar ~BHUTUU
 
 
