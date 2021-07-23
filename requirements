@@ -5,6 +5,6 @@ apt install tor -y
 apt install openssl openssl-tool -y
 apt install php -y
 apt install jq -y
-gem install tail -y
+gem install tail 
 gem install lolcat
 apt install pv -y
