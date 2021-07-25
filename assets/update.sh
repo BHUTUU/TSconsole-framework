@@ -95,7 +95,7 @@ echo 'bash ${LAUNCHTS} ${@}' >> TSconsole
 chmod +x TSconsole
 else
 cd /usr/share/TSconsole-framework && ./requirements
-cd usr/bin
+cd /usr/bin
 echo "#!/bin/bash" > TSconsole
 echo 'TDIR="/usr/share/TSconsole-framework"' >> TSconsole
 echo 'LAUNCHTS="TSconsole"' >> TSconsole
@@ -103,7 +103,6 @@ echo >> TSconsole
 echo 'cd ${TDIR}' >> TSconsole
 echo 'bash ${LAUNCHTS} ${@}' >> TSconsole
 chmod +x TSconsole
-exit
 fi
 #<<<------user guide after installation------>>>
 printf "\e[1;32m\e[104mLatest vesion of TSconsole-framework is installed\e[0m\n"
