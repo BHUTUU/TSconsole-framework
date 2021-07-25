@@ -38,7 +38,8 @@ then
 elif [[ $comand == 'TSconsole -v' ]] || [[ $comand == 'TSconsole --version' ]]
 then
 	echo
-	printf "\e[4;2;36mTSc \e[1;37m> \e[4;34mVERSION = 1.0\e[0m\n"
+	printf "\e[4;2;36mTSc \e[1;37m> \e[4;34mVERSION = 2.0\e[0m\n"
+	echo
 
 elif [[ $comand == 'TSconsole ' ]]
 then
@@ -47,16 +48,29 @@ then
 	if [[ $distro == /data/data/com.termux/files/home ]]
 	then
         	ppath=/data/data/com.termux/files/usr/share/TSconsole-framework/programs
+		pspath=/data/data/com.termux/files/usr/share/TSconsole-framework/assets
 	cd $PWD
 	elif [[ $distro == /data/data/hilled.pwnterm/files/usr/home ]]
 	then
 		ppath=/data/data/hilled.pwnterm/files/usr/share/TSconsole-framework/programs
+		pspath=/data/data/hilled.pwnterm/files/usr/share/TSconsole-framework/assets
 	cd $PWD
 	else
 		ppath=/usr/share/TSconsole-framework/programs
+		pspath=/usr/share/TSconsole-framework/assets
 	fi
 clear
-#<<<------Into~section------>>>
+frize() {
+sleep 0.0025
+}
+#<<<------Interruption check------>>>
+function interuption() {
+printf "\n\e[1;32m[\e[1;31m!\e[1;32m]\e[1;37m TSconsole is Interrupted !!\e[0m\n"
+exit 2
+}
+trap "interuption" 2
+
+#<<<-----------INTRO-SECTION---------->>>
 printf "\e[1;34m>>> PLEASE wait.\e[0m"
 sleep 0.3
 printf "\e[1;34m.\e[0m"
@@ -67,42 +81,42 @@ printf "\e[1;34m.\e[0m"
 sleep 0.3
 printf "\e[1;34m.\e[0m\n"
 sleep 1
-printf '\e[1;90m$$$$$$$$$$$$$$$$$$$$$$$$$$$$ \e[0m\n'
-printf '\e[1;90m$__________________________$ \e[0m\n'
-printf '\e[1;90m$_____GLASS________________$ \e[0m\n'
-printf '\e[1;90m$_______OF_________________$ \e[0m\n'
-printf '\e[1;90m$________GLUCOSE___________$ \e[0m\n'
-printf '\e[1;90m$__________DESIGNED________$ \e[0m\n'
-printf '\e[1;36m$________BY__________$$$$$_$ \e[0m\n'
-printf '\e[1;36m$___TANYA~BHUTUU👻$$$____$_$ \e[0m\n'
-printf '\e[1;36m$_____________$$$$_______$_$ \e[0m\n'
-printf '\e[1;36m$_$$$$$$$$$$$$___________$_$ \e[0m\n'
-printf '\e[1;36m$_$______________________$_$ \e[0m\n'
-printf '\e[1;36m_$_$____________________$_$ \e[0m\n'
-printf '\e[1;36m_$_$____________________$_$ \e[0m\n'
-printf '\e[1;36m_$_$____________________$_$ \e[0m\n'
-printf '\e[1;36m__$_$__________________$_$ \e[0m\n'
-printf '\e[1;36m__$_$__________________$_$ \e[0m\n'
-printf '\e[1;36m___$_$________________$_$ \e[0m\n'
-printf '\e[1;36m___$_$$_____________$$_$ \e[0m\n'
-printf '\e[1;36m_____$__$$$______$$$__$ \e[0m\n'
-printf '\e[1;36m______$$___$$$$$$___$$ \e[0m\n'
-printf '\e[1;36m________$$$______$$$ \e[0m\n'
-printf '\e[1;96m___________$$$$$$_ \e[0m\n'
-printf '\e[1;96m____________$__$ \e[0m\n'
-printf '\e[1;96m____________$__$ \e[0m\n'
-printf '\e[1;96m____________$__$ \e[0m\n'
-printf '\e[1;96m____________$__$ \e[0m\n'
-printf '\e[1;96m____________$__$ \e[0m\n'
-printf '\e[1;96m____________$__$ \e[0m\n'
-printf '\e[1;96m____________$__$ \e[0m\n'
-printf '\e[1;96m____________$__$ \e[0m\n'
-printf '\e[1;96m____________$__$ \e[0m\n'
-printf '\e[1;96m____________$$$$ \e[0m\n'
-printf '\e[1;31m___________$___$______ \e[0m\n'
-printf '\e[1;35m____$$$$$$$_____$___$$ \e[0m\n'
-printf '\e[1;35m___$______$_____$___$$ \e[0m\n'
-printf '\e[1;35m____$$$$$$$_____$$$$$$ \e[0m\n'
+printf '\e[1;90m$$$$$$$$$$$$$$$$$$$$$$$$$$$$ \e[0m\n'; frize
+printf '\e[1;90m$__________________________$ \e[0m\n'; frize
+printf '\e[1;90m$_____GLASS________________$ \e[0m\n'; frize
+printf '\e[1;90m$_______OF_________________$ \e[0m\n'; frize
+printf '\e[1;90m$________GLUCOSE___________$ \e[0m\n'; frize
+printf '\e[1;90m$__________DESIGNED________$ \e[0m\n'; frize
+printf '\e[1;36m$________BY__________$$$$$_$ \e[0m\n'; frize
+printf '\e[1;36m$___TANYA~BHUTUU👻$$$____$_$ \e[0m\n'; frize
+printf '\e[1;36m$_____________$$$$_______$_$ \e[0m\n'; frize
+printf '\e[1;36m$_$$$$$$$$$$$$___________$_$ \e[0m\n'; frize
+printf '\e[1;36m$_$______________________$_$ \e[0m\n'; frize
+printf '\e[1;36m_$_$____________________$_$ \e[0m\n'; frize
+printf '\e[1;36m_$_$____________________$_$ \e[0m\n'; frize
+printf '\e[1;36m_$_$____________________$_$ \e[0m\n'; frize
+printf '\e[1;36m__$_$__________________$_$ \e[0m\n'; frize
+printf '\e[1;36m__$_$__________________$_$ \e[0m\n'; frize
+printf '\e[1;36m___$_$________________$_$ \e[0m\n'; frize
+printf '\e[1;36m___$_$$_____________$$_$ \e[0m\n'; frize
+printf '\e[1;36m_____$__$$$______$$$__$ \e[0m\n'; frize
+printf '\e[1;36m______$$___$$$$$$___$$ \e[0m\n'; frize
+printf '\e[1;36m________$$$______$$$ \e[0m\n'; frize
+printf '\e[1;96m___________$$$$$$_ \e[0m\n'; frize
+printf '\e[1;96m____________$__$ \e[0m\n'; frize
+printf '\e[1;96m____________$__$ \e[0m\n'; frize
+printf '\e[1;96m____________$__$ \e[0m\n'; frize
+printf '\e[1;96m____________$__$ \e[0m\n'; frize
+printf '\e[1;96m____________$__$ \e[0m\n'; frize
+printf '\e[1;96m____________$__$ \e[0m\n'; frize
+printf '\e[1;96m____________$__$ \e[0m\n'; frize
+printf '\e[1;96m____________$__$ \e[0m\n'; frize
+printf '\e[1;96m____________$__$ \e[0m\n'; frize
+printf '\e[1;96m____________$$$$ \e[0m\n'; frize
+printf '\e[1;31m___________$___$______ \e[0m\n'; frize
+printf '\e[1;35m____$$$$$$$_____$___$$ \e[0m\n'; frize
+printf '\e[1;35m___$______$_____$___$$ \e[0m\n'; frize
+printf '\e[1;35m____$$$$$$$_____$$$$$$ \e[0m\n'; frize
 sleep 2
 echo "             WELCOME!"
 sleep 1
@@ -111,20 +125,26 @@ sleep 1
 clear
 
 function banner() {
-printf '\e[1;33m\e   _____ ____                            _          \e[0m\n'
-printf '\e[1;33m\e  |_   _/ ___|  ___ ___  _ __  ___  ___ | | ___     \e[0m\n'
-printf '\e[1;33m\e    | | \___ \ / __/ _ \| "_ \/ __|/ _ \| |/ _ \    \e[0m\n'
-printf '\e[1;33m\e    | |  ___) | (_| (_) | | | \__ \ (_) | |  __/    \e[0m\n'
-printf '\e[1;33m\e    |_| |____/ \___\___/|_| |_|___/\___/|_|\___|    \e[0m\n'
+lower=1;
+topper=6;
+RANGE=$(($topper-$lower+1));
+GET=$RANDOM;
+let "GET %= $RANGE";
+GET=$(($GET+$lower));
+if [[ $GET == '6' ]];
+then
+bash ${pspath}/LOGOs/logo.${GET}
+else
+bash ${pspath}/LOGOs/logo.${GET} | lolcat
+fi
 
-
-
-printf "\e[1;31m<<<--Made with love-->>>\e[0m\n"
-printf "\e[1;36m>>>By Suman Kumar ~BHUTUU👻\e[0m\n"
-printf "\e[1;34m<<<--------------------{t❣️s}-------------------->>>\e[0m\n"
 echo
-echo
-echo
+printf "\e[1;31m<<<--Made with love-->>>\e[0m\n"; frize
+printf "\e[1;36m>>>By Suman Kumar ~BHUTUU👻\e[0m\n"; frize
+printf "\e[1;34m<<<--------------------{t❣️s}-------------------->>>\e[0m\n"; frize
+echo; frize
+echo; frize
+echo; frize
 }
 banner
 printf "\e[1;94mwhat's your name?\e[0m\n"
@@ -132,7 +152,16 @@ printf "\e[1;94m>>> \e[0m"
 #<<<----------LOGIN PAGE---------->>>
 read name
 
-hash=759f457e8e007f79bda2dd8cea0ca476
+if [[ $(find ${pspath}/TSpass) != ${pspath}/TSpass ]]; then
+clear
+echo
+printf "\e[1;37m[\e[1;31m!\e[1;37m] Bloody wasterd!! you deleted password source file🤬\e[0m\n"
+echo
+printf "\e[1;32m Run TSconsole -p or TSconsole --password and set a password then it will be OKAY :)\e[0m\n"
+echo
+exit 1
+fi
+hash=$(cat ${pspath}/TSpass)
 
 printf "\e[1;95mEnter your login password : \e[0m"
 
@@ -150,18 +179,18 @@ sleep 0.5
 
 #<<<----------PROGRAM LIST---------->>>
 function list() {
-printf "\e[1;31m<---program list--->\e[0m\n"
-echo
-printf "\e[4;36m(01). Gmail bruteforce attack\e[0m\n"
-printf "\e[4;36m(02). Instagram bruteforce attack (bash based)\e[0m\n"
-printf "\e[4;36m(03). Instagram bruteforce attack (python based)\e[0m\n"
-printf "\e[4;36m(04). Text to hash converter\e[0m\n"
-printf "\e[4;36m(05). Webpage viewer\e[0m\n"
-printf "\e[4;36m(06). phishing attack\e[0m\n"
-echo
-printf "\e[1;96m>>>Run 'quit' or 'exit' to exit\e[0m\n"
-echo
-echo
+printf "\e[1;31m<---program list--->\e[0m\n"; frize
+echo; frize
+printf "\e[4;36m(01). Gmail bruteforce attack\e[0m\n"; frize
+printf "\e[4;36m(02). Instagram bruteforce attack (bash based)\e[0m\n"; frize
+printf "\e[4;36m(03). Instagram bruteforce attack (python based)\e[0m\n"; frize
+printf "\e[4;36m(04). Text to hash converter\e[0m\n"; frize
+printf "\e[4;36m(05). Webpage viewer\e[0m\n"; frize
+printf "\e[4;36m(06). phishing attack\e[0m\n"; frize
+echo; frize
+printf "\e[1;96m>>>Run 'quit' or 'exit' to exit\e[0m\n"; frize
+echo; frize
+echo; frize
 }
 #<<<----------HELP---------->>>
 B0="$(printf '\033[100m')"
@@ -181,7 +210,7 @@ ${B0}HELP MENUE${R0}
    ${C6} list${R0}         |->   Command to show list of programs
    ${C6} show modules${R0} |->   Command to show list of programs
    ${C6} show options${R0} |->   Command to show list of programs
-"
+" | pv -qL 500
 }
 list
 while true
@@ -202,17 +231,17 @@ banner
 #<<<----------GMAIL-BRUTEFORCE-PYTHON-VERSION---------->>>
 elif [[ $program == 1 ]] || [[ $program == 01 ]]
 then
-printf '<<<----------welcome to g-mail bruteforce zone--------->>>\n'
-printf "\n"
-printf "\n"
-printf '\e[1;92m    ___       BHUTUU         _  _ \e[0m\n'
-printf '\e[1;92m   / _ \     _ __ ___   __ _(_) | \e[0m\n'
-printf '\e[1;92m  / /_\/____| `_ ` _ \ / _` | | | \e[0m\n'
-printf '\e[1;92m / /_\\\_____| | | | | | (_| | | | \e[0m\n'
-printf '\e[1;82m \____/     |_| |_| |_|\__,_|_|_| \e[0m\n'
-printf '\e[1;77\e[45m G-mail Brute Forcer v1.5 Author: Suman Kumar ~BHUTUU \e[0m\n'
-printf "\n"
-printf "\n"
+printf '<<<----------welcome to g-mail bruteforce zone--------->>>\n'; frize
+printf "\n"; frize
+printf "\n"; frize
+printf '\e[1;92m    ___       BHUTUU         _  _ \e[0m\n'; frize
+printf '\e[1;92m   / _ \     _ __ ___   __ _(_) | \e[0m\n'; frize
+printf '\e[1;92m  / /_\/____| `_ ` _ \ / _` | | | \e[0m\n'; frize
+printf '\e[1;92m / /_\\\_____| | | | | | (_| | | | \e[0m\n'; frize
+printf '\e[1;82m \____/     |_| |_| |_|\__,_|_|_| \e[0m\n'; frize
+printf '\e[1;77\e[45m G-mail Brute Forcer v1.5 Author: Suman Kumar ~BHUTUU \e[0m\n'; frize
+printf "\n"; frize
+printf "\n"; frize
 cd ${ppath}/BRUTE && python3 gmail.py
 cd $PWD
 #<<<----------INSTA-BRUTEFORCE-BASH-VERSION---------->>>
@@ -227,15 +256,15 @@ cd $PWD
 #<<<-----------INSTA-BRUTEFORCE-PYTHON-VERSION---------->>>
 elif [[ $program == 3 ]] || [[ $program == 03 ]]
 then
-printf "\e[1;92m     _                                      \e[0m\n"
-printf "\e[1;92m _  | |                                     \e[0m\n"
-printf "\e[1;92m( \ | | ____    ___  _| |_  _____           \e[0m\n"
-printf "\e[1;92m ) )| ||  _ \  /___)(_   _)(____ |  BHUTUU  \e[0m\n"
-printf "\e[1;77m(_/ | || | | ||___ |  | |_ / ___ |  _____   \e[0m\n"
-printf "\e[1;77m    |_||_| |_|(___/    \__)\_____| (_____)  \e[0m\n"
-printf "\n"
-printf "\e[1;77m\e[45m   Instagram Brute Forcer.py v2 Author: Suman Kumar ~BHUTUU   \e[0m\n"
-printf "\n"
+printf "\e[1;92m     _                                      \e[0m\n"; frize
+printf "\e[1;92m _  | |                                     \e[0m\n"; frize
+printf "\e[1;92m( \ | | ____    ___  _| |_  _____           \e[0m\n"; frize
+printf "\e[1;92m ) )| ||  _ \  /___)(_   _)(____ |  BHUTUU  \e[0m\n"; frize
+printf "\e[1;77m(_/ | || | | ||___ |  | |_ / ___ |  _____   \e[0m\n"; frize
+printf "\e[1;77m    |_||_| |_|(___/    \__)\_____| (_____)  \e[0m\n"; frize
+printf "\n"; frize
+printf "\e[1;77m\e[45m   Instagram Brute Forcer.py v2 Author: Suman Kumar ~BHUTUU   \e[0m\n"; frize
+printf "\n"; frize
 cd ${ppath}/BRUTE && python instagram.py
 cd $PWD
 
@@ -269,9 +298,9 @@ $program
 fi
 done
 else
-printf "Access Denied\n"
-printf "\n"
-printf "\n"
+printf "Access Denied\n"; frize
+printf "\n"; frize
+printf "\n"; frize
 
 sleep 1
 printf "press enter to exit\n"
@@ -282,25 +311,27 @@ fi
 kill {0..99999}
 elif [[ $comand == 'TSconsole -h' ]] || [[ $comand == 'TSconsole --help' ]]
 then
-printf '\e[1;33m\e   _____ ____                            _          \e[0m\n'
-printf '\e[1;33m\e  |_   _/ ___|  ___ ___  _ __  ___  ___ | | ___     \e[0m\n'
-printf '\e[1;33m\e    | | \___ \ / __/ _ \| "_ \/ __|/ _ \| |/ _ \    \e[0m\n'
-printf '\e[1;33m\e    | |  ___) | (_| (_) | | | \__ \ (_) | |  __/    \e[0m\n'
-printf '\e[1;33m\e    |_| |____/ \___\___/|_| |_|___/\___/|_|\___|    \e[0m\n'
+frize() {
+sleep 0.0025
+}
+printf '\e[1;33m\e   _____ ____                            _          \e[0m\n'; frize
+printf '\e[1;33m\e  |_   _/ ___|  ___ ___  _ __  ___  ___ | | ___     \e[0m\n'; frize
+printf '\e[1;33m\e    | | \___ \ / __/ _ \| "_ \/ __|/ _ \| |/ _ \    \e[0m\n'; frize
+printf '\e[1;33m\e    | |  ___) | (_| (_) | | | \__ \ (_) | |  __/    \e[0m\n'; frize
+printf '\e[1;33m\e    |_| |____/ \___\___/|_| |_|___/\___/|_|\___|    \e[0m\n'; frize
 
 
 
-printf "\e[1;31m<<<--Made with love-->>>\e[0m\n"
-printf "\e[1;36m>>>By Suman Kumar ~BHUTUU👻\e[0m\n"
-printf "\e[1;34m<<<--------------------{t❣️s}-------------------->>>\e[0m\n"
-echo
-echo
+printf "\e[1;31m<<<--Made with love-->>>\e[0m\n"; frize
+printf "\e[1;36m>>>By Suman Kumar ~BHUTUU👻\e[0m\n"; frize
+printf "\e[1;34m<<<--------------------{t❣️s}-------------------->>>\e[0m\n"; frize
+echo; frize
+echo; frize
+printf "	\e[1;37m /\ .__    ._ _  _ .__|_ _._|_o _ ._  __ |_  _ |._  ._ _  _ ._     _\e[0m\n"; frize
+printf "	\e[1;33m/--\|(_||_|| | |(/_| ||_(_| |_|(_)| |    | |(/_||_) | | |(/_| ||_|(/_\e[0m\n"; frize
+printf "	\e[1;31m      _|                                        |\e[0m\n"; frize
 
-printf "	\e[1;37m /\ .__    ._ _  _ .__|_ _._|_o _ ._  __ |_  _ |._  ._ _  _ ._     _\e[0m\n"
-printf "	\e[1;33m/--\|(_||_|| | |(/_| ||_(_| |_|(_)| |    | |(/_||_) | | |(/_| ||_|(/_\e[0m\n"
-printf "	\e[1;31m      _|                                        |\e[0m\n"
-
-echo
+echo; frize
 echo -e "
 <=========ARGUMENTS=======================USAGE=====================================>
 
@@ -311,6 +342,8 @@ echo -e "
 	~u OR ~~update             To update TSconsole! ;)
 
 	-v OR --version            To show the installed version of TSconsole!
+
+        -p OR --password           To change the login password of TSconsole!
 <----x---->
 
 >>> To run TSconsole-framework just run 'TSconsole'
@@ -320,8 +353,41 @@ echo -e "
 >>>Other all arguments will show error message :/
 
 <<<---END--->>
-"
+" | pv -qL 700  | lolcat
+
+elif [[ $comand == 'TSconsole -p' ||  $comand == 'TSconsole --password' ]]; then
+while true; do
+	cd $HOME
+        distro=$(pwd)
+        if [[ $distro == /data/data/com.termux/files/home ]]
+        then
+                pspath=/data/data/com.termux/files/usr/share/TSconsole-framework/assets
+        cd $PWD
+        elif [[ $distro == /data/data/hilled.pwnterm/files/usr/home ]]
+        then
+                pspath=/data/data/hilled.pwnterm/files/usr/share/TSconsole-framework/assets
+        cd $PWD
+        else
+                pspath=/usr/share/TSconsole-framework/assets
+        fi
+echo
+printf "\e[1;32m Enter your new password ==> \e[0m"
+read newpass
+if [[ -z "$newpass" ]]; then
+printf "\e[1;37m[\e[1;31m!\e[1;37m] Hey!! Don't leave it empty 🤬!!\e[0m\n"
+else
+filled=${newpass}
+newpass=$(printf "$newpass" | md5sum | awk '{printf $1}')
+echo "${newpass}" > ${pspath}/TSpass
+echo
+printf "\e[1;36m Your password is ${filled} is sucessfully saved :)\e[0m\n"
+break
+fi
+done
 
 else
+	echo
 	printf "[•] \e[1;31mPlease use valid arguments or use 'TSconsole -h' or 'TSconsole --help' for argumentation help menue\e[0m\n"
+	echo
 fi
+
