@@ -126,7 +126,7 @@ clear
 
 function banner() {
 lower=1;
-topper=6;
+topper=7;
 RANGE=$(($topper-$lower+1));
 GET=$RANDOM;
 let "GET %= $RANGE";
