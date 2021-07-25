@@ -1,0 +1,12 @@
+#!/bin/bash
+pause() {
+sleep 0.002
+}
+printf "    ╭━━━━╮╱╱╱╱╭╮               \n"; pause
+printf "    ┃╭╮╭╮┃╱╱╱╭╯╰╮              \n"; pause
+printf "    ╰╯┃┃┣┻━┳╮┣╮╭╯╭━━┳╮╭┳━━╮    \n"; pause
+printf "    ╱╱┃┃┃┃━╋╋╋┫┃╱┃━━┫╰╯┃━━┫    \n"; pause
+printf "    ╱╱┃┃┃┃━╋╋╋┫╰╮┣━━┃┃┃┣━━┃    \n"; pause
+printf "    ╱╱╰╯╰━━┻╯╰┻━╯╰━━┻┻┻┻━━╯    \n"; pause
+echo; pause
+printf "[____Send text anonymously____]\n"; pause

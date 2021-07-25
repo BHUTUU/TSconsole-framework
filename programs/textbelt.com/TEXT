@@ -1,0 +1,25 @@
+#!/bin/bash
+banner() {
+bash tbanner | lolcat
+}
+banner
+while true; do
+echo
+printf "\e[1;32mEnter the reciver's number with his/her country code\e[0m\n"
+printf "\e[1;31m==> \e[1;34m"
+read  reciver
+if [[ -z $reciver ]]; then
+echo
+printf "\e[1;32m[\e[1;31m!\e[1;32m]\e[1;31m Don't leave it empty!!\e[0m\n"
+echo
+else
+printf "\e[1;32mEnter your message ==> \e[1;37m"
+read TEXTS
+break
+fi
+done
+curl -X POST https://textbelt.com/text \
+ --data-urlencode phone="$reciver" \
+ --data-urlencode message="$TEXTS" \
+ -d key=textbelt
+

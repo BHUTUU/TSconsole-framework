@@ -187,6 +187,7 @@ printf "\e[4;36m(03). Instagram bruteforce attack (python based)\e[0m\n"; frize
 printf "\e[4;36m(04). Text to hash converter\e[0m\n"; frize
 printf "\e[4;36m(05). Webpage viewer\e[0m\n"; frize
 printf "\e[4;36m(06). phishing attack\e[0m\n"; frize
+printf "\e[4;36m(07). Text message sender (Anonymously)\e[0m\n"; frize
 echo; frize
 printf "\e[1;96m>>>Run 'quit' or 'exit' to exit\e[0m\n"; frize
 echo; frize
@@ -287,6 +288,12 @@ cd $PWD
 elif [[ $program == 6 ]] || [[ $program  == 06 ]]
 then
 cd ${ppath}/PHISH && bash phish
+
+#<<<----------TEXT message sender (Anonymously)--------->>>
+
+elif [[ $program == 7 ]] || [[ $program == 07 ]]
+then
+cd ${ppath}/textbelt.com && bash TEXT
 
 #<<<-----exit program----->>
 
