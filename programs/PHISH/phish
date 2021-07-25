@@ -197,6 +197,9 @@ __banner__
 elif [[ $phis == 'help' || $phis == '?' ]]; then
 __help__
 
+elif [[ $phis == 'list' ]]; then
+__programs__
+
 elif [[ $phis == 'report' ]]; then
 xdg-open https://t.me/Suman_bhutuu
 
