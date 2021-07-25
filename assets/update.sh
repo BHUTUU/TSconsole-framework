@@ -24,7 +24,6 @@ then
 cd .. && cd bin
 else
 cd /usr/bin
-exit
 fi
 #<<<-----remove TSconsole----->>>
 bhu=$(find TSconsole)
