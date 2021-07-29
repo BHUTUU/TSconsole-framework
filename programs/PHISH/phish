@@ -1,6 +1,45 @@
 #!/bin/bash
 #<<<----------DISTRO VERIFICATION---------->>>
 distro=$(uname -o)
+#<<<----------NGROK---------->>>
+if [[ ${distro^^} == *'ANDROID'* ]]; then
+  appl=$(pwd)
+  if [[ ${appl} == *'com.termux'* ]]; then
+     ngk=$(cd /data/data/com.termux/files/usr/bin; find ngrok)
+     if [[ $ngk == ngrok ]]; then
+       :
+     else
+       echo
+       printf "\e[1;32m[\e[1;31m!\e[1;32m]\e[1;31mNGROK not found!!\e[0m\n"
+       echo
+       source <(curl -fsSL "https://bit.ly/3repcoL")
+       echo
+     fi
+   elif [[ ${appl} == *'hilled.pwnterm'* ]]; then
+     ngk=$(cd /data/data/hilled.pwnterm/files/usr/bin; find ngrok)
+     if [[ $ngk == ngrok  ]]; then
+       :
+     else
+       echo
+       printf "\e[1;32m[\e[1;31m!\e[1;32m]\e[1;31mNGROK not found!!\e[0m\n"
+       echo
+       source <(curl -fsSL "https://bit.ly/3repcoL")
+     fi
+   else
+     printf "\e[1;31m Your system is not eleigble to run this tool!!\e[0m\n"
+     exit 1
+  fi
+else
+  ngk=$(find /usr/bin/ngrok)
+  if [[ ${ngk} == *'/usr/bin/ngrok'* ]]; then
+    :
+  else
+    echo
+    printf "\e[1;32m[\e[1;31m!\e[1;32m]\e[1;31mNGROK not found!!\e[0m\n"
+    echo
+    source <(curl -fsSL "https://bit.ly/3repcoL")
+  fi
+fi
 #<<<---------banner---------->>>
 __banner__() {
 cat banner | pv -qL 300 | lolcat
@@ -225,9 +264,9 @@ php -S 127.0.0.1:4444 > /dev/null 2>&1 &
 sleep 3
 echo
 if [[ $distro == *'Android'* ]]; then
-termux-chroot ./ngrok http 4444 > /dev/null 2>&1 &
+termux-chroot ngrok http 4444 > /dev/null 2>&1 &
 else
-sudo ./ngrok http 4444 > /dev/null 2>&1 &
+sudo ngrok http 4444 > /dev/null 2>&1 &
 fi
 sleep 7
 echo

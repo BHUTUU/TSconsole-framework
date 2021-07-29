@@ -211,6 +211,8 @@ ${B0}HELP MENUE${R0}
    ${C6} list${R0}         |->   Command to show list of programs
    ${C6} show modules${R0} |->   Command to show list of programs
    ${C6} show options${R0} |->   Command to show list of programs
+   ${C6} report${R0}       |->   Command to contact me on telegram
+                                 (please DM me only if any URGENT is there)
 " | pv -qL 500
 }
 list
@@ -228,6 +230,8 @@ elif [[ $program == clear ]]; then
 clear
 elif [[ $program == banner ]]; then
 banner
+elif [[ $program == report ]]; then
+xdg-open https://t.me/Suman_bhutuu
 
 #<<<----------GMAIL-BRUTEFORCE-PYTHON-VERSION---------->>>
 elif [[ $program == 1 ]] || [[ $program == 01 ]]
