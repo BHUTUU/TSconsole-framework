@@ -270,7 +270,7 @@ printf "\e[1;77m    |_||_| |_|(___/    \__)\_____| (_____)  \e[0m\n"; frize
 printf "\n"; frize
 printf "\e[1;77m\e[45m   Instagram Brute Forcer.py v2 Author: Suman Kumar ~BHUTUU   \e[0m\n"; frize
 printf "\n"; frize
-cd ${ppath}/BRUTE && python instagram.py
+cd ${ppath}/BRUTE && python3 instagram.py
 cd $PWD
 
 #<<<----------TEXT TO HASH CONVERTER ---------->>>
