@@ -12,6 +12,11 @@ gem install tail
 pip install lolcat
 apt install pv -y
 apt install proot -y
+Tmx=$(pwd)
+if [[ ${Tmx} == *'com.termux'* ]]; then
+apt install termux-api -y
+apt install termux-tools -y
+fi
 else
 sudo apt install python python2 -y
 sudo apt install python3 -y
