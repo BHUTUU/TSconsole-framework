@@ -2,13 +2,14 @@
 OS=$(uname -o)
 if [[ $OS == *'Android'* ]]; then
 apt install python python2 -y
+python3 -m pip install --upgrade pip
 pip install requests
 apt install tor -y
 apt install openssl openssl-tool -y
 apt install php -y
 apt install jq -y
 gem install tail
-gem install lolcat
+pip install lolcat
 apt install pv -y
 apt install proot -y
 else
