@@ -261,7 +261,7 @@ echo
 printf "${C2}STARTING SERVER${R0}"
 printf "${C2}..........${R0}\n" | pv -qL 10
 php -S 127.0.0.1:4444 > /dev/null 2>&1 &
-sleep 3
+sleep 5
 echo
 appl=$(pwd)
 if [[ $distro == *'Android'* ]]; then
