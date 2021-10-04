@@ -830,7 +830,7 @@ elif [[ $1 == '-h' || $1 == '--help' || $1 == '?' ]]; then
  bash assets/load.sh "" "               " 1
  mainHelp
 else
-printf "${S2}[${S1}!${S2}]${S7}Unsatisfied argument ‘${S4}${1}’${S7} :: execute ‘?’ or ‘help’${R0}\n"
+printf "${S2}[${S1}!${S2}]${S7}Unsatisfied argument ‘${S4}${1}’${S7} :: execute ‘?’ or ‘TSconsole --help’${R0}\n"
 fi
 #<<<++x++>>
 
