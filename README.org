@@ -26,4 +26,4 @@ This is a framework of pentesting programs.
 
 * Installation
 
-=source <(curl -fsSL "https://git.io/JaMYO") --install
+ source <(curl -fsSL "https://git.io/JaMYO") --install
