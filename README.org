@@ -7,7 +7,7 @@
 :CONTENTS:
 - [[#about][About]]
 - [[#usage][Usage]]
-- [[#Installation] [Installation]]
+- [[#Installation][Installation]]
 :END:
 
 * About
