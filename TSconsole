@@ -111,7 +111,7 @@ printf "${S2}[${S1}!${S2}]${S4}Resources were missing${S1}!!${R0}\n"
 exit 1
 fi
 python assets/anim.py
-bash assets/load.sh "welcome to TSconsole-framework" "                                               " 2
+play assets/sound/winxp.mp3 trim 0 2.4 > /dev/null 2>&1 | bash assets/load.sh "welcome to TSconsole-framework" "                                               " 3
 echo -e "
  ________________________________
 < welcome to TSconsole-framework >
@@ -151,7 +151,7 @@ read input
     echo
     xdg-open https://t.me/Suman_bhutuu/
   elif [[ ${input,,} == "exit" || ${input,,} == "quit" ]]; then
-    bash assets/load.sh Exiting "                    " 1
+    play assets/sound/winxpshutdown.mp3 trim 0 1.38 > /dev/null 2>&1 | bash assets/load.sh Exiting "                    " 1
     echo
     exit 0
   elif [[ ${input,,} == 'show options' || ${input} == 'list' ]]; then
@@ -200,7 +200,7 @@ bash assets/load.sh "" "             " 1
 echo
 break
 elif [[ ${userc} == 'exit' || ${userc} == 'quit' ]]; then
-bash assets/load.sh Exiting "                    " 1
+play assets/sound/winxpshutdown.mp3 trim 0 1.38 > /dev/null 2>&1 | bash assets/load.sh Exiting "                    " 1
 echo
 exit 0
 break
@@ -263,7 +263,7 @@ bash assets/load.sh "" "              " 1
 echo
 break
 elif [[ ${userc} == 'exit' || ${userc} == 'quit' ]]; then
-bash assets/load.sh Exiting "                    " 1
+play assets/sound/winxpshutdown.mp3 trim 0 1.38 > /dev/null 2>&1 | bash assets/load.sh Exiting "                    " 1
 echo
 exit 0
 break
@@ -341,7 +341,7 @@ bash assets/load.sh "" "              " 1
 echo
 break
 elif [[ ${userc} == 'exit' || ${userc} == 'quit' ]]; then
-bash assets/load.sh Exiting "                    " 1
+play assets/sound/winxpshutdown.mp3 trim 0 1.38 > /dev/null 2>&1 | bash assets/load.sh Exiting "                    " 1
 echo
 exit 0
 break
@@ -391,7 +391,7 @@ bash assets/load.sh "" "              " 1
 echo
 break
 elif [[ ${userc} == 'exit' || ${userc} == 'quit' ]]; then
-bash assets/load.sh Exiting "                    " 1
+play assets/sound/winxpshutdown.mp3 trim 0 1.38 > /dev/null 2>&1 | bash assets/load.sh Exiting "                    " 1
 echo
 exit 0
 break
@@ -441,7 +441,7 @@ bash assets/load.sh "" "              " 1
 echo
 break
 elif [[ ${userc} == 'exit' || ${userc} == 'quit' ]]; then
-bash assets/load.sh Exiting "                    " 1
+play assets/sound/winxpshutdown.mp3 trim 0 1.38 > /dev/null 2>&1 | bash assets/load.sh Exiting "                    " 1
 echo
 exit 0
 break
@@ -491,7 +491,7 @@ bash assets/load.sh "" "              " 1
 echo
 break
 elif [[ ${userc} == 'exit' || ${userc} == 'quit' ]]; then
-bash assets/load.sh Exiting "                    " 1
+play assets/sound/winxpshutdown.mp3 trim 0 1.38 > /dev/null 2>&1 | bash assets/load.sh Exiting "                    " 1
 echo
 exit 0
 break
@@ -530,7 +530,7 @@ bash assets/load.sh "" "              " 1
 echo
 break
 elif [[ ${userc} == 'exit' || ${userc} == 'quit' ]]; then
-bash assets/load.sh Exiting "                    " 1
+play assets/sound/winxpshutdown.mp3 trim 0 1.38 > /dev/null 2>&1 | bash assets/load.sh Exiting "                    " 1
 echo
 exit 0
 break
@@ -570,7 +570,7 @@ bash assets/load.sh "" "              " 1
 echo
 break
 elif [[ ${userc} == 'exit' || ${userc} == 'quit' ]]; then
-bash assets/load.sh Exiting "                    " 1
+play assets/sound/winxpshutdown.mp3 trim 0 1.38 > /dev/null 2>&1 | bash assets/load.sh Exiting "                    " 1
 echo
 exit 0
 break
