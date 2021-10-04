@@ -1,0 +1,30 @@
+#!/bin/python
+import time
+import sys
+import getopt
+arg1 = None
+arg2 = None
+argv = sys.argv[1:]
+try:
+    opts, args = getopt.getopt(argv, "H:P:")
+except:
+    print("Error")
+for opt, arg in opts:
+    counter = 1
+    if opt in ['-H']:
+        arg1 = arg
+    elif opt in ['-P']:
+        arg2 = arg
+def decode():
+    word=input("\033[3;4;37mTSc\033[0;0;00m \033[37mEnter(\033[31mbinary/to/text\033[37m)> \033[00m")
+    pt = int(word.replace(' ', ''), 2)
+    print ( "\033[3;4;37mTSc\033[0;0;00m \033[37m(\033[31mResult:-\033[37m)>",pt.to_bytes((pt.bit_length() + 7) // 8, 'big').decode())
+def chor():
+    print ("\033[32m[\033[31m!\033[32m]\033[34mLol! you are trying to copy my program\033[00m 😂😂\n")
+if (arg1 == 'suman'):
+    if (arg2 == 'BHUTUU'):
+        decode()
+    else:
+        chor()
+else:
+    chor()

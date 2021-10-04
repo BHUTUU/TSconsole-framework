@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+CWD=$(pwd)
+#<<<-----colors----->>>#
+S0="\033[1;30m" B0="\033[1;40m"
+S1="\033[1;31m" B1="\033[1;41m"
+S2="\033[1;32m" B2="\033[1;42m"
+S3="\033[1;33m" B3="\033[1;43m"
+S4="\033[1;34m" B4="\033[1;44m"
+S5="\033[1;35m" B5="\033[1;45m"
+S6="\033[1;36m" B6="\033[1;46m"
+S7="\033[1;37m" B7="\033[1;47m"
+R0="\033[00m"   R1="\033[1;00m"
+#<---x--->#
+#<<<-----Internet----->>>#
+INTERNET() {
+  ping -c1 google.com > /dev/null 2>&1
+  if [[ $? != 0 ]]; then
+    printf "${S2}[${S1}!${S2}]${S4}Check your internet connection${S1}!!${R0}\n"
+    return 105
+  fi
+}
+#---x---#
+embed() {
+cd $PREFIX/share/ > /dev/null 2>&1
+git clone https://github.com/BHUTUU/TSconsole-framework
+cat <<- CONF > $PREFIX/bin/TSconsole
+#!$PREFIX/bin/bash
+TDIR="$PREFIX/share/TSconsole-framework"
+LAUNCHTS="TSconsole"
+cd \${TDIR}
+bash \${LAUNCHTS} ${@}
+CONF
+chmod +x $PREFIX/bin/TSconsole
+}
+main() {
+if [[ $CWD == *'share/TSconsole-framework'* ]]; then
+  printf "\n${S2}[${S1}!${S2}]${S1}TSconsole is alread installed in your system!!${R0}\n\n"
+  printf "\033[4;36mTSc \033[0;0;00m${S7}(${S1}Do you wany to reinstall TSconsole-framework:[y/n]${S7})> "
+  read choice
+  if [[ ${choice} == 'y' || ${choice} == 'Y' ]]; then
+    INTERNET
+    if [[ $? == '105' ]]; then
+      exit 1
+    fi
+    printf "\n${S2}Installing TSconsole-framework...........${R0}\n"
+    embed
+  else
+    printf "\n${S4}Exiting......${R0}\n"
+    exit 0
+  fi
+else
+  INTERNET
+  if [[ $? == '105' ]]; then
+    exit 1
+  else
+    printf "\n${S2}Installing TSconsole-framework...........${R0}\n"
+    embed
+  fi
+fi
+}
+main
