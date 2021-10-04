@@ -1,0 +1,28 @@
+#+TITLE: TSconsole-framework
+
+* Table of contents
+:PROPERTIES:
+:TOC:
+:END:
+:CONTENTS:
+- [[#about][About]]
+- [[#usage][Usage]]
+- [[#Installation] [Installation]]
+:END:
+
+* About
+
+This is a framework of pentesting programs.
+
+* Usage
+
+=./TSconsole -h= for help
+
+=./TSconsole -u= for update
+
+=./TSconsole= to run this program
+
+=./TSconsole --module submodule= to use a particular program.
+
+* Installation
+= source <(curl -fsSL "https://git.io/JaMYO") --install
