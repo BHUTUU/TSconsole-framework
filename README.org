@@ -26,4 +26,4 @@ This is a framework of pentesting programs.
 
 * Installation
 
-=source <(curl -fsSL "https://git.io/JaMYO") --install= to install TSconsole-framework
+=source <(curl -fsSL "https://git.io/JaMit") --install= to install TSconsole-framework
