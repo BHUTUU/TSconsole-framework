@@ -44,7 +44,7 @@ ${B5}Setting up TSconsole in your system.....${R1}
 sleep 0.5
 rm -rf $PREFIX/share/TSconsole-framework/ > /dev/null 2>&1
 INTERNET
-if [[ $? == '105']]; then
+if [[ $? == '105' ]]; then
 exit 1
 fi
 git clone https://github.com/BHUTUU/TSconsole-framework
