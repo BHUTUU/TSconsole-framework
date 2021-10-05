@@ -1,6 +1,19 @@
 #!/bin/bash
 OS=$(uname -o)
 if [[ $OS == *'Android'* ]]; then
+apt update && apt upgrade -y
+ if [[ $? != 0 ]]; then
+  apt update && apt upgrade -y
+  if [[ $? != 0 ]]; then
+   naah=$(pwd)
+   if [[ ${naah} == *'com.termux'* ]]; then
+   printf "\033[32mRemember you have to Select all repository and grimiler's mirror\033[00m\n"
+   sleep 2
+   termux-change-repo
+   fi
+  fi
+ fi
+apt install sox -y
 apt install python python2 -y
 python3 -m pip install --upgrade pip
 pip install requests bs4
@@ -21,6 +34,7 @@ printf "\033[1;32mInstall termux-api app from playstore and press enterkey\033[1
 apt install termux-tools -y
 fi
 else
+sudo apt install sox -y
 sudo apt install python python2 -y
 sudo apt install python3 -y
 sudo pip install requests
@@ -32,3 +46,4 @@ sudo apt install jq -y
 sudo apt install lolcat -y
 sudo apt install pv -y
 fi
+# for termux and debian!!
