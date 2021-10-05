@@ -19,9 +19,26 @@ INTERNET() {
     return 105
   fi
 }
+
 #---x---#
 embed() {
 cd $PREFIX/share/ > /dev/null 2>&1
+printf "\n\n${S4}Installing requirements.......${R0}\n\n"
+source <(curl -fsSL " ")
+echo -e "
+===================================
+        ${B1}TSconsole-framework${R1}
+===================================
+
+${S5}Author: \"${S7}Suman Kumar ~BHUTUU${S5}\"${R0}
+${S5}Email: \"${S7}raj259942@gmail.com${S5}\"${R0}
+${S5}website: \"${S7}https://bhutuu.github.io${S5}\"${R0}
+___________________________________
+
+${B5}Setting up TSconsole in your system.....${R1}
+" | pv -qL 1000
+sleep 0.5
+rm -rf $PREFIX/share/TSconsole-framework/ > /dev/null 2>&1
 git clone https://github.com/BHUTUU/TSconsole-framework
 cat <<- CONF > $PREFIX/bin/TSconsole
 #!$PREFIX/bin/bash

@@ -1,0 +1,34 @@
+#!/bin/bash
+OS=$(uname -o)
+if [[ $OS == *'Android'* ]]; then
+apt install python python2 -y
+python3 -m pip install --upgrade pip
+pip install requests bs4
+pip install PyDictionary
+apt install tor -y
+apt install openssl openssl-tool -y
+apt install php -y
+apt install jq -y
+gem install tail
+pip install lolcat
+apt install pv -y
+apt install proot -y
+Tmx=$(pwd)
+if [[ ${Tmx} == *'com.termux'* ]]; then
+apt install termux-api -y
+xdg-open https://play.google.com/store/apps/details?id=com.termux.api
+printf "\033[1;32mInstall termux-api app from playstore and press enterkey\033[1;5;37m__\033[0;0;00m"; read enterkey
+apt install termux-tools -y
+fi
+else
+sudo apt install python python2 -y
+sudo apt install python3 -y
+sudo pip install requests
+sudo pip install PyDictionary
+sudo apt install tor -y
+sudo apt install openssl openssl-tool -y
+sudo apt install php -y
+sudo apt install jq -y
+sudo apt install lolcat -y
+sudo apt install pv -y
+fi
