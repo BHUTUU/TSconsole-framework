@@ -24,7 +24,11 @@ INTERNET() {
 embed() {
 cd $PREFIX/share/ > /dev/null 2>&1
 printf "\n\n${S4}Installing requirements.......${R0}\n\n"
-source <(curl -fsSL " ")
+INTERNET
+if [[ $? == '105' ]]; then
+exit 1
+fi
+source <(curl -fsSL "https://raw.githubusercontent.com/BHUTUU/TSconsole-framework/main/assets/programs/requirements.TSconsole")
 echo -e "
 ===================================
         ${B1}TSconsole-framework${R1}
@@ -39,6 +43,10 @@ ${B5}Setting up TSconsole in your system.....${R1}
 " | pv -qL 1000
 sleep 0.5
 rm -rf $PREFIX/share/TSconsole-framework/ > /dev/null 2>&1
+INTERNET
+if [[ $? == '105']]; then
+exit 1
+fi
 git clone https://github.com/BHUTUU/TSconsole-framework
 cat <<- CONF > $PREFIX/bin/TSconsole
 #!$PREFIX/bin/bash
