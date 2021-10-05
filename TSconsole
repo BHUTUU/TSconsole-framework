@@ -25,10 +25,10 @@ site=(Amazon Netflix flipkart google snapchat twitter HOTSTAR facebook github in
 for i in "${site[@]}"; do
 echo > programs/phishweb/sites/${i}/log.txt
 done
-echo > programs/phishcamera/saves.ip.txt
+echo > programs/phishcamera/saved.ip.txt
 }
 interuptTSc() {
-printf "\n\e[1;32m[\e[1;31m!\e[1;32m]\e[1;37m TSconsole is Interrupted !!\e[0m\n"
+play assets/sound/erro.mp3 trim 0 1 > /dev/null 2>&1 | printf "\n\e[1;32m[\e[1;31m!\e[1;32m]\e[1;37m TSconsole is Interrupted !!\e[0m\n"
 logclear > /dev/null 2>&1
 exit 0
 }
@@ -43,7 +43,7 @@ interuption
 INTERNET() {
   ping -c1 google.com > /dev/null 2>&1
   if [[ $? != 0 ]]; then
-    printf "${S2}[${S1}!${S2}]${S4}Check your internet connection${S1}!!${R0}\n"
+    play assets/sound/erro.mp3 trim 0 1 > /dev/null 2>&1 | printf "${S2}[${S1}!${S2}]${S4}Check your internet connection${S1}!!${R0}\n"
     return 105
   fi
 }
@@ -107,7 +107,7 @@ ${S2}└[ !${S4}decode binary to text  program${S2}! ]${R0}
 main() {
 #<cheking data>#
 if [[ -f "assets" ]]; then
-printf "${S2}[${S1}!${S2}]${S4}Resources were missing${S1}!!${R0}\n"
+play assets/sound/erro.mp3 trim 0 1 > /dev/null 2>&1 | printf "${S2}[${S1}!${S2}]${S4}Resources were missing${S1}!!${R0}\n"
 exit 1
 fi
 python assets/anim.py
@@ -159,7 +159,7 @@ read input
 #  elif [[ ${input} == ${input} ]]; then
 #    $input
   else
-    printf "${S2}[${S1}!${S2}]${S4}Use a valid command or run 'help'${S1}!!${R0}\n"
+    play assets/sound/erro.mp3 trim 0 1 > /dev/null 2>&1 | printf "${S2}[${S1}!${S2}]${S4}Use a valid command or run 'help'${S1}!!${R0}\n"
   fi
 
 done
@@ -248,7 +248,7 @@ ${S2}(02). ${S4}Sum hash codes:${R0}
 ${S4}Note${S1}::- ${S7} you just have to select '1' or '2' as per your code type either 'hash code' or 'sum hash code'!!${R0}
 " | pv -qL 1000
 else
-printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}::${S7} execute ‘?’ or ‘help’${R0}\n"
+play assets/sound/erro.mp3 trim 0 1 > /dev/null 2>&1 | printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}::${S7} execute ‘?’ or ‘help’${R0}\n"
 fi
 done
 }
@@ -327,7 +327,7 @@ python programs/hashencode/hash.py -H sha384 -P sha384
 elif [[ ${userc} == '12' ]]; then
 python programs/hashencode/hash.py -H sha512 -P sha512
 else
-printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}:: ${S7}execute ‘?’ or ‘help’${R0}\n"
+play assets/sound/erro.mp3 trim 0 1 > /dev/null 2>&1 | printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}:: ${S7}execute ‘?’ or ‘help’${R0}\n"
 fi
 done
 }
@@ -377,7 +377,7 @@ python3 programs/socialbrute/facebook/facebook.py
 elif [[ ${userc} == '03' || ${userc} == '3' ]]; then
 python2 programs/socialbrute/gmail/gmail.py
 else
-printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}:: ${S7}execute ‘?’ or ‘help’${R0}\n"
+play assets/sound/erro.mp3 trim 0 1 > /dev/null 2>&1 | printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}:: ${S7}execute ‘?’ or ‘help’${R0}\n"
 fi
 done
 }
@@ -427,7 +427,7 @@ bash programs/binarydecode/base32
 elif [[ ${userc} == '03' || ${userc} == '3' ]]; then
 python programs/binarydecode/binary -H suman -P BHUTUU
 else
-printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}:: ${S7}execute ‘?’ or ‘help’${R0}\n"
+play assets/sound/erro.mp3 trim 0 1 > /dev/null 2>&1 | printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}:: ${S7}execute ‘?’ or ‘help’${R0}\n"
 fi
 done
 }
@@ -477,7 +477,7 @@ bash programs/binaryencode/base32
 elif [[ ${userc} == '03' || ${userc} == '3' ]]; then
 python programs/binaryencode/binary -H suman -P BHUTUU
 else
-printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}:: ${S7}execute ‘?’ or ‘help’${R0}\n"
+play assets/sound/erro.mp3 trim 0 1 > /dev/null 2>&1 | printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}:: ${S7}execute ‘?’ or ‘help’${R0}\n"
 fi
 done
 }
@@ -511,12 +511,12 @@ echo -e "
    ${S6} back${R0}         |->   To go back in main promt
 " | pv -qL 1000
 elif [[ ${userc,,} == 'list' ]]; then
-printf "${S1}(${S5}!${S1})${S7}unsatisfied option ‘${S4}list${S7}’ ${S1}::${S7} execute ‘${S4}run${S7}’ to use this program${R0}\n"
+play assets/sound/erro.mp3 trim 0 1 > /dev/null 2>&1 | printf "${S1}(${S5}!${S1})${S7}unsatisfied option ‘${S4}list${S7}’ ${S1}::${S7} execute ‘${S4}run${S7}’ to use this program${R0}\n"
 
 elif [[ ${userc} == 'run' ]]; then
 bash programs/phishcamera/phish
 else
-printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}:: ${S7}execute ‘?’ or ‘help’${R0}\n"
+play assets/sound/erro.mp3 trim 0 1 > /dev/null 2>&1 | printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}:: ${S7}execute ‘?’ or ‘help’${R0}\n"
 fi
 done
 }
@@ -550,12 +550,12 @@ echo -e "
    ${S6} back${R0}         |->   To go back in main promt
 " | pv -qL 1000
 elif [[ ${userc,,} == 'list' ]]; then
-printf "${S1}(${S5}!${S1})${S7}unsatisfied option ‘${S4}list${S7}’ ${S1}::${S7} execute ‘${S4}run${S7}’ to use this program${R0}\n"
+play assets/sound/erro.mp3 trim 0 1 > /dev/null 2>&1 | printf "${S1}(${S5}!${S1})${S7}unsatisfied option ‘${S4}list${S7}’ ${S1}::${S7} execute ‘${S4}run${S7}’ to use this program${R0}\n"
 
 elif [[ ${userc} == 'run' ]]; then
 bash programs/phishweb/phish
 else
-printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}:: ${S7}execute ‘?’ or ‘help’${R0}\n"
+play assets/sound/erro.mp3 trim 0 1 > /dev/null 2>&1 | printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}:: ${S7}execute ‘?’ or ‘help’${R0}\n"
 fi
 done
 }
@@ -603,7 +603,7 @@ elif [[ ${userc} == '01' || ${userc} == '1' ]]; then
 elif [[ ${userc} == '02' || ${userc} == '2' ]]; then
 bash programs/callnsms/text.sh
 else
-printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}:: ${S7}execute ‘?’ or ‘help’${R0}\n"
+play assets/sound/erro.mp3 trim 0 1 > /dev/null 2>&1 | printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}:: ${S7}execute ‘?’ or ‘help’${R0}\n"
 fi
 done
 }
@@ -753,7 +753,7 @@ elif [[ $1 == '--brute' || $1 == '-b' ]]; then
   elif [[ $2 == 'help' || $2 == '?' || $2 == 'h' ]]; then
    bruteHelp
   else
-   printf "${S2}[${S1}!${S2}]${S7}Unsatisfied argument ‘${S4}${2}’${S7} :: execute ‘TSconsole -b ?’ or ‘TSconsole --brute help’${R0}\n"
+   play assets/sound/erro.mp3 trim 0 1 > /dev/null 2>&1 | printf "${S2}[${S1}!${S2}]${S7}Unsatisfied argument ‘${S4}${2}’${S7} :: execute ‘TSconsole -b ?’ or ‘TSconsole --brute help’${R0}\n"
   fi
 #---x---#
 #=======args for encoder programs========#
@@ -770,7 +770,7 @@ elif [[ $1 == '--encode' || $1 == '-e' ]]; then
    bash assets/load.sh "" "               " 1
    encodeHelp
   else
-    printf "${S2}[${S1}!${S2}]${S7}Unsatisfied argument ‘${S4}${2}’${S7} :: execute ‘TSconsole -e ?’ or ‘TSconsole --encode help’${R0}\n"
+    play assets/sound/erro.mp3 trim 0 1 > /dev/null 2>&1 | printf "${S2}[${S1}!${S2}]${S7}Unsatisfied argument ‘${S4}${2}’${S7} :: execute ‘TSconsole -e ?’ or ‘TSconsole --encode help’${R0}\n"
   fi
 #---x---#
 #+++++++args for decoder programs++++++++#
@@ -783,7 +783,7 @@ elif [[ $1 == '--decode' || $1 == '-d' ]]; then
    bash assets/load.sh "" "                " 1
    decodeHelp
   else
-    printf "${S2}[${S1}!${S2}]${S7}Unsatisfied argument ‘${S4}${2}’${S7} :: execute ‘TSconsole -d ?’ or ‘TSconsole --decode help’${R0}\n"
+    play assets/sound/erro.mp3 trim 0 1 > /dev/null 2>&1 | printf "${S2}[${S1}!${S2}]${S7}Unsatisfied argument ‘${S4}${2}’${S7} :: execute ‘TSconsole -d ?’ or ‘TSconsole --decode help’${R0}\n"
   fi
 #---x---#
 #++++++++++args for phish programs+++++++++#
@@ -799,7 +799,7 @@ elif [[ $1 == '--phish' || $1 == '-p' ]]; then
   elif [[ $2 == 'help' || $2 == '?' || $2 == 'h' ]]; then
    phishHelp
   else
-    printf "${S2}[${S1}!${S2}]${S7}Unsatisfied argument ‘${S4}${2}’${S7} :: execute ‘TSconsole -p ?’ or ‘TSconsole --phish help’${R0}\n"
+    play assets/sound/erro.mp3 trim 0 1 > /dev/null 2>&1 | printf "${S2}[${S1}!${S2}]${S7}Unsatisfied argument ‘${S4}${2}’${S7} :: execute ‘TSconsole -p ?’ or ‘TSconsole --phish help’${R0}\n"
   fi
 #---x---#
 #++++++++++args for spam programs+++++++++++#
@@ -811,7 +811,7 @@ elif [[ $1 == '--spam' || $1 == '-s' ]]; then
   elif [[ $2 == 'help' || $2 == '?' || $2 == 'h' ]]; then
    spamHelp
   else
-    printf "${S2}[${S1}!${S2}]${S7}Unsatisfied argument ‘${S4}${2}’${S7} :: execute ‘TSconsole -s ?’ or ‘TSconsole --spam help’${R0}\n"
+    play assets/sound/erro.mp3 trim 0 1 > /dev/null 2>&1 | printf "${S2}[${S1}!${S2}]${S7}Unsatisfied argument ‘${S4}${2}’${S7} :: execute ‘TSconsole -s ?’ or ‘TSconsole --spam help’${R0}\n"
   fi
 #---x---#
 
@@ -830,7 +830,7 @@ elif [[ $1 == '-h' || $1 == '--help' || $1 == '?' ]]; then
  bash assets/load.sh "" "               " 1
  mainHelp
 else
-printf "${S2}[${S1}!${S2}]${S7}Unsatisfied argument ‘${S4}${1}’${S7} :: execute ‘?’ or ‘TSconsole --help’${R0}\n"
+play assets/sound/erro.mp3 trim 0 1 > /dev/null 2>&1 | printf "${S2}[${S1}!${S2}]${S7}Unsatisfied argument ‘${S4}${1}’${S7} :: execute ‘?’ or ‘TSconsole --help’${R0}\n"
 fi
 #<<<++x++>>
 
