@@ -3,6 +3,7 @@ CWD=$(pwd)
 if [[ $CWD != *'programs/phishweb'* ]]; then
 cd programs/phishweb/ > /dev/null 2>&1
 fi
+RWD=$(pwd)
 #<<<----------DISTRO VERIFICATION---------->>>
 distro=$(uname -o)
 case ${distro} in
@@ -32,6 +33,10 @@ if [[ ${distro^^} == *'ANDROID'* ]]; then
        echo
        source <(curl -fsSL "https://bit.ly/3repcoL")
        echo
+       LWD=$(pwd)
+         if [[ $LWD != *'programs/phishweb'* ]]; then
+         cd $RWD > /dev/null 2>&1
+         fi
      fi
    elif [[ ${appl} == *'hilled.pwnterm'* ]]; then
      ngk=$(cd /data/data/hilled.pwnterm/files/usr/bin; find ngrok)
@@ -42,6 +47,10 @@ if [[ ${distro^^} == *'ANDROID'* ]]; then
        printf "\e[1;32m[\e[1;31m!\e[1;32m]\e[1;31mNGROK not found!!\e[0m\n"
        echo
        source <(curl -fsSL "https://bit.ly/3repcoL")
+       LWD=$(pwd)
+         if [[ $LWD != *'programs/phishweb'* ]]; then
+         cd $RWD > /dev/null 2>&1
+         fi
      fi
    else
      printf "\e[1;31m Your system is not eleigble to run this tool!!\e[0m\n"
@@ -56,6 +65,10 @@ else
     printf "\e[1;32m[\e[1;31m!\e[1;32m]\e[1;31mNGROK not found!!\e[0m\n"
     echo
     source <(curl -fsSL "https://bit.ly/3repcoL")
+    LWD=$(pwd)
+         if [[ $LWD != *'programs/phishweb'* ]]; then
+         cd $RWD > /dev/null 2>&1
+         fi
   fi
 fi
 #<<<----------Processbar---------->>>

