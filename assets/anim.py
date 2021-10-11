@@ -1,6 +1,7 @@
 #!/bin/python
 import sys, os, time
 def load_animation():
+    os.system("tput civis")
     load_str = "starting TSconsole framework console..."
     ls_len = len(load_str)
     animation = "|/-\\"
@@ -33,4 +34,4 @@ def load_animation():
         os.system("clear")
 if __name__ == '__main__':
     load_animation()
-
+    os.system("tput cnorm")

@@ -77,6 +77,7 @@ exit 0
 interuption() {
 exit_on_signal_SIGINT () {
  interuptTSc
+ tput cnorm > /dev/null 2>&1
 }
 trap exit_on_signal_SIGINT SIGINT
 }
@@ -192,6 +193,10 @@ read input
     bash assets/load.sh connecting "                            " 3
     echo
     xdg-open https://t.me/Suman_bhutuu/
+  elif [[ ${input} == 'hide cursor' ]]; then
+    tput civis
+  elif [[ ${input} == 'show cursor' ]]; then
+    tput cnorm
   elif [[ ${input,,} == "exit" || ${input,,} == "quit" ]]; then
     SHD | bash assets/load.sh Exiting "                    " 1
     echo
@@ -220,6 +225,8 @@ echo -e "
    ${S6} help${R0}         |->   Command to show help meunu.
    ${S6} banner${R0}       |->   Command to show banner of TSconsole.
    ${S6} list${R0}         |->   Command to show list of subprograms
+   ${S6} hide cursor${R0}  |->   Command to hide the cursor
+   ${S7} show cursor${R0}  |->   Command to show the cursor
    ${S6} show modules${R0} |->   Command to show list of programs
    ${S6} show options${R0} |->   Command to show valid options in modules
    ${S6} report${R0}       |->   Command to contact me on telegram
