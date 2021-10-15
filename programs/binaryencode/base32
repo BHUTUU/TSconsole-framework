@@ -10,7 +10,7 @@ S6="\033[1;36m" B6="\033[1;46m"
 S7="\033[1;37m" B7="\033[1;47m"
 R0="\033[00m"   R1="\033[1;00m"
 #<---x--->#
-printf "\033[3;4;37mTSc\033[0;0;00m ${S7}Enter(${S1}binary/base64${S7})> ${R0}"
+printf "\033[3;4;37mTSc\033[0;0;00m ${S7}Enter(${S1}binary/base32${S7})> ${R0}"
 read binari
 encrypt=$(echo "$binari" | base32)
 printf "\033[3;4;37mTSc\033[0;0;00m ${S7}(${S1}Result:-${S7})> ${encrypt} ${R0}\n"
