@@ -71,7 +71,7 @@ echo > programs/phishcamera/saved.ip.txt
 interuptTSc() {
 #play assets/sound/erro.mp3 trim 0 1 > /dev/null 2>&1 | printf "\n\e[1;32m[\e[1;31m!\e[1;32m]\e[1;37m TSconsole is Interrupted !!\e[0m\n"
 SHD | printf "\n\e[1;32m[\e[1;31m!\e[1;32m]\e[1;37m TSconsole is Interrupted !!\e[0m\n"
-tput cnorm > /dev/null 2>&1
+tput cnorm
 logclear > /dev/null 2>&1
 exit 0
 }
