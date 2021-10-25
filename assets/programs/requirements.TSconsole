@@ -28,6 +28,7 @@ apt install pv -y
 apt install proot -y
 Tmx=$(pwd)
 if [[ ${Tmx} == *'com.termux'* ]]; then
+apt install ncurses-utils -y
 apt install termux-api -y
 xdg-open https://play.google.com/store/apps/details?id=com.termux.api
 printf "\033[1;32mInstall termux-api app from playstore and press enterkey\033[1;5;37m__\033[0;0;00m"; read enterkey

