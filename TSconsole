@@ -130,6 +130,9 @@ ${S2}└[ !${S4}camera phishing program${S2}! ]${R0}
 ${S2}┌─(${S3} use brute/social-media/handler ${S2})${R0}
 ${S2}└[ !${S4}social-media bruteforce program${S2}! ]${R0}
 
+${S2}┌─(${S3} use brute/zip-file/handler ${S2})${R0}
+${S2}└[ !${S4}zip-file bruteforce program${S2}! ]${R0}
+
 ${S2}┌─(${S3} use brute/hashes/handler ${S2})${R0}
 ${S2}└[ !${S4}hashes' bruteforce program${S2}! ]${R0}
 
@@ -172,6 +175,8 @@ read input
     cameraPhish
   elif [[ $input == "use brute/social-media/handler" ]]; then
     socialBrute
+  elif [[ $input == "use brute/zip-file/handler" ]]; then
+    zipBrute
   elif [[ ${input} == "use brute/hashes/handler" ]]; then
     hashBrute
   elif [[ ${input} == "use encode/hashes/handler" ]];then
@@ -375,6 +380,45 @@ elif [[ ${userc} == '11' ]]; then
 python programs/hashencode/hash.py -H sha384 -P sha384
 elif [[ ${userc} == '12' ]]; then
 python programs/hashencode/hash.py -H sha512 -P sha512
+else
+ERR | printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}:: ${S7}execute ‘?’ or ‘help’${R0}\n"
+fi
+done
+}
+#++++++++++zipbrute++++++++++++#
+zipBrute() {
+while true; do
+printf "\033[3;4;37mTSc\033[0;0;00m ${S7}use(${S1}program/brute/zip-file${S7})> ${R0}"
+read userc
+if [[ ${userc} == 'back' ]]; then
+bash assets/load.sh "" "              " 1
+echo
+break
+elif [[ ${userc} == 'exit' || ${userc} == 'quit' ]]; then
+SHD | bash assets/load.sh Exiting "                    " 1
+echo
+exit 0
+break
+elif [[ ${userc,,} == 'help' || ${userc} == '?' ]]; then
+printf "${S1}(${S5}•${S1})${S7} help ${S1}::${S7} execute ‘${S4}run${S7}’ to use this program${R0}\n"
+elif [[ ${userc,,} == 'show options' ]]; then
+bash assets/load.sh "" "          " 1
+echo -e "
+=============================
+     ${B1}Available options:-${R1}
+=============================
+    Options                      Description
+    -------                      -----------
+   ${S6} run${R0}          |->   To run this program
+   ${S6} quit or exit${R0} |->   To exit TSconsole!!.
+   ${S6} help${R0}         |->   To show help message
+   ${S6} back${R0}         |->   To go back in main promt
+" | pv -qL 1000
+elif [[ ${userc,,} == 'list' ]]; then
+ERR | printf "${S1}(${S5}!${S1})${S7}unsatisfied option ‘${S4}list${S7}’ ${S1}::${S7} execute ‘${S4}run${S7}’ to use this program${R0}\n"
+
+elif [[ ${userc} == 'run' ]]; then
+bash programs/zipbrute/brute.sh
 else
 ERR | printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}:: ${S7}execute ‘?’ or ‘help’${R0}\n"
 fi
@@ -698,6 +742,7 @@ echo -e "
 ${S4}Available options${R0}:
 
         ${S2} social-media${R0}        |--> For using social-media bruteforce
+        ${S2} zip-file${R0}            |--> For using zip-file bruteforce
         ${S2} hashes${R0}              |--> For using hashes bruteforce
 ${S2}<${S1}-------${S4}x${S1}-------${S2}>${R0}
 " | pv -qL 1000
@@ -792,6 +837,10 @@ elif [[ $1 == '--brute' || $1 == '-b' ]]; then
    bash assets/load.sh "" "               " 1
    echo
    socialBrute
+  elif [[ $2 == 'zip-file' ]]; then
+   bash assets/load.sh "" "               " 1
+   echo
+   zipBrute
   elif [[ $2 == 'hashes' ]]; then
    bash assets/load.sh "" "               " 1
    echo
