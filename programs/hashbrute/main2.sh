@@ -40,11 +40,10 @@ exit 1
 esac
 printf "\033[3;4;37mTSc\033[0;0;00m ${S7}Enter(${S1}path/word/list${S7})> ${R0}"
 read file
-passes=$(cat $file)
 numbs=$(wc -w $file | awk '{print $1}')
 printf "\n${S2}${htype} hash code ;)${R0}\n\n"
 sleep 1.7
-for i in $passes
+while read -r i
 do
 if [[ -z "$t" ]]; then
 t=1
@@ -61,4 +60,4 @@ printf "${S2}[${S1}!${S2}]${S4}failed!! ${S1}::${S4} Try another wordlist${R0}\n
 break
 fi
 t=$(echo $((${t}+1)))
-done
+done < "$file"
