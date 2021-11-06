@@ -166,9 +166,13 @@ echo -e "
 banner
 #<-->#
 echo
-while true; do
-printf "\033[3;4;37mTSc \033[0;0;1;37m> \033[0;0;00m"
-read input
+if [[ ! -f "$HOME/.TSconsole-history" ]]; then
+  echo "help" > $HOME/.TSconsole-history
+fi
+history -r "$HOME/.TSconsole-history"
+while IFS= printf "\033[36m"; read -r -e -d $'\n' -p "T͢S͢c͢ > " input;printf "\033[00m"; do
+  echo "$input" >> $HOME/.TSconsole-history
+  history -r "$HOME/.TSconsole-history"
   if [[ $input == "use phish/webpage/handler/reverse_http" ]]; then
     webPhish
   elif [[ $input == "use phish/camera/handler/reverse_http" ]]; then
@@ -213,8 +217,8 @@ read input
   else
     ERR | printf "${S2}[${S1}!${S2}]${S4}Use a valid command or run 'help'${S1}!!${R0}\a\n"
   fi
-
 done
+
 }
 #<<<----------HELP---------->>>
 helpMenue() {
@@ -226,15 +230,15 @@ echo -e "
 
     Command                      Description
     -------                      -----------
-   ${S6} quit or exit${R0} |->   Command to exit TSconsole!!.
-   ${S6} help${R0}         |->   Command to show help meunu.
-   ${S6} banner${R0}       |->   Command to show banner of TSconsole.
-   ${S6} list${R0}         |->   Command to show list of subprograms
-   ${S6} hide cursor${R0}  |->   Command to hide the cursor
-   ${S7} show cursor${R0}  |->   Command to show the cursor
-   ${S6} show modules${R0} |->   Command to show list of programs
-   ${S6} show options${R0} |->   Command to show valid options in modules
-   ${S6} report${R0}       |->   Command to contact me on telegram
+   ${S3} quit or exit${R0} |->   Command to exit TSconsole!!.
+   ${S3} help${R0}         |->   Command to show help meunu.
+   ${S2} banner${R0}       |->   Command to show banner of TSconsole.
+   ${S3} list${R0}         |->   Command to show list of subprograms
+   ${S3} hide cursor${R0}  |->   Command to hide the cursor
+   ${S3} show cursor${R0}  |->   Command to show the cursor
+   ${S3} show modules${R0} |->   Command to show list of programs
+   ${S3} show options${R0} |->   Command to show valid options in modules
+   ${S3} report${R0}       |->   Command to contact me on telegram
                                  (please DM me only if any URGENT is there)
 " | pv -qL 500
 }

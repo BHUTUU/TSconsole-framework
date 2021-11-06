@@ -13,7 +13,7 @@ apt update && apt upgrade -y
    fi
   fi
  fi
-apt install gnugp -y
+apt install gnupg -y
 apt install sox -y
 apt install python python2 -y
 python3 -m pip install --upgrade pip
