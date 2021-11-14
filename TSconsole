@@ -212,10 +212,12 @@ while IFS= printf "\033[36m"; read -r -e -d $'\n' -p "T͢S͢c͢ > " input;printf
     exit 0
   elif [[ ${input,,} == 'show options' || ${input} == 'list' ]]; then
      ERR | printf "${S2}[${S1}!${S2}] ‘${S4}${input}${S7}’ command only works with Modules! ${S1}::${S7} execute '?'/'help'${R0}\a\n"
-#  elif [[ ${input} == ${input} ]]; then
-#    $input
   else
-    ERR | printf "${S2}[${S1}!${S2}]${S4}Use a valid command or run 'help'${S1}!!${R0}\a\n"
+     if hash ${input//" "*/} > /dev/null 2>&1; then
+       ${input}
+     else
+       ERR | printf "${S2}[${S1}!${S2}]${S4}Use a valid command or run 'help'${S1}!!${R0}\a\n"
+     fi
   fi
 done
 
