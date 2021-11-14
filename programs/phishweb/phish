@@ -345,7 +345,7 @@ link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "[-0-9a-z]*\.ngrok
 fi
 else
 r1=$(grep -o 'https://[-0-9a-z]*\.trycloudflare.com' "${RWD}/.cloudflare-log")
-link="${r1/=https:\/\//}"
+link="${r1/https:\/\//}"
 hoster=""
 rm -rf $RWD/.cloudflare-log > /dev/null 2>&1
 fi
