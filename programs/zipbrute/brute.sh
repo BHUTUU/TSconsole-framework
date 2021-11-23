@@ -2,8 +2,8 @@
 #By: Suman Kumar ~BHUTUU
 #Date: 25-oct-2021
 #set -x
+CWD=$(pwd)
 cd $HOME
-PWD=$(pwd)
 #<<<---requirements---->>>
 if ! hash unzip > /dev/null 2>&1; then
 apt install unzip -y
@@ -53,3 +53,4 @@ fi
 sleep 0.02
 t=$(echo $((${t}+1)))
 done < "$psdfile"
+cd $CWD > /dev/null 2>&1
