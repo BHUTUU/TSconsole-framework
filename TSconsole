@@ -171,7 +171,17 @@ if [[ ! -f "$HOME/.TSconsole-history" ]]; then
 fi
 history -r "$HOME/.TSconsole-history"
 while IFS= printf "\033[36m"; read -r -e -d $'\n' -p "T͢S͢c͢ > " input;printf "\033[00m"; do
-echo "$input" >> $HOME/.TSconsole-history
+while read -r X; do
+  if [[ ${X} == ${input,,} ]]; then
+    ref="skip"
+    break
+  elif [[ ${X} != "${input,,}" ]]; then
+    ref="store"
+  fi
+  if [[ $ref == 'store' ]]; then
+    echo "$input" >> $HOME/.TSconsole-history
+  fi
+done < "$HOME/.TSconsole-history"
 his=$(cat $HOME/.TSconsole-history | wc -l)
 if [[ $his -gt "20" ]]; then
   printf "help\nshow modules\nbanner\n" > $HOME/.TSconsole-history
