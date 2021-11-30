@@ -224,6 +224,8 @@ fi
     SHD | bash $CWD/assets/load.sh Exiting "                    " 1
     echo
     exit 0
+  elif [[ ${input,,} == "requirements" ]]; then
+    bash ${CWD}/assets/programs/requirements.TSconsole
   elif [[ ${input,,} == 'show options' || ${input} == 'list' ]]; then
      ERR | printf "${S2}[${S1}!${S2}] ‘${S4}${input}${S7}’ command only works with Modules! ${S1}::${S7} execute '?'/'help'${R0}\a\n"
   else
@@ -254,6 +256,7 @@ echo -e "
    ${S3} show cursor${R0}  |->   Command to show the cursor
    ${S3} show modules${R0} |->   Command to show list of programs
    ${S3} show options${R0} |->   Command to show valid options in modules
+   ${S3} requirements${R0} |->   Command to install requirenents of TSconsole
    ${S3} report${R0}       |->   Command to contact me on telegram
                                  (please DM me only if any URGENT is there)
 " | pv -qL 500
@@ -748,6 +751,8 @@ ${S6}Available argument${R0}:
    ${S5}-u ${S7}or ${S5}--update${R0}          |--> To update TSconsole-framework
    ${S5}-i ${S7}or ${S5}--install${R0}         |--> To install TSconsole-framework
    ${S5}-h ${S7}or ${S5}--help${R0}            |--> For argumentation help
+
+   ${S5}-i requirements${S7}or ${S5}--install requirements${R0}   |--> To install requirements of TSconsole-framework
 ${S2}<${S1}-------${S4}x${S1}-------${S2}>${R0}
 " | pv -qL 1000
 }
@@ -851,7 +856,13 @@ if [[ ${filter} == 'TSconsole -u' || ${filter} == 'TSconsole --update' ]]; then
 INTERNET
 git pull
 elif [[ ${filter} == 'TSconsole -i' || ${filter} == 'TSconsole --install' ]]; then
-bash $CWD/assets/programs/setup.TSconsole
+  if [[ $2 == 'requirements' ]]; then
+    bash ${CWD}/assets/programs/requirements.TSconsole
+  elif [[ -z "$2" ]]; then
+    bash $CWD/assets/programs/setup.TSconsole
+  else
+    ERR | printf "${S2}[${S1}!${S2}]${S7}Unsatisfied argument ‘${S4}${2}’${S7} :: execute ‘TSconsole ?’ or ‘TSconsole --help’${R0}\a\n"
+  fi
 elif [[ ${filter} == 'TSconsole -r' || ${filter} == 'TSconsole --remove' ]]; then
 bash assets/programs/remove.TSconsole
 #======args for bruteforce prograns======#
