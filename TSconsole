@@ -752,7 +752,7 @@ ${S6}Available argument${R0}:
    ${S5}-i ${S7}or ${S5}--install${R0}         |--> To install TSconsole-framework
    ${S5}-h ${S7}or ${S5}--help${R0}            |--> For argumentation help
 
-   ${S5}-i requirements${S7}or ${S5}--install requirements${R0}   |--> To install requirements of TSconsole-framework
+   ${S5}-i requirements${S7} or ${S5}--install requirements${R0}   |--> To install requirements of TSconsole-framework
 ${S2}<${S1}-------${S4}x${S1}-------${S2}>${R0}
 " | pv -qL 1000
 }
