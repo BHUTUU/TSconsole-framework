@@ -31,32 +31,32 @@ fi
 #<<----sound---->>#
 STR() {
 if [[ $__return__ == '13' ]]; then
-play $CWD/assets/sound/winxp.mp3 trim 0 2.4 > /dev/null 2>&1
+  play $CWD/assets/sound/winxp.mp3 trim 0 2.4 > /dev/null 2>&1
 else
-sleep 2.4
+  sleep 2.4
 fi
 }
 SHD() {
 if [[ $__return__ == '13' ]]; then
-play $CWD/assets/sound/winxpshutdown.mp3 trim 0 1.38 > /dev/null 2>&1
+  play $CWD/assets/sound/winxpshutdown.mp3 trim 0 1.38 > /dev/null 2>&1
 else
-sleep 1.38
+  sleep 1.38
 fi
 }
 ERR() {
 if [[ $__return__ == '13' ]]; then
-play $CWD/assets/sound/erro.mp3 trim 0 1 > /dev/null 2>&1
+  play $CWD/assets/sound/erro.mp3 trim 0 1 > /dev/null 2>&1
 else
-sleep 1
+  sleep 1
 fi
 }
 #<---x--->#
 #<<----animation---->#
 load() {
 if [[ $__return__ == '13' ]]; then
-animation=TRUE
+  animation=TRUE
 else
-animatiom=FALSE
+  animatiom=FALSE
 fi
 }
 load # i will use it later
@@ -64,14 +64,16 @@ load # i will use it later
 logclear() {
 site=(Amazon Netflix flipkart google snapchat twitter HOTSTAR facebook github instagram telegram whatsapp)
 for i in "${site[@]}"; do
-echo > $CWD/programs/phishweb/sites/${i}/log.txt
+  echo > $CWD/programs/phishweb/sites/${i}/log.txt
 done
 echo > $CWD/programs/phishcamera/saved.ip.txt
 }
 interuptTSc() {
 #play assets/sound/erro.mp3 trim 0 1 > /dev/null 2>&1 | printf "\n\e[1;32m[\e[1;31m!\e[1;32m]\e[1;37m TSconsole is Interrupted !!\e[0m\n"
+echo -e "\033[?12l\033[?25h"
+echo -e "\033[4A"
+printf "\n                                           \r"
 SHD | printf "\n\e[1;32m[\e[1;31m!\e[1;32m]\e[1;37m TSconsole is Interrupted !!\e[0m\a\n"
-tput cnorm
 logclear > /dev/null 2>&1
 exit 0
 }
@@ -100,13 +102,12 @@ RANGE=$(($topper-$lower+1));
 GET=$RANDOM;
 let "GET %= $RANGE";
 GET=$(($GET+$lower));
-if [[ $GET == '6' ]];
-then
-bash ${CWD}/assets/LOGOs/logo.${GET}
+if [[ $GET == '6' ]]; then
+  bash ${CWD}/assets/LOGOs/logo.${GET}
 elif [[ $GET == '5' ]]; then
-cat ${CWD}/assets/LOGOs/logo.5
+  cat ${CWD}/assets/LOGOs/logo.5
 else
-bash ${CWD}/assets/LOGOs/logo.${GET} | lolcat
+  bash ${CWD}/assets/LOGOs/logo.${GET} | lolcat
 fi
 echo
 printf "${S2}>>>Version:${S4} 3.0 ${S7}(${S1}latest${S7})${R0}\n"
@@ -153,8 +154,8 @@ ${S2}└[ !${S4}decode binary to text  program${S2}! ]${R0}
 main() {
 #<cheking data>#
 if [[ $__return__ != '13' ]]; then
-ERR | printf "${S2}[${S1}!${S2}]${S4}Resources were missing${S1}!!${R0}\a\n"
-exit 1
+  ERR | printf "${S2}[${S1}!${S2}]${S4}Resources were missing${S1}!!${R0}\a\n"
+  exit 1
 fi
 python $CWD/assets/anim.py
 STR | bash $CWD/assets/load.sh "welcome to TSconsole-framework" "                                               " 3
@@ -217,9 +218,9 @@ fi
     echo
     xdg-open https://t.me/Suman_bhutuu/
   elif [[ ${input} == 'hide cursor' ]]; then
-    tput civis
+    printf "\033[?25l"
   elif [[ ${input} == 'show cursor' ]]; then
-    tput cnorm
+    printf "\033[?12l\033[?25h"
   elif [[ ${input,,} == "exit" || ${input,,} == "quit" ]]; then
     SHD | bash $CWD/assets/load.sh Exiting "                    " 1
     echo
@@ -266,25 +267,25 @@ echo -e "
 #+++++++hashbrute+++++++#
 hashBrute() {
 while true; do
-printf "\033[3;4;37mTSc\033[0;0;00m ${S7}use(${S1}program/brute/hashes${S7})> ${R0}"
-read userc
-if [[ ${userc} == '1' ||  ${userc} == '01' ]]; then
-bash $CWD/programs/hashbrute/main.sh
-elif [[ ${userc} == '2' || ${userc} == '02' ]]; then
-bash $CWD/programs/hashbrute/main2.sh
-elif [[ ${userc} == 'back' ]]; then
-bash $CWD/assets/load.sh "" "             " 1
-echo
-break
-elif [[ ${userc} == 'exit' || ${userc} == 'quit' ]]; then
-SHD | $CWD/bash assets/load.sh Exiting "                    " 1
-echo
-exit 0
-break
-elif [[ ${userc,,} == 'help' || ${userc} == '?' ]]; then
-printf "${S1}(${S5}•${S1})${S7} help ${S1}::${S7} execute ‘${S4}1 ${S7}or ${S4}2${S7}’ to use this module${R0}\a\n"
-elif [[ ${userc,,} == 'show options' ]]; then
-bash $CWD/assets/load.sh "" "          " 1
+  printf "\033[3;4;37mTSc\033[0;0;00m ${S7}use(${S1}program/brute/hashes${S7})> ${R0}"
+  read userc
+  if [[ ${userc} == '1' ||  ${userc} == '01' ]]; then
+    bash $CWD/programs/hashbrute/main.sh
+  elif [[ ${userc} == '2' || ${userc} == '02' ]]; then
+    bash $CWD/programs/hashbrute/main2.sh
+  elif [[ ${userc} == 'back' ]]; then
+    bash $CWD/assets/load.sh "" "             " 1
+    echo
+    break
+  elif [[ ${userc} == 'exit' || ${userc} == 'quit' ]]; then
+    SHD | $CWD/bash assets/load.sh Exiting "                    " 1
+    echo
+    exit 0
+    break
+  elif [[ ${userc,,} == 'help' || ${userc} == '?' ]]; then
+    printf "${S1}(${S5}•${S1})${S7} help ${S1}::${S7} execute ‘${S4}1 ${S7}or ${S4}2${S7}’ to use this module${R0}\a\n"
+  elif [[ ${userc,,} == 'show options' ]]; then
+    bash $CWD/assets/load.sh "" "          " 1
 echo -e "
 =============================
      ${B1}Available options:-${R1}
@@ -297,8 +298,8 @@ echo -e "
    ${S6} help${R0}         |->   To show help message
    ${S6} back${R0}         |->   To go back in main promt
 " | pv -qL 1000
-elif [[ ${userc,,} == 'list' ]]; then
-bash $CWD/assets/load.sh "" "            " 1
+  elif [[ ${userc,,} == 'list' ]]; then
+    bash $CWD/assets/load.sh "" "            " 1
 echo -e "
 ======================
      ${B1}Submodules:-${R1}
@@ -324,30 +325,30 @@ ${S2}(02). ${S4}Sum hash codes:${R0}
 
 ${S4}Note${S1}::- ${S7} you just have to select '1' or '2' as per your code type either 'hash code' or 'sum hash code'!!${R0}
 " | pv -qL 1000
-else
-ERR | printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}::${S7} execute ‘?’ or ‘help’${R0}\a\n"
-fi
+  else
+    ERR | printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}::${S7} execute ‘?’ or ‘help’${R0}\a\n"
+  fi
 done
 }
 
 #+++++++++hashencode+++++++++#
 hashEncode() {
 while true; do
-printf "\033[3;4;37mTSc\033[0;0;00m ${S7}use(${S1}program/hash/encode${S7})> ${R0}"
-read userc
-if [[ ${userc} == 'back' ]]; then
-bash $CWD/assets/load.sh "" "              " 1
-echo
-break
-elif [[ ${userc} == 'exit' || ${userc} == 'quit' ]]; then
-SHD | bash $CWD/assets/load.sh Exiting "                    " 1
-echo
-exit 0
-break
-elif [[ ${userc,,} == 'help' || ${userc} == '?' ]]; then
-printf "${S1}(${S5}•${S1})${S7} help ${S1}::${S7} execute ‘${S4}list${S7}’ to show submodules${R0}\a\n"
-elif [[ ${userc,,} == 'show options' ]]; then
-bash $CWD/assets/load.sh "" "          " 1
+  printf "\033[3;4;37mTSc\033[0;0;00m ${S7}use(${S1}program/hash/encode${S7})> ${R0}"
+  read userc
+  if [[ ${userc} == 'back' ]]; then
+    bash $CWD/assets/load.sh "" "              " 1
+    echo
+    break
+  elif [[ ${userc} == 'exit' || ${userc} == 'quit' ]]; then
+    SHD | bash $CWD/assets/load.sh Exiting "                    " 1
+    echo
+    exit 0
+    break
+  elif [[ ${userc,,} == 'help' || ${userc} == '?' ]]; then
+    printf "${S1}(${S5}•${S1})${S7} help ${S1}::${S7} execute ‘${S4}list${S7}’ to show submodules${R0}\a\n"
+  elif [[ ${userc,,} == 'show options' ]]; then
+    bash $CWD/assets/load.sh "" "          " 1
 echo -e "
 =============================
      ${B1}Available options:-${R1}
@@ -359,8 +360,8 @@ echo -e "
    ${S6} help${R0}         |->   To show help message
    ${S6} back${R0}         |->   To go back in main promt
 " | pv -qL 1000
-elif [[ ${userc,,} == 'list' ]]; then
-bash $CWD/assets/load.sh "" "            " 1
+  elif [[ ${userc,,} == 'list' ]]; then
+    bash $CWD/assets/load.sh "" "            " 1
 echo -e "
 ======================
      ${B1}Submodules:-${R1}
@@ -373,41 +374,41 @@ ${S1}(${S7}05${S1})${S7}SHA384 hash${R0}
 ${S1}(${S7}06${S1})${S7}SHA512 hash${R0}
 ${S1}——————————————————————${R0}
 " | pv -qL 1000
-elif [[ ${userc} == '01' || ${userc} == '1' ]]; then
-bash $CWD/programs/hashencode/hash.sh md5
-elif [[ ${userc} == '02' || ${userc} == '2' ]]; then
-bash $CWD/programs/hashencode/hash.sh sha1
-elif [[ ${userc} == '03' || ${userc} == '3' ]]; then
-bash $CWD/programs/hashencode/hash.sh sha224
-elif [[ ${userc} == '04' || ${userc} == '4' ]]; then
-bash $CWD/programs/hashencode/hash.sh sha256
-elif [[ ${userc} == '05' || ${userc} == '5' ]]; then
-bash $CWD/programs/hashencode/hash.sh sha384
-elif [[ ${userc} == '06' || ${userc} == '6' ]]; then
-bash $CWD/programs/hashencode/hash.sh sha512
-else
-ERR | printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}:: ${S7}execute ‘?’ or ‘help’${R0}\a\n"
-fi
+  elif [[ ${userc} == '01' || ${userc} == '1' ]]; then
+    bash $CWD/programs/hashencode/hash.sh md5
+  elif [[ ${userc} == '02' || ${userc} == '2' ]]; then
+    bash $CWD/programs/hashencode/hash.sh sha1
+  elif [[ ${userc} == '03' || ${userc} == '3' ]]; then
+    bash $CWD/programs/hashencode/hash.sh sha224
+  elif [[ ${userc} == '04' || ${userc} == '4' ]]; then
+    bash $CWD/programs/hashencode/hash.sh sha256
+  elif [[ ${userc} == '05' || ${userc} == '5' ]]; then
+    bash $CWD/programs/hashencode/hash.sh sha384
+  elif [[ ${userc} == '06' || ${userc} == '6' ]]; then
+    bash $CWD/programs/hashencode/hash.sh sha512
+  else
+    ERR | printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}:: ${S7}execute ‘?’ or ‘help’${R0}\a\n"
+  fi
 done
 }
 #++++++++++zipbrute++++++++++++#
 zipBrute() {
 while true; do
-printf "\033[3;4;37mTSc\033[0;0;00m ${S7}use(${S1}program/brute/zip-file${S7})> ${R0}"
-read userc
-if [[ ${userc} == 'back' ]]; then
-bash $CWD/assets/load.sh "" "              " 1
-echo
-break
-elif [[ ${userc} == 'exit' || ${userc} == 'quit' ]]; then
-SHD | bash $CWD/assets/load.sh Exiting "                    " 1
-echo
-exit 0
-break
-elif [[ ${userc,,} == 'help' || ${userc} == '?' ]]; then
-printf "${S1}(${S5}•${S1})${S7} help ${S1}::${S7} execute ‘${S4}run${S7}’ to use this program${R0}\a\n"
-elif [[ ${userc,,} == 'show options' ]]; then
-bash $CWD/assets/load.sh "" "          " 1
+  printf "\033[3;4;37mTSc\033[0;0;00m ${S7}use(${S1}program/brute/zip-file${S7})> ${R0}"
+  read userc
+  if [[ ${userc} == 'back' ]]; then
+    bash $CWD/assets/load.sh "" "              " 1
+    echo
+    break
+  elif [[ ${userc} == 'exit' || ${userc} == 'quit' ]]; then
+    SHD | bash $CWD/assets/load.sh Exiting "                    " 1
+    echo
+    exit 0
+    break
+  elif [[ ${userc,,} == 'help' || ${userc} == '?' ]]; then
+    printf "${S1}(${S5}•${S1})${S7} help ${S1}::${S7} execute ‘${S4}run${S7}’ to use this program${R0}\a\n"
+  elif [[ ${userc,,} == 'show options' ]]; then
+    bash $CWD/assets/load.sh "" "          " 1
 echo -e "
 =============================
      ${B1}Available options:-${R1}
@@ -419,34 +420,34 @@ echo -e "
    ${S6} help${R0}         |->   To show help message
    ${S6} back${R0}         |->   To go back in main promt
 " | pv -qL 1000
-elif [[ ${userc,,} == 'list' ]]; then
-ERR | printf "${S1}(${S5}!${S1})${S7}unsatisfied option ‘${S4}list${S7}’ ${S1}::${S7} execute ‘${S4}run${S7}’ to use this program${R0}\a\n"
+  elif [[ ${userc,,} == 'list' ]]; then
+    ERR | printf "${S1}(${S5}!${S1})${S7}unsatisfied option ‘${S4}list${S7}’ ${S1}::${S7} execute ‘${S4}run${S7}’ to use this program${R0}\a\n"
 
-elif [[ ${userc} == 'run' ]]; then
-bash $CWD/programs/zipbrute/brute.sh
-else
-ERR | printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}:: ${S7}execute ‘?’ or ‘help’${R0}\a\n"
-fi
+  elif [[ ${userc} == 'run' ]]; then
+    bash $CWD/programs/zipbrute/brute.sh
+  else
+    ERR | printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}:: ${S7}execute ‘?’ or ‘help’${R0}\a\n"
+  fi
 done
 }
 #++++++++++socialbrute+++++++++++#
 socialBrute() {
 while true; do
-printf "\033[3;4;37mTSc\033[0;0;00m ${S7}use(${S1}program/brute/social-media${S7})> ${R0}"
-read userc
-if [[ ${userc} == 'back' ]]; then
-bash $CWD/assets/load.sh "" "              " 1
-echo
-break
-elif [[ ${userc} == 'exit' || ${userc} == 'quit' ]]; then
-SHD | bash $CWD/assets/load.sh Exiting "                    " 1
-echo
-exit 0
-break
-elif [[ ${userc,,} == 'help' || ${userc} == '?' ]]; then
-printf "${S1}(${S5}•${S1})${S7} help ${S1}::${S7} execute ‘${S4}list${S7}’ to show submodules${R0}\a\n"
-elif [[ ${userc,,} == 'show options' ]]; then
-bash $CWD/assets/load.sh "" "          " 1
+  printf "\033[3;4;37mTSc\033[0;0;00m ${S7}use(${S1}program/brute/social-media${S7})> ${R0}"
+  read userc
+  if [[ ${userc} == 'back' ]]; then
+    bash $CWD/assets/load.sh "" "              " 1
+    echo
+    break
+  elif [[ ${userc} == 'exit' || ${userc} == 'quit' ]]; then
+    SHD | bash $CWD/assets/load.sh Exiting "                    " 1
+    echo
+    exit 0
+    break
+  elif [[ ${userc,,} == 'help' || ${userc} == '?' ]]; then
+    printf "${S1}(${S5}•${S1})${S7} help ${S1}::${S7} execute ‘${S4}list${S7}’ to show submodules${R0}\a\n"
+  elif [[ ${userc,,} == 'show options' ]]; then
+    bash $CWD/assets/load.sh "" "          " 1
 echo -e "
 =============================
      ${B1}Available options:-${R1}
@@ -458,8 +459,8 @@ echo -e "
    ${S6} help${R0}         |->   To show help message
    ${S6} back${R0}         |->   To go back in main promt
 " | pv -qL 1000
-elif [[ ${userc,,} == 'list' ]]; then
-bash $CWD/assets/load.sh "" "            " 1
+  elif [[ ${userc,,} == 'list' ]]; then
+    bash $CWD/assets/load.sh "" "            " 1
 echo -e "
 ======================
      ${B1}Submodules:-${R1}
@@ -468,35 +469,35 @@ ${S1}(${S7}01${S1})${S7}Instagram bruteforce${R0}
 ${S1}(${S7}02${S1})${S7}Facebook bruteforce${R0}
 ${S1}(${S7}03${S1})${S7}Gmail bruteforce${R0}
 " | pv -qL 1000
-elif [[ ${userc} == '01' || ${userc} == '1' ]]; then
-bash $CWD/programs/socialbrute/instagram/instagram.sh
-elif [[ ${userc} == '02' || ${userc} == '2' ]]; then
-python3 $CWD/programs/socialbrute/facebook/facebook.py
-elif [[ ${userc} == '03' || ${userc} == '3' ]]; then
-python2 $CWD/programs/socialbrute/gmail/gmail.py
-else
-ERR | printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}:: ${S7}execute ‘?’ or ‘help’${R0}\a\n"
-fi
+  elif [[ ${userc} == '01' || ${userc} == '1' ]]; then
+    bash $CWD/programs/socialbrute/instagram/instagram.sh
+  elif [[ ${userc} == '02' || ${userc} == '2' ]]; then
+    python3 $CWD/programs/socialbrute/facebook/facebook.py
+  elif [[ ${userc} == '03' || ${userc} == '3' ]]; then
+    python2 $CWD/programs/socialbrute/gmail/gmail.py
+  else
+    ERR | printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}:: ${S7}execute ‘?’ or ‘help’${R0}\a\n"
+  fi
 done
 }
 #<==============binary decode===============>#
 binaryDecode() {
 while true; do
-printf "\033[3;4;37mTSc\033[0;0;00m ${S7}use(${S1}program/decode/binary${S7})> ${R0}"
-read userc
-if [[ ${userc} == 'back' ]]; then
-bash $CWD/assets/load.sh "" "              " 1
-echo
-break
-elif [[ ${userc} == 'exit' || ${userc} == 'quit' ]]; then
-SHD | bash $CWD/assets/load.sh Exiting "                    " 1
-echo
-exit 0
-break
-elif [[ ${userc,,} == 'help' || ${userc} == '?' ]]; then
-printf "${S1}(${S5}•${S1})${S7} help ${S1}::${S7} execute ‘${S4}list${S7}’ to show submodules${R0}\a\n"
-elif [[ ${userc,,} == 'show options' ]]; then
-bash $CWD/assets/load.sh "" "          " 1
+  printf "\033[3;4;37mTSc\033[0;0;00m ${S7}use(${S1}program/decode/binary${S7})> ${R0}"
+  read userc
+  if [[ ${userc} == 'back' ]]; then
+    bash $CWD/assets/load.sh "" "              " 1
+    echo
+    break
+  elif [[ ${userc} == 'exit' || ${userc} == 'quit' ]]; then
+    SHD | bash $CWD/assets/load.sh Exiting "                    " 1
+    echo
+    exit 0
+    break
+  elif [[ ${userc,,} == 'help' || ${userc} == '?' ]]; then
+    printf "${S1}(${S5}•${S1})${S7} help ${S1}::${S7} execute ‘${S4}list${S7}’ to show submodules${R0}\a\n"
+  elif [[ ${userc,,} == 'show options' ]]; then
+    bash $CWD/assets/load.sh "" "          " 1
 echo -e "
 =============================
      ${B1}Available options:-${R1}
@@ -508,8 +509,8 @@ echo -e "
    ${S6} help${R0}         |->   To show help message
    ${S6} back${R0}         |->   To go back in main promt
 " | pv -qL 1000
-elif [[ ${userc,,} == 'list' ]]; then
-bash $CWD/assets/load.sh "" "            " 1
+  elif [[ ${userc,,} == 'list' ]]; then
+    bash $CWD/assets/load.sh "" "            " 1
 echo -e "
 ======================
      ${B1}Submodules:-${R1}
@@ -518,35 +519,35 @@ ${S1}(${S7}01${S1})${S7}base64${R0}
 ${S1}(${S7}02${S1})${S7}base32${R0}
 ${S1}(${S7}03${S1})${S7}binary digits(0 1)${R0}
 " | pv -qL 1000
-elif [[ ${userc} == '01' || ${userc} == '1' ]]; then
-bash $CWD/programs/binarydecode/base64
-elif [[ ${userc} == '02' || ${userc} == '2' ]]; then
-bash $CWD/programs/binarydecode/base32
-elif [[ ${userc} == '03' || ${userc} == '3' ]]; then
-python $CWD/programs/binarydecode/binary -H suman -P BHUTUU
-else
-ERR | printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}:: ${S7}execute ‘?’ or ‘help’${R0}\a\n"
-fi
+  elif [[ ${userc} == '01' || ${userc} == '1' ]]; then
+    bash $CWD/programs/binarydecode/base64
+  elif [[ ${userc} == '02' || ${userc} == '2' ]]; then
+    bash $CWD/programs/binarydecode/base32
+  elif [[ ${userc} == '03' || ${userc} == '3' ]]; then
+    python $CWD/programs/binarydecode/binary -H suman -P BHUTUU
+  else
+    ERR | printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}:: ${S7}execute ‘?’ or ‘help’${R0}\a\n"
+  fi
 done
 }
 #<============binary encode=============>
 binaryEncode() {
 while true; do
-printf "\033[3;4;37mTSc\033[0;0;00m ${S7}use(${S1}program/encode/binary${S7})> ${R0}"
-read userc
-if [[ ${userc} == 'back' ]]; then
-bash $CWD/assets/load.sh "" "              " 1
-echo
-break
-elif [[ ${userc} == 'exit' || ${userc} == 'quit' ]]; then
-SHD | bash $CWD/assets/load.sh Exiting "                    " 1
-echo
-exit 0
-break
-elif [[ ${userc,,} == 'help' || ${userc} == '?' ]]; then
-printf "${S1}(${S5}•${S1})${S7} help ${S1}::${S7} execute ‘${S4}list${S7}’ to show submodules${R0}\a\n"
-elif [[ ${userc,,} == 'show options' ]]; then
-bash $CWD/assets/load.sh "" "          " 1
+  printf "\033[3;4;37mTSc\033[0;0;00m ${S7}use(${S1}program/encode/binary${S7})> ${R0}"
+  read userc
+  if [[ ${userc} == 'back' ]]; then
+    bash $CWD/assets/load.sh "" "              " 1
+    echo
+    break
+  elif [[ ${userc} == 'exit' || ${userc} == 'quit' ]]; then
+    SHD | bash $CWD/assets/load.sh Exiting "                    " 1
+    echo
+    exit 0
+    break
+  elif [[ ${userc,,} == 'help' || ${userc} == '?' ]]; then
+    printf "${S1}(${S5}•${S1})${S7} help ${S1}::${S7} execute ‘${S4}list${S7}’ to show submodules${R0}\a\n"
+  elif [[ ${userc,,} == 'show options' ]]; then
+    bash $CWD/assets/load.sh "" "          " 1
 echo -e "
 =============================
      ${B1}Available options:-${R1}
@@ -558,8 +559,8 @@ echo -e "
    ${S6} help${R0}         |->   To show help message
    ${S6} back${R0}         |->   To go back in main promt
 " | pv -qL 1000
-elif [[ ${userc,,} == 'list' ]]; then
-bash $CWD/assets/load.sh "" "            " 1
+  elif [[ ${userc,,} == 'list' ]]; then
+    bash $CWD/assets/load.sh "" "            " 1
 echo -e "
 ======================
      ${B1}Submodules:-${R1}
@@ -568,35 +569,35 @@ ${S1}(${S7}01${S1})${S7}base64${R0}
 ${S1}(${S7}02${S1})${S7}base32${R0}
 ${S1}(${S7}03${S1})${S7}binary digits(0 1)${R0}
 " | pv -qL 1000
-elif [[ ${userc} == '01' || ${userc} == '1' ]]; then
-bash $CWD/programs/binaryencode/base64
-elif [[ ${userc} == '02' || ${userc} == '2' ]]; then
-bash $CWD/programs/binaryencode/base32
-elif [[ ${userc} == '03' || ${userc} == '3' ]]; then
-python $CWD/programs/binaryencode/binary -H suman -P BHUTUU
-else
-ERR | printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}:: ${S7}execute ‘?’ or ‘help’${R0}\a\n"
-fi
+  elif [[ ${userc} == '01' || ${userc} == '1' ]]; then
+    bash $CWD/programs/binaryencode/base64
+  elif [[ ${userc} == '02' || ${userc} == '2' ]]; then
+    bash $CWD/programs/binaryencode/base32
+  elif [[ ${userc} == '03' || ${userc} == '3' ]]; then
+    python $CWD/programs/binaryencode/binary -H suman -P BHUTUU
+  else
+    ERR | printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}:: ${S7}execute ‘?’ or ‘help’${R0}\a\n"
+  fi
 done
 }
 #<==========camera phish============>#
 cameraPhish() {
 while true; do
-printf "\033[3;4;37mTSc\033[0;0;00m ${S7}use(${S1}program/phish/camera${S7})> ${R0}"
-read userc
-if [[ ${userc} == 'back' ]]; then
-bash $CWD/assets/load.sh "" "              " 1
-echo
-break
-elif [[ ${userc} == 'exit' || ${userc} == 'quit' ]]; then
-SHD | $CWD/bash assets/load.sh Exiting "                    " 1
-echo
-exit 0
-break
-elif [[ ${userc,,} == 'help' || ${userc} == '?' ]]; then
-printf "${S1}(${S5}•${S1})${S7} help ${S1}::${S7} execute ‘${S4}run${S7}’ to use this program${R0}\a\n"
-elif [[ ${userc,,} == 'show options' ]]; then
-bash $CWD/assets/load.sh "" "          " 1
+  printf "\033[3;4;37mTSc\033[0;0;00m ${S7}use(${S1}program/phish/camera${S7})> ${R0}"
+  read userc
+  if [[ ${userc} == 'back' ]]; then
+    bash $CWD/assets/load.sh "" "              " 1
+    echo
+    break
+  elif [[ ${userc} == 'exit' || ${userc} == 'quit' ]]; then
+    SHD | $CWD/bash assets/load.sh Exiting "                    " 1
+    echo
+    exit 0
+    break
+  elif [[ ${userc,,} == 'help' || ${userc} == '?' ]]; then
+    printf "${S1}(${S5}•${S1})${S7} help ${S1}::${S7} execute ‘${S4}run${S7}’ to use this program${R0}\a\n"
+  elif [[ ${userc,,} == 'show options' ]]; then
+    bash $CWD/assets/load.sh "" "          " 1
 echo -e "
 =============================
      ${B1}Available options:-${R1}
@@ -608,34 +609,33 @@ echo -e "
    ${S6} help${R0}         |->   To show help message
    ${S6} back${R0}         |->   To go back in main promt
 " | pv -qL 1000
-elif [[ ${userc,,} == 'list' ]]; then
-ERR | printf "${S1}(${S5}!${S1})${S7}unsatisfied option ‘${S4}list${S7}’ ${S1}::${S7} execute ‘${S4}run${S7}’ to use this program${R0}\a\n"
-
-elif [[ ${userc} == 'run' ]]; then
-bash $CWD/programs/phishcamera/phish
-else
-ERR | printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}:: ${S7}execute ‘?’ or ‘help’${R0}\a\n"
-fi
+  elif [[ ${userc,,} == 'list' ]]; then
+    ERR | printf "${S1}(${S5}!${S1})${S7}unsatisfied option ‘${S4}list${S7}’ ${S1}::${S7} execute ‘${S4}run${S7}’ to use this program${R0}\a\n"
+  elif [[ ${userc} == 'run' ]]; then
+    bash $CWD/programs/phishcamera/phish
+  else
+    ERR | printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}:: ${S7}execute ‘?’ or ‘help’${R0}\a\n"
+  fi
 done
 }
 #<============website phish==============>#
 webPhish() {
 while true; do
-printf "\033[3;4;37mTSc\033[0;0;00m ${S7}use(${S1}program/phish/websites${S7})> ${R0}"
-read userc
-if [[ ${userc} == 'back' ]]; then
-bash $CWD/assets/load.sh "" "              " 1
-echo
-break
-elif [[ ${userc} == 'exit' || ${userc} == 'quit' ]]; then
-SHD | bash $CWD/assets/load.sh Exiting "                    " 1
-echo
-exit 0
-break
-elif [[ ${userc,,} == 'help' || ${userc} == '?' ]]; then
-printf "${S1}(${S5}•${S1})${S7} help ${S1}::${S7} execute ‘${S4}run${S7}’ to use this program${R0}\a\n"
-elif [[ ${userc,,} == 'show options' ]]; then
-bash $CWD/assets/load.sh "" "          " 1
+  printf "\033[3;4;37mTSc\033[0;0;00m ${S7}use(${S1}program/phish/websites${S7})> ${R0}"
+  read userc
+  if [[ ${userc} == 'back' ]]; then
+    bash $CWD/assets/load.sh "" "              " 1
+    echo
+    break
+  elif [[ ${userc} == 'exit' || ${userc} == 'quit' ]]; then
+    SHD | bash $CWD/assets/load.sh Exiting "                    " 1
+    echo
+    exit 0
+    break
+  elif [[ ${userc,,} == 'help' || ${userc} == '?' ]]; then
+    printf "${S1}(${S5}•${S1})${S7} help ${S1}::${S7} execute ‘${S4}run${S7}’ to use this program${R0}\a\n"
+    elif [[ ${userc,,} == 'show options' ]]; then
+    bash $CWD/assets/load.sh "" "          " 1
 echo -e "
 =============================
      ${B1}Available options:-${R1}
@@ -647,35 +647,34 @@ echo -e "
    ${S6} help${R0}         |->   To show help message
    ${S6} back${R0}         |->   To go back in main promt
 " | pv -qL 1000
-elif [[ ${userc,,} == 'list' ]]; then
-ERR | printf "${S1}(${S5}!${S1})${S7}unsatisfied option ‘${S4}list${S7}’ ${S1}::${S7} execute ‘${S4}run${S7}’ to use this program${R0}\a\n"
-
-elif [[ ${userc} == 'run' ]]; then
-bash $CWD/programs/phishweb/phish
-else
-ERR | printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}:: ${S7}execute ‘?’ or ‘help’${R0}\a\n"
-fi
+  elif [[ ${userc,,} == 'list' ]]; then
+    ERR | printf "${S1}(${S5}!${S1})${S7}unsatisfied option ‘${S4}list${S7}’ ${S1}::${S7} execute ‘${S4}run${S7}’ to use this program${R0}\a\n"
+  elif [[ ${userc} == 'run' ]]; then
+    bash $CWD/programs/phishweb/phish
+  else
+    ERR | printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}:: ${S7}execute ‘?’ or ‘help’${R0}\a\n"
+  fi
 done
 }
 
 #<===========call and sms bomber============>#
 bombSpam() {
 while true; do
-printf "\033[3;4;37mTSc\033[0;0;00m ${S7}use(${S1}program/spam/call-sms${S7})> ${R0}"
-read userc
-if [[ ${userc} == 'back' ]]; then
-bash $CWD/assets/load.sh "" "              " 1
-echo
-break
-elif [[ ${userc} == 'exit' || ${userc} == 'quit' ]]; then
-SHD | bash $CWD/assets/load.sh Exiting "                    " 1
-echo
-exit 0
-break
-elif [[ ${userc,,} == 'help' || ${userc} == '?' ]]; then
-printf "${S1}(${S5}•${S1})${S7} help ${S1}::${S7} execute ‘${S4}list${S7}’ to show submodules${R0}\a\n"
-elif [[ ${userc,,} == 'show options' ]]; then
-bash $CWD/assets/load.sh "" "          " 1
+  printf "\033[3;4;37mTSc\033[0;0;00m ${S7}use(${S1}program/spam/call-sms${S7})> ${R0}"
+  read userc
+  if [[ ${userc} == 'back' ]]; then
+    bash $CWD/assets/load.sh "" "              " 1
+    echo
+    break
+  elif [[ ${userc} == 'exit' || ${userc} == 'quit' ]]; then
+    SHD | bash $CWD/assets/load.sh Exiting "                    " 1
+    echo
+    exit 0
+    break
+  elif [[ ${userc,,} == 'help' || ${userc} == '?' ]]; then
+    printf "${S1}(${S5}•${S1})${S7} help ${S1}::${S7} execute ‘${S4}list${S7}’ to show submodules${R0}\a\n"
+  elif [[ ${userc,,} == 'show options' ]]; then
+    bash $CWD/assets/load.sh "" "          " 1
 echo -e "
 =============================
      ${B1}Available options:-${R1}
@@ -687,8 +686,8 @@ echo -e "
    ${S6} help${R0}         |->   To show help message
    ${S6} back${R0}         |->   To go back in main promt
 " | pv -qL 1000
-elif [[ ${userc,,} == 'list' ]]; then
-bash $CWD/assets/load.sh "" "            " 1
+  elif [[ ${userc,,} == 'list' ]]; then
+    bash $CWD/assets/load.sh "" "            " 1
 echo -e "
 ======================
      ${B1}Submodules:-${R1}
@@ -696,16 +695,16 @@ echo -e "
 ${S1}(${S7}01${S1})${S7}Call & SMS bomber${R0}
 ${S1}(${S7}02${S1})${S7}Anonymous text SMS${R0}
 " | pv -qL 1000
-elif [[ ${userc} == '01' || ${userc} == '1' ]]; then
-LWD=$(pwd)
-cd $CWD > /dev/null 2>&1
-./programs/callnsms/bomb.sh
-cd LWD > /dev/null 2>&1
-elif [[ ${userc} == '02' || ${userc} == '2' ]]; then
-bash $CWD/programs/callnsms/text.sh
-else
-ERR | printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}:: ${S7}execute ‘?’ or ‘help’${R0}\a\n"
-fi
+  elif [[ ${userc} == '01' || ${userc} == '1' ]]; then
+    LWD=$(pwd)
+    cd $CWD > /dev/null 2>&1
+    ./programs/callnsms/bomb.sh
+    cd LWD > /dev/null 2>&1
+  elif [[ ${userc} == '02' || ${userc} == '2' ]]; then
+    bash $CWD/programs/callnsms/text.sh
+  else
+    ERR | printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}:: ${S7}execute ‘?’ or ‘help’${R0}\a\n"
+  fi
 done
 }
 
@@ -835,8 +834,8 @@ ${S2}<${S1}-------${S4}x${S1}-------${S2}>${R0}
 
 #<main + arguments + section>#
 if [[ ${filter} == 'TSconsole -u' || ${filter} == 'TSconsole --update' ]]; then
-INTERNET
-git pull
+  INTERNET
+  git pull
 elif [[ ${filter} == 'TSconsole -i' || ${filter} == 'TSconsole --install' ]]; then
   if [[ $2 == 'requirements' ]]; then
     bash ${CWD}/assets/programs/requirements.TSconsole
@@ -846,7 +845,7 @@ elif [[ ${filter} == 'TSconsole -i' || ${filter} == 'TSconsole --install' ]]; th
     ERR | printf "${S2}[${S1}!${S2}]${S7}Unsatisfied argument ‘${S4}${2}’${S7} :: execute ‘TSconsole ?’ or ‘TSconsole --help’${R0}\a\n"
   fi
 elif [[ ${filter} == 'TSconsole -r' || ${filter} == 'TSconsole --remove' ]]; then
-bash assets/programs/remove.TSconsole
+  bash assets/programs/remove.TSconsole
 #======args for bruteforce prograns======#
 elif [[ $1 == '--brute' || $1 == '-b' ]]; then
   if [[ $2 == 'social-media' ]]; then

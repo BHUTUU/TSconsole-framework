@@ -1,7 +1,7 @@
 #!/bin/python
 import sys, os, time
 def load_animation():
-    os.system("tput civis")
+    print("\n\n\n\t\t \033[4A\033[?25l  \r")
     load_str = "starting TSconsole framework console..."
     ls_len = len(load_str)
     animation = "|/-\\"
@@ -34,4 +34,4 @@ def load_animation():
         os.system("clear")
 if __name__ == '__main__':
     load_animation()
-    os.system("tput cnorm")
+    print("\033[?12l\033[?25h")
