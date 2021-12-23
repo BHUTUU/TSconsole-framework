@@ -365,18 +365,12 @@ echo -e "
 ======================
      ${B1}Submodules:-${R1}
 ======================
-${S1}(${S7}01${S1})${S7}MD5sum hash${R0}
-${S1}(${S7}02${S1})${S7}SHA1sum hash${R0}
-${S1}(${S7}03${S1})${S7}SHA224sum hash${R0}
-${S1}(${S7}04${S1})${S7}SHA256sum hash${R0}
-${S1}(${S7}05${S1})${S7}SHA384sum hash${R0}
-${S1}(${S7}06${S1})${S7}SHA512sum hash${R0}
-${S1}(${S7}07${S1})${S7}MD5 hash${R0}
-${S1}(${S7}08${S1})${S7}SHA1 hash${R0}
-${S1}(${S7}09${S1})${S7}SHA224 hash${R0}
-${S1}(${S7}10${S1})${S7}SHA256 hash${R0}
-${S1}(${S7}11${S1})${S7}SHA384 hash${R0}
-${S1}(${S7}12${S1})${S7}SHA512 hash${R0}
+${S1}(${S7}01${S1})${S7}MD5 hash${R0}
+${S1}(${S7}02${S1})${S7}SHA1 hash${R0}
+${S1}(${S7}03${S1})${S7}SHA224 hash${R0}
+${S1}(${S7}04${S1})${S7}SHA256 hash${R0}
+${S1}(${S7}05${S1})${S7}SHA384 hash${R0}
+${S1}(${S7}06${S1})${S7}SHA512 hash${R0}
 ${S1}——————————————————————${R0}
 " | pv -qL 1000
 elif [[ ${userc} == '01' || ${userc} == '1' ]]; then
@@ -391,18 +385,6 @@ elif [[ ${userc} == '05' || ${userc} == '5' ]]; then
 bash $CWD/programs/hashencode/hash.sh sha384
 elif [[ ${userc} == '06' || ${userc} == '6' ]]; then
 bash $CWD/programs/hashencode/hash.sh sha512
-elif [[ ${userc} == '07' || ${userc} == '7' ]]; then
-python $CWD/programs/hashencode/hash.py -H md5 -P md5
-elif [[ ${userc} == '08' || ${userc} == '8' ]]; then
-python $CWD/programs/hashencode/hash.py -H sha1 -P sha1
-elif [[ ${userc} == '09' || ${userc} == '9' ]]; then
-python $CWD/programs/hashencode/hash.py -H sha224 -P sha224
-elif [[ ${userc} == '10' ]]; then
-python $CWD/programs/hashencode/hash.py -H sha256 -P sha256
-elif [[ ${userc} == '11' ]]; then
-python $CWD/programs/hashencode/hash.py -H sha384 -P sha384
-elif [[ ${userc} == '12' ]]; then
-python $CWD/programs/hashencode/hash.py -H sha512 -P sha512
 else
 ERR | printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}:: ${S7}execute ‘?’ or ‘help’${R0}\a\n"
 fi
