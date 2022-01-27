@@ -143,11 +143,17 @@ ${S2}└[ !${S4}encode text to hash  program${S2}! ]${R0}
 ${S2}┌─(${S3} use encode/binary/handler ${S2})${R0}
 ${S2}└[ !${S4}encode text to binary program${S2}! ]${R0}
 
+${S2}┌─(${S3} use encode/resistor/handler ${S2})${R0}
+${S2}└[ !${S4}encode resistor value to colors${S2}! ]${R0}
+
 ${S2}┌─(${S3} use spam/call-sms/handler ${S2})${R0}
 ${S2}└[ !${S4}call and sms spamming program${S2}! ]${R0}
 
 ${S2}┌─(${S3} use decode/binary/handler ${S2})${R0}
 ${S2}└[ !${S4}decode binary to text  program${S2}! ]${R0}
+
+${S2}┌─(${S3} use decode/resistor/handler ${S2})${R0}
+${S2}└[ !${S4}decode resistor colors to value${S2}! ]${R0}
 " | pv -qL 1000
 }
 
@@ -202,10 +208,14 @@ fi
     hashEncode
   elif [[ ${input} == "use encode/binary/handler" ]]; then
     binaryEncode
+  elif [[ ${input} == "use encode/resistor/handler" ]]; then
+    resistorEncode
   elif [[ ${input} == "use spam/call-sms/handler" ]]; then
     bombSpam
   elif [[ ${input} == "use decode/binary/handler" ]]; then
     binaryDecode
+  elif [[ ${input} == "use decode/resistor/handler" ]]; then
+    resistorDecode
   elif [[ ${input} == "show modules" ]]; then
     bash $CWD/assets/load.sh fetching "                   " 2
     programList
@@ -580,6 +590,102 @@ ${S1}(${S7}03${S1})${S7}binary digits(0 1)${R0}
   fi
 done
 }
+#<==========resistor Decode=========>#
+resistorDecode() {
+if ! hash java > /dev/null 2>&1; then
+  printf "${S1}(${S5}!${S1})${S7} java not found! ${S1}::${S7} execute ‘${S4}apt install openjdk-17${S7}’ to install it.${R0}\a\n"
+  exit 1
+fi
+while true; do
+  printf "\033[3;4;37mTSc\033[0;0;00m ${S7}use(${S1}program/decode/resistor${S7})> ${R0}"
+  read userc
+  if [[ ${userc} == 'back' ]]; then
+    bash $CWD/assets/load.sh "" "              " 1
+    echo
+    break
+  elif [[ ${userc} == 'exit' || ${userc} == 'quit' ]]; then
+    SHD | bash $CWD/assets/load.sh Exiting "                    " 1
+    echo
+    exit 0
+    break
+  elif [[ ${userc,,} == 'help' || ${userc} == '?' ]]; then
+    printf "${S1}(${S5}•${S1})${S7} help ${S1}::${S7} execute ‘${S4}list${S7}’ to show submodules${R0}\a\n"
+  elif [[ ${userc,,} == 'show options' ]]; then
+    bash $CWD/assets/load.sh "" "          " 1
+echo -e "
+=============================
+     ${B1}Available options:-${R1}
+=============================
+    Options                      Description
+    -------                      -----------
+   ${S6} list${R0}         |->   To show submodules
+   ${S6} quit or exit${R0} |->   To exit TSconsole!!.
+   ${S6} help${R0}         |->   To show help message
+   ${S6} back${R0}         |->   To go back in main promt
+" | pv -qL 1000
+  elif [[ ${userc,,} == 'list' ]]; then
+    bash $CWD/assets/load.sh "" "            " 1
+echo -e "
+======================
+     ${B1}Submodules:-${R1}
+======================
+${S1}(${S7}run${S1})${S7}resistor color-code decoder64${R0}
+" | pv -qL 1000
+  elif [[ ${userc} == '01' || ${userc} == '1' || ${userc,,} == 'run' ]]; then
+    java $CWD/programs/resistorCalculate/ResistorDecode.java
+  else
+    ERR | printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}:: ${S7}execute ‘?’ or ‘help’${R0}\a\n"
+  fi
+done
+}
+#<==========resistor Encode=========>#
+resistorEncode() {
+if ! hash java > /dev/null 2>&1; then
+  printf "${S1}(${S5}!${S1})${S7} java not found! ${S1}::${S7} execute ‘${S4}apt install openjdk-17${S7}’ to install it.${R0}\a\n"
+  exit 1
+fi
+while true; do
+  printf "\033[3;4;37mTSc\033[0;0;00m ${S7}use(${S1}program/encode/resistor${S7})> ${R0}"
+  read userc
+  if [[ ${userc} == 'back' ]]; then
+    bash $CWD/assets/load.sh "" "              " 1
+    echo
+    break
+  elif [[ ${userc} == 'exit' || ${userc} == 'quit' ]]; then
+    SHD | bash $CWD/assets/load.sh Exiting "                    " 1
+    echo
+    exit 0
+    break
+  elif [[ ${userc,,} == 'help' || ${userc} == '?' ]]; then
+    printf "${S1}(${S5}•${S1})${S7} help ${S1}::${S7} execute ‘${S4}list${S7}’ to show submodules${R0}\a\n"
+  elif [[ ${userc,,} == 'show options' ]]; then
+    bash $CWD/assets/load.sh "" "          " 1
+echo -e "
+=============================
+     ${B1}Available options:-${R1}
+=============================
+    Options                      Description
+    -------                      -----------
+   ${S6} list${R0}         |->   To show submodules
+   ${S6} quit or exit${R0} |->   To exit TSconsole!!.
+   ${S6} help${R0}         |->   To show help message
+   ${S6} back${R0}         |->   To go back in main promt
+" | pv -qL 1000
+  elif [[ ${userc,,} == 'list' ]]; then
+    bash $CWD/assets/load.sh "" "            " 1
+echo -e "
+======================
+     ${B1}Submodules:-${R1}
+======================
+${S1}(${S7}run${S1})${S7}resistor color-code encoder${R0}
+" | pv -qL 1000
+  elif [[ ${userc} == '01' || ${userc} == '1' || ${userc,,} == 'run' ]]; then
+    java $CWD/programs/resistorCalculate/ResistorEncode.java
+  else
+    ERR | printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}:: ${S7}execute ‘?’ or ‘help’${R0}\a\n"
+  fi
+done
+}
 #<==========camera phish============>#
 cameraPhish() {
 while true; do
@@ -698,7 +804,7 @@ ${S1}(${S7}02${S1})${S7}Anonymous text SMS${R0}
   elif [[ ${userc} == '01' || ${userc} == '1' ]]; then
     LWD=$(pwd)
     cd $CWD > /dev/null 2>&1
-    ./programs/callnsms/bomb.sh
+    ./programs/callnsms/bomb.$(uname -m)
     cd LWD > /dev/null 2>&1
   elif [[ ${userc} == '02' || ${userc} == '2' ]]; then
     bash $CWD/programs/callnsms/text.sh
@@ -771,6 +877,7 @@ ${S4}Available options${R0}:
 
         ${S2} hashes${R0}              |--> For using hashes encoder
         ${S2} binary${R0}              |--> For using binary encoder
+        ${S2} resistor${R0}            |--> For using resistor encoder
 ${S2}<${S1}-------${S4}x${S1}-------${S2}>${R0}
 " | pv -qL 1000
 }
@@ -786,7 +893,8 @@ echo -e "
 
 ${S4}Available options${R0}:
 
-        ${S2} binary${R0}              |--> For using binary encoder
+        ${S2} binary${R0}              |--> For using binary decoder
+        ${S2} resistor${R0}            |--> For using resistor decoder
 
 ${S1}Note:-${S4}under binary you have again three submodules ${S7}i.e,${R0}
 
@@ -876,6 +984,10 @@ elif [[ $1 == '--encode' || $1 == '-e' ]]; then
     bash $CWD/assets/load.sh "" "              " 1
     echo
     binaryEncode
+  elif [[ $2 == 'resistor' ]];  then
+    bash $CWD/assets/load.sh "" "              " 1
+    echo
+    resistorEncode
   elif [[ $2 == 'help' || $2 == '?' || $2 == 'h' ]]; then
    bash $CWD/assets/load.sh "" "               " 1
    encodeHelp
@@ -889,6 +1001,10 @@ elif [[ $1 == '--decode' || $1 == '-d' ]]; then
     bash $CWD/assets/load.sh "" "              " 1
     echo
     binaryDecode
+  elif [[ $2 == 'resistor' ]]; then
+    bash $CWD/assets/load.sh "" "              " 1
+    echo
+    resistorDecode
   elif [[ $2 == 'help' || $2 == '?' || $2 == 'h' ]]; then
    bash $CWD/assets/load.sh "" "                " 1
    decodeHelp
