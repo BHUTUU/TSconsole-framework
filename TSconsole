@@ -101,7 +101,7 @@ function updateCheck() {
   if [ "$?" == '0' ]; then
     currentVersion=$(cat $CWD/maindb.json | jq -r .TSconsole[].version)
     githubVersion=$(curl -fsSL "https://raw.githubusercontent.com/BHUTUU/TSconsole-framework/main/maindb.json" | jq -r .TSconsole[].version)
-    if [[ "$currentVerion" != "$githubVersion" ]]; then
+    if [[ "$currentVersion" != "$githubVersion" ]]; then
       ERR | printf "${S2}[${S1}!${S2}]${S4}Update Available.....! Run ${S3}'${S7}TSconsole --update${S3}' ${S4}to update!!${R0}\a\n"
     fi
   fi
