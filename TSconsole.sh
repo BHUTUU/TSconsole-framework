@@ -95,6 +95,17 @@ INTERNET() {
 frize() {
 sleep 0.02
 }
+#<<<=======Update check and notify==========>>>#
+function updateCheck() {
+  INTERNET
+  if [ "$?" == '0' ]; then
+    currentVersion=$(cat $CWD/maindb.json | jq -r .TSconsole[].version)
+    githubVersion=$(curl -fsSL "https://raw.githubusercontent.com/BHUTUU/TSconsole-framework/main/maindb.json" | jq -r .TSconsole[].version)
+    if [[ "$currentVerion" != "$githubVersion" ]]; then
+      ERR | printf "${S2}[${S1}!${S2}]${S4}Update Available.....! Run ${S3}'${S7}TSconsole --update${S3}' ${S4}to update!!${R0}\a\n"
+    fi
+  fi
+}
 function banner() {
 lower=1;
 topper=7;
@@ -1047,9 +1058,11 @@ elif [[ $1 == '--spam' || $1 == '-s' ]]; then
 #<<<++args for debug and help++>>>#
 elif [[ ${filter} == 'TSconsole --debug' ]]; then
  set -x
+ updateCheck
  main
 elif [[ -z "$1" ]]; then
  if [[ -z "$2" ]]; then
+ updateCheck
  main
  fi
 elif [[ $1 == '-h' || $1 == '--help' || $1 == '?' ]]; then
