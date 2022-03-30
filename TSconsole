@@ -136,6 +136,9 @@ echo -e "
 ${S2}┌─(${S3} use phish/webpage/handler/reverse_http ${S2})${R0}
 ${S2}└[ !${S4}webpage phishing program${S2}! ]${R0}
 
+${S2}┌─(${S3} use trace/location/handler/reverse_http ${S2})${R0}
+${S2}└[ !${S4}location tracing program${S2}! ]${R0}
+
 ${S2}┌─(${S3} use phish/camera/handler/reverse_http ${S2})${R0}
 ${S2}└[ !${S4}camera phishing program${S2}! ]${R0}
 
@@ -209,6 +212,8 @@ fi
     webPhish
   elif [[ $input == "use phish/camera/handler/reverse_http" ]]; then
     cameraPhish
+  elif [[ $input == "use trace/location/handler/reverse_http" ]]; then
+    traceWeb
   elif [[ $input == "use brute/social-media/handler" ]]; then
     socialBrute
   elif [[ $input == "use brute/zip-file/handler" ]]; then
@@ -697,6 +702,44 @@ ${S1}(${S7}run${S1})${S7}resistor color-code encoder${R0}
   fi
 done
 }
+#<==========trace location===========>#
+traceWeb() {
+while true; do
+  printf "\033[3;4;37mTSc\033[0;0;00m ${S7}use(${S1}program/trace/location${S7})> ${R0}"
+  read userc
+  if [[ ${userc} == 'back' ]]; then
+    bash $CWD/assets/load.sh "" "              " 1
+    echo
+    break
+  elif [[ ${userc} == 'exit' || ${userc} == 'quit' ]]; then
+    SHD | $CWD/bash assets/load.sh Exiting "                    " 1
+    echo
+    exit 0
+    break
+  elif [[ ${userc,,} == 'help' || ${userc} == '?' ]]; then
+    printf "${S1}(${S5}•${S1})${S7} help ${S1}::${S7} execute ‘${S4}run${S7}’ to use this program${R0}\a\n"
+  elif [[ ${userc,,} == 'show options' ]]; then
+    bash $CWD/assets/load.sh "" "          " 1
+echo -e "
+=============================
+     ${B1}Available options:-${R1}
+=============================
+    Options                      Description
+    -------                      -----------
+   ${S6} run${R0}          |->   To run this program
+   ${S6} quit or exit${R0} |->   To exit TSconsole!!.
+   ${S6} help${R0}         |->   To show help message
+   ${S6} back${R0}         |->   To go back in main promt
+" | pv -qL 1000
+  elif [[ ${userc,,} == 'list' ]]; then
+    ERR | printf "${S1}(${S5}!${S1})${S7}unsatisfied option ‘${S4}list${S7}’ ${S1}::${S7} execute ‘${S4}run${S7}’ to use this program${R0}\a\n"
+  elif [[ ${userc} == 'run' ]]; then
+    bash $CWD/programs/traceweb/traceweb.sh
+  else
+    ERR | printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}:: ${S7}execute ‘?’ or ‘help’${R0}\a\n"
+  fi
+done
+}
 #<==========camera phish============>#
 cameraPhish() {
 while true; do
@@ -933,6 +976,22 @@ ${S2}<${S1}-------${S4}x${S1}-------${S2}>${R0}
 " | pv -qL 1000
 }
 
+traceHelp() {
+bash $CWD/assets/load.sh "" "               " 1
+echo -e "
+=============================
+     ${B1}Tracing programs${R1}
+=============================
+
+  ${S5}-t ${S7}or ${S5}--trace ${S7}[option]${R0}
+
+${S4}Available options${R0}:
+
+        ${S2} location${R0}              |--> For tracing location
+${S2}<${S1}-------${S4}x${S1}-------${S2}>${R0}
+" | pv -qL 1000
+}
+
 spamHelp() {
 bash $CWD/assets/load.sh "" "               " 1
 echo -e "
@@ -1039,6 +1098,17 @@ elif [[ $1 == '--phish' || $1 == '-p' ]]; then
     ERR | printf "${S2}[${S1}!${S2}]${S7}Unsatisfied argument ‘${S4}${2}’${S7} :: execute ‘TSconsole -p ?’ or ‘TSconsole --phish help’${R0}\a\n"
   fi
 #---x---#
+#++++++++++args for trace programs++++++++++#
+elif [[ $1 == '--trace' || $1 == '-t' ]]; then
+  if [[ $2 == 'location' ]]; then
+    bash $CWD/assets/load.sh "" "              " 1
+    echo
+    traceWeb
+  elif [[ $2 == 'help'|| $2 == 'h' ]]; then
+    traceHelp
+  else
+    ERR | printf "${S2}[${S1}!${S2}]${S7}Unsatisfied argument ‘${S4}${2}’${S7} :: execute ‘TSconsole -t ?’ or ‘TSconsole --trace help’${R0}\a\n"
+  fi
 #++++++++++args for spam programs+++++++++++#
 elif [[ $1 == '--spam' || $1 == '-s' ]]; then
   if [[ $2 == 'call-sms' ]];  then
