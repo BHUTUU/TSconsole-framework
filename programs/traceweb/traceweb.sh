@@ -3,6 +3,22 @@ CWD=`pwd`
 if [[ $CWD != *'programs/traceweb'* ]]; then
   cd programs/traceweb>/dev/null 2>&1
 fi
+NWD=`pwd`
+signal_SIGINT() {
+  local cloud="${NWD}/assets/cloudflare-log"
+  local ph="${NWD}/assets/phpLog"
+  local result="${NWD}/assets/php/result.txt"
+  local info="${NWD}/assets/php/info.txt"
+  local error="${NWD}/assets/php/error.txt"
+  cacheMem=($error $info $result $ph $cloud)
+  for i in "${cacheMem[@]}"; do
+    if [[ -f ${i} ]]; then
+      rm -rf ${i} >/dev/null 2>&1
+    fi
+  done
+  exit 0
+}
+trap signal_SIGINT SIGINT
 OS=`uname -o`
 #<<<-----colors----->>>#
 S0="\033[1;30m" B0="\033[1;40m"
