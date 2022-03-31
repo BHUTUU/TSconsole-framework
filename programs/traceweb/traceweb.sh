@@ -6,7 +6,7 @@ fi
 NWD=`pwd`
 signal_SIGINT() {
   local cloud="${NWD}/assets/cloudflare-log"
-  local ph="${NWD}/assets/phpLog"
+  local ph="${NWD}/assets/phpLog.txt"
   local result="${NWD}/assets/php/result.txt"
   local info="${NWD}/assets/php/info.txt"
   local error="${NWD}/assets/php/error.txt"
@@ -43,7 +43,7 @@ ngrokHost() {
   killall php ngrok>/dev/null 2>&1
   cd assets>/dev/null 2>&1
   printf "">phpLog.txt
-  php-S 127.0.0.1:8080 > phpLogs.txt 2>&1 &
+  php-S 127.0.0.1:8080 > phpLog.txt 2>&1 &
   if [[ ${OS,,} == *'android'* ]]; then
     termux-chroot ngrok http 8080 >/dev/null 2>&1 &
   else
