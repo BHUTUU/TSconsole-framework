@@ -4,7 +4,7 @@ CWD=$(pwd)
 #|----------------------------------|
 #|BY       :- Suman Kumar ~BHUTUU   |
 #|Date     :- 30/09/2021            |
-#|version  :- 3.0.2                 |
+#|version  :- 3.0.3                 |
 #|----------------------------------|
 args="$1"
 filter="TSconsole ${args}"
@@ -543,7 +543,8 @@ echo -e "
 ======================
 ${S1}(${S7}01${S1})${S7}base64${R0}
 ${S1}(${S7}02${S1})${S7}base32${R0}
-${S1}(${S7}03${S1})${S7}binary digits(0 1)${R0}
+${S1}(${S7}03${S1})${S7}binary format(0 1)${R0}
+${S1}(${S7}04${S1})${S7}binary Number(0 1)${R0}
 " | pv -qL 1000
   elif [[ ${userc} == '01' || ${userc} == '1' ]]; then
     bash $CWD/programs/binarydecode/base64
@@ -551,6 +552,9 @@ ${S1}(${S7}03${S1})${S7}binary digits(0 1)${R0}
     bash $CWD/programs/binarydecode/base32
   elif [[ ${userc} == '03' || ${userc} == '3' ]]; then
     python $CWD/programs/binarydecode/binary -H suman -P BHUTUU
+  elif [[ ${userc} == '04' || ${userc} == '4' ]]; then
+    export binDeDir="${CWD}/programs/binarydecode/"
+    bash ${CWD}/programs/binarydecode/decodeNumlauncher.sh
   else
     ERR | printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}:: ${S7}execute ‘?’ or ‘help’${R0}\a\n"
   fi
@@ -593,7 +597,8 @@ echo -e "
 ======================
 ${S1}(${S7}01${S1})${S7}base64${R0}
 ${S1}(${S7}02${S1})${S7}base32${R0}
-${S1}(${S7}03${S1})${S7}binary digits(0 1)${R0}
+${S1}(${S7}03${S1})${S7}binary format(0 1)${R0}
+${S1}(${S7}04${S1})${S7}binary Number(0 1)${R0}
 " | pv -qL 1000
   elif [[ ${userc} == '01' || ${userc} == '1' ]]; then
     bash $CWD/programs/binaryencode/base64
@@ -601,6 +606,9 @@ ${S1}(${S7}03${S1})${S7}binary digits(0 1)${R0}
     bash $CWD/programs/binaryencode/base32
   elif [[ ${userc} == '03' || ${userc} == '3' ]]; then
     python $CWD/programs/binaryencode/binary -H suman -P BHUTUU
+  elif [[ ${userc} == '04' || ${userc} == '4' ]]; then
+    export binEnDir="${CWD}/programs/binaryencode/"
+    bash $CWD/programs/binaryencode/encodeNumlauncher.sh
   else
     ERR | printf "${S2}[${S1}!${S2}]${S7}Unsatisfied command ‘${S4}${userc}${S7}’ ${S1}:: ${S7}execute ‘?’ or ‘help’${R0}\a\n"
   fi
@@ -950,11 +958,12 @@ ${S4}Available options${R0}:
         ${S2} binary${R0}              |--> For using binary decoder
         ${S2} resistor${R0}            |--> For using resistor decoder
 
-${S1}Note:-${S4}under binary you have again three submodules ${S7}i.e,${R0}
+${S1}Note:-${S4}under binary you have again four submodules ${S7}i.e,${R0}
 
         ${S3}base64${R0}
         ${S3}base32${R0}
-        ${S3}binary digits (0 1)${R0}
+        ${S3}binary format (0 1)${R0}
+        ${S3}binary numbers (0 1)${R0}
 ${S2}<${S1}-------${S4}x${S1}-------${S2}>${R0}
 " | pv -qL 1000
 }
