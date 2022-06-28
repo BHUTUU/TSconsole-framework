@@ -16,7 +16,7 @@ for opt, arg in opts:
     elif opt in ['-P']:
         arg2 = arg
 def decode():
-    word=input("\033[3;4;37mTSc\033[0;0;00m \033[37mEnter(\033[31mbinary/to/text\033[37m)> \033[00m")
+    word=input("\033[3;4;37mTSc\033[0;0;00m \033[37mEnter(\033[31mtext/to/binary\033[37m)> \033[00m")
     print ( "\033[3;4;37mTSc\033[0;0;00m \033[37m(\033[31mResult:-\033[37m)>",(bin(int.from_bytes(word.encode(), 'big')))[2:])
 def chor():
     print ("\033[32m[\033[31m!\033[32m]\033[34mLol! you are trying to copy my program\033[00m 😂😂\n")

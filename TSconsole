@@ -4,7 +4,7 @@ CWD=$(pwd)
 #|----------------------------------|
 #|BY       :- Suman Kumar ~BHUTUU   |
 #|Date     :- 30/09/2021            |
-#|version  :- 3.0.3                 |
+#|version  :- 3.0.4                 |
 #|----------------------------------|
 args="$1"
 filter="TSconsole ${args}"
@@ -121,7 +121,8 @@ else
   bash ${CWD}/assets/LOGOs/logo.${GET} | lolcat
 fi
 echo
-printf "${S2}>>>Version:${S4} 3.0 ${S7}(${S1}latest${S7})${R0}\n"
+versionTSC=$(cat $CWD/maindb.json | jq -r .TSconsole[].version)
+printf "${S2}>>>Version:${S4} ${versionTSC} ${S7}(${S1}latest${S7})${R0}\n"
 printf "\e[1;31m<<<--Made with love-->>>\e[0m\n"; frize
 printf "\e[1;36m>>>By Suman Kumar ~BHUTUU👻\e[0m\n"; frize
 printf "\e[1;34m<<<--------------------{t❣️s}-------------------->>>\e[0m\n"; frize
