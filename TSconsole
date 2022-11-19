@@ -4,7 +4,7 @@ CWD=$(pwd)
 #|----------------------------------|
 #|BY       :- Suman Kumar ~BHUTUU   |
 #|Date     :- 30/09/2021            |
-#|version  :- 3.0.4                 |
+#|version  :- 3.0.5                 |
 #|----------------------------------|
 args="$1"
 filter="TSconsole ${args}"
@@ -1034,6 +1034,9 @@ elif [[ ${filter} == 'TSconsole -i' || ${filter} == 'TSconsole --install' ]]; th
   fi
 elif [[ ${filter} == 'TSconsole -r' || ${filter} == 'TSconsole --remove' ]]; then
   bash assets/programs/remove.TSconsole
+elif [[ ${filter} == 'TSconsole -v' || ${filter} == 'TSconsole --version' ]]; then
+  TSCVersion=$(cat maindb.json | jq -r .TSconsole[0].version)
+  printf "${S4}TSconsole ${S1}:: ${S2}Version ${S1}: ${S3}${TSCVersion}${R0}\n"
 #======args for bruteforce prograns======#
 elif [[ $1 == '--brute' || $1 == '-b' ]]; then
   if [[ $2 == 'social-media' ]]; then

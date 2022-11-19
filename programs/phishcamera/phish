@@ -262,7 +262,12 @@ r4=$(printf "${r3/\",/}")
 link=$(printf "${r4/%\",/}")
 fi
 else
+while true; do
 r1=$(grep -o 'https://[-0-9a-z]*\.trycloudflare.com' "${RWD}/.cloudflare-log")
+if [[ ! -z $r1 ]]; then
+break
+fi
+done
 link="${r1/https:\/\//}"
 hoster=""
 rm -rf $RWD/.cloudflare-log > /dev/null 2>&1
