@@ -4,7 +4,7 @@ CWD=$(pwd)
 #|----------------------------------|
 #|BY       :- Suman Kumar ~BHUTUU   |
 #|Date     :- 30/09/2021            |
-#|version  :- 3.0.5                 |
+#|version  :- 3.0.6                 |
 #|----------------------------------|
 args="$1"
 filter="TSconsole ${args}"
@@ -21,7 +21,7 @@ S7="\033[1;37m" B7="\033[1;47m"
 R0="\033[00m"   R1="\033[1;00m"
 #<---x--->#
 #<--requirements-->#
-if ! hash sox > /dev/null 2>&1 || ! hash python > /dev/null 2>&1 || ! hash pv > /dev/null 2>&1 || ! hash lolcat > /dev/null 2>&1; then
+if ! hash sox > /dev/null 2>&1 || ! hash python3 > /dev/null 2>&1 || ! hash pv > /dev/null 2>&1 || ! hash lolcat > /dev/null 2>&1; then
   if [[ $__return__ == '13' ]]; then
     bash $CWD/assets/programs/requirements.TSconsole
   else
@@ -178,7 +178,7 @@ if [[ $__return__ != '13' ]]; then
   ERR | printf "${S2}[${S1}!${S2}]${S4}Resources were missing${S1}!!${R0}\a\n"
   exit 1
 fi
-python $CWD/assets/anim.py
+python3 $CWD/assets/anim.py
 STR | bash $CWD/assets/load.sh "welcome to TSconsole-framework" "                                               " 3
 echo -e "
  ________________________________
