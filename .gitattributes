@@ -5,3 +5,4 @@
 *.css linguist-language=CSS
 *.java linguist-language=Java
 *.sh linguist-language=Shell
+*.less linguist-language=CSS
