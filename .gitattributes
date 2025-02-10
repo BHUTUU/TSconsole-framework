@@ -1,4 +1,4 @@
-*.php linguist-language=php
+*.php linguist-language=PHP
 *.js linguist-language=JavaScript
 *.py linguist-language=Python
 *.html linguist-language=HTML
